@@ -1,0 +1,118 @@
+---
+title: "00-tour"
+
+format:
+  html: default
+  revealjs:
+    output-file: 00-tour-reveal.html
+---
+
+# R and RStudio {background-color="#e4282e"}
+
+## Agenda
+
+1.  RStudio
+2.  RStudio Project
+
+## Hello!
+
+Brief Introductions 
+
+## General Plan
+
+For each topic: 
+
+- Bite size pieces of concepts explained
+- Practice & Questions
+
+. . .
+
+Where to find these materials: 
+
+AVOCADO 
+
+## RStudio Tour
+
+::: panel-tabset
+### R/RStudio
+
+**R & RStudio**
+
+-   R is a statistical programming language
+-   RStudio is a convenient interface for R (an integrated development environment, IDE)
+
+### Tour
+
+<center>\[DEMO\]</center>
+
+Concepts introduced:
+
+-   Console
+-   Using R as a calculator
+-   Environment
+-   Loading and viewing a data frame
+-   Accessing a variable in a data frame
+-   R functions
+
+### Try
+
+**Practice**
+
+1.  Type a simple math problem (i.e. 3 + 3) in to the console and see the output
+2.  View the `airquality` dataframe
+3.  Determine how many rows there are in the `airquality` dataframe
+4.  Access a column from the `airquality` dataframe
+5.  Calculate the median for one of the numeric columns
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+:::
+
+## RStudio Projects
+::: panel-tabset
+
+### Projects
+
+- Built-in functionality to keep all files for a single project organized
+- Best way to get started on an analysis in R
+
+[RStudio Projects Documentation](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+
+### Tour
+
+<center>\[DEMO\]</center>
+
+Concepts introduced:
+
+- .Rproj file
+- Opening up a project
+- Creating/saving a file
+- Running Code
+- Switching between projects
+
+### Try
+
+**Practice**
+
+1. Create and open an R Project for this training
+2. Create a new Rscript file in your project
+3. Type some R code in the new file
+4. Run that code
+5. Save the file
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+:::
+
+## For this training...
+
+For right now, we can do all R Practice in that file  you just created, but we'll talk about another file type soon that may be helpful for notetaking/practice.
+
+## Additional Resources:
+
+- [R4DS](https://r4ds.hadley.nz/) - book teaching the basics of using R in the `tidyverse`
+- [Big Book of R](https://www.bigbookofr.com/) - lots of free resources for learning and using R; each chapter links to a different resource
+- [learnR4free](https://www.learnr4free.com/) - lots of different free courses/resources for learning R
+- [ChatGPT](https://chatgpt.com/?oai-dm=1) - really good at writing R code for working with data (be careful about including proprietary information)

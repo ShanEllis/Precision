@@ -1,0 +1,67 @@
+---
+title: "04-documents"
+
+format:
+  html: default
+  revealjs:
+    output-file: 04-documents-reveal.html
+---
+
+# R Markdown {background-color="#e4282e"}
+
+## Agenda
+
+1. RMarkdown files
+2. `quarto`
+
+
+## R Markdown
+
+-   Fully reproducible reports/analyses
+-   Code + text & output in a single document
+-   Can be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)
+-   Each time you knit, the code in the document is run from top to bottom
+-   Code goes in chunks, defined by three backticks, narrative goes outside of chunks
+-   Simple markdown syntax for text
+
+## R Markdown: tour
+
+<br><br>
+
+<center>\[DEMO\]</center>
+
+Concepts introduced:
+
+- Creating a file
+- Saving a file
+- YAML
+- Markdown
+- Code Chunks
+- Knitting
+
+## R Markdown tips
+
+-   Keep the [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) and Markdown Quick Reference (Help -\> Markdown Quick Reference) handy, we'll refer to it often as the course progresses
+
+-   The workspace of your R Markdown document is separate from the Console
+
+## Aside: `quarto`
+
+Quarto documents are very much like RMarkdown documents...but allow for additional programming languages to be run in a single document. 
+
+. . . 
+
+Quarto (`.qmd`) is what I've used for thes notes and the website.
+
+## Practice
+
+Recommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.
+
+. . . 
+
+Your turn: Add some markdown text to take notes of something we've discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+

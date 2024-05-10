@@ -1,0 +1,2073 @@
+[
+  {
+    "objectID": "02-data/05-tidyverse.html",
+    "href": "02-data/05-tidyverse.html",
+    "title": "05-tidyverse",
+    "section": "",
+    "text": "tidyverse\npackage summary\nThe pipe\n\n\n\n\n\n\n\n\n\ntidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax.\n\n\n\n\n\n\nThere are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s\n\n\n\n\n\ntidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data\n\n\n\n\nThere are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n. . .\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#agenda",
+    "href": "02-data/05-tidyverse.html#agenda",
+    "title": "05-tidyverse",
+    "section": "",
+    "text": "tidyverse\npackage summary\nThe pipe",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#what-is-the-tidyverse",
+    "href": "02-data/05-tidyverse.html#what-is-the-tidyverse",
+    "title": "05-tidyverse",
+    "section": "",
+    "text": "tidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#history-tidyverse",
+    "href": "02-data/05-tidyverse.html#history-tidyverse",
+    "title": "05-tidyverse",
+    "section": "",
+    "text": "There are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#why-tidyverse",
+    "href": "02-data/05-tidyverse.html#why-tidyverse",
+    "title": "05-tidyverse",
+    "section": "",
+    "text": "tidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#package-summary",
+    "href": "02-data/05-tidyverse.html#package-summary",
+    "title": "05-tidyverse",
+    "section": "",
+    "text": "There are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n. . .\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#the-pipe-in-baser",
+    "href": "02-data/05-tidyverse.html#the-pipe-in-baser",
+    "title": "05-tidyverse",
+    "section": "The pipe in baseR",
+    "text": "The pipe in baseR\n\n\n\n\n|&gt; should be read as “and then”\nfor example “Wake up |&gt; brush teeth” would be read as “wake up and then brush teeth”",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#where-does-the-name-come-from",
+    "href": "02-data/05-tidyverse.html#where-does-the-name-come-from",
+    "title": "05-tidyverse",
+    "section": "Where does the name come from?",
+    "text": "Where does the name come from?\nThe pipe operator was first implemented in the package magrittr.\n\n\n\n\n\n\n\nYou will see this frequently in code online. It’s equivalent to |&gt;.\n. . .\nMost people have recently transitioned to |&gt;, so I’ll try to use that.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#review-how-does-a-pipe-work",
+    "href": "02-data/05-tidyverse.html#review-how-does-a-pipe-work",
+    "title": "05-tidyverse",
+    "section": "Review: How does a pipe work?",
+    "text": "Review: How does a pipe work?\n\nYou can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.\n\n. . .\n\nExpressed as a set of nested functions in baseR pseudocode, this would look like:\n\n\npark(drive(start_car(find(\"keys\")), to = \"campus\"))\n\n. . .\n\nWriting it out using pipes give it a more natural (and easier to read) structure:\n\n\nfind(\"keys\") |&gt;\n  start_car() |&gt;\n  drive(to = \"campus\") |&gt;\n  park()",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#code-style-pipes",
+    "href": "02-data/05-tidyverse.html#code-style-pipes",
+    "title": "05-tidyverse",
+    "section": "Code Style: pipes (|>)",
+    "text": "Code Style: pipes (|&gt;)\n\nshould have a space before it\nis most often the last thing on a line",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#agenda",
+    "href": "02-data/05-tidyverse-reveal.html#agenda",
+    "title": "05-tidyverse",
+    "section": "Agenda",
+    "text": "Agenda\n\ntidyverse\npackage summary\nThe pipe"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#what-is-the-tidyverse",
+    "href": "02-data/05-tidyverse-reveal.html#what-is-the-tidyverse",
+    "title": "05-tidyverse",
+    "section": "What is the Tidyverse?",
+    "text": "What is the Tidyverse?\n\n\n\n\n\ntidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax."
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#history-tidyverse",
+    "href": "02-data/05-tidyverse-reveal.html#history-tidyverse",
+    "title": "05-tidyverse",
+    "section": "History: tidyverse?",
+    "text": "History: tidyverse?\nThere are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#why-tidyverse",
+    "href": "02-data/05-tidyverse-reveal.html#why-tidyverse",
+    "title": "05-tidyverse",
+    "section": "Why tidyverse?",
+    "text": "Why tidyverse?\n\ntidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#package-summary",
+    "href": "02-data/05-tidyverse-reveal.html#package-summary",
+    "title": "05-tidyverse",
+    "section": "Package Summary",
+    "text": "Package Summary\nThere are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#the-pipe-in-baser",
+    "href": "02-data/05-tidyverse-reveal.html#the-pipe-in-baser",
+    "title": "05-tidyverse",
+    "section": "The pipe in baseR",
+    "text": "The pipe in baseR\n\n\n\n\n|&gt; should be read as “and then”\nfor example “Wake up |&gt; brush teeth” would be read as “wake up and then brush teeth”"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#where-does-the-name-come-from",
+    "href": "02-data/05-tidyverse-reveal.html#where-does-the-name-come-from",
+    "title": "05-tidyverse",
+    "section": "Where does the name come from?",
+    "text": "Where does the name come from?\nThe pipe operator was first implemented in the package magrittr.\n\n\n\n\n\n\n\nYou will see this frequently in code online. It’s equivalent to |&gt;.\n\nMost people have recently transitioned to |&gt;, so I’ll try to use that."
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#review-how-does-a-pipe-work",
+    "href": "02-data/05-tidyverse-reveal.html#review-how-does-a-pipe-work",
+    "title": "05-tidyverse",
+    "section": "Review: How does a pipe work?",
+    "text": "Review: How does a pipe work?\n\nYou can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.\n\n\n\nExpressed as a set of nested functions in baseR pseudocode, this would look like:\n\n\n\n\nWriting it out using pipes give it a more natural (and easier to read) structure:"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#code-style-pipes",
+    "href": "02-data/05-tidyverse-reveal.html#code-style-pipes",
+    "title": "05-tidyverse",
+    "section": "Code Style: pipes (|>)",
+    "text": "Code Style: pipes (|&gt;)\n\nshould have a space before it\nis most often the last thing on a line"
+  },
+  {
+    "objectID": "02-data/06-dplyr.html",
+    "href": "02-data/06-dplyr.html",
+    "title": "06-dplyr",
+    "section": "",
+    "text": "dplyr\n\nphilosophy\ncommon operations\nPractice!\n\n\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\ndplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges\n\n\n\nSource: dplyr.tidyverse.org",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#agenda",
+    "href": "02-data/06-dplyr.html#agenda",
+    "title": "06-dplyr",
+    "section": "",
+    "text": "dplyr\n\nphilosophy\ncommon operations\nPractice!",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#setup",
+    "href": "02-data/06-dplyr.html#setup",
+    "title": "06-dplyr",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#philosophy",
+    "href": "02-data/06-dplyr.html#philosophy",
+    "title": "06-dplyr",
+    "section": "",
+    "text": "dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges\n\n\n\nSource: dplyr.tidyverse.org",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#nc-dot-fatal-crashes-in-north-carolina",
+    "href": "02-data/06-dplyr.html#nc-dot-fatal-crashes-in-north-carolina",
+    "title": "06-dplyr",
+    "section": "NC DOT Fatal Crashes in North Carolina",
+    "text": "NC DOT Fatal Crashes in North Carolina\nTo get practice with common data manipulations, we’ll use data from OpenDurham’s Data Portal.\n. . .\nTo do so, we’ll read the file into R, using the function read_csv2:\n\nbike &lt;- read_csv2(\"https://raw.githubusercontent.com/COGS137/datasets/main/nc_bike_crash.csv\",\n                  na = c(\"NA\", \"\", \".\"))\n\n. . .\nNote: here we’re using a file called read_csv2. This is used for datasets that use ; for the separator and , for the decimal place (common in some European countries). read_csv() will be used more commonly.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#practice",
+    "href": "02-data/06-dplyr.html#practice",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nRead the dataset in and determine how many observations and variables there are in the bike dataset.\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#variables",
+    "href": "02-data/06-dplyr.html#variables",
+    "title": "06-dplyr",
+    "section": "Variables",
+    "text": "Variables\nView the names of variables via:\n\nnames(bike)\n\n [1] \"FID\"        \"OBJECTID\"   \"AmbulanceR\" \"BikeAge_Gr\" \"Bike_Age\"  \n [6] \"Bike_Alc_D\" \"Bike_Dir\"   \"Bike_Injur\" \"Bike_Pos\"   \"Bike_Race\" \n[11] \"Bike_Sex\"   \"City\"       \"County\"     \"CrashAlcoh\" \"CrashDay\"  \n[16] \"Crash_Date\" \"Crash_Grp\"  \"Crash_Hour\" \"Crash_Loc\"  \"Crash_Mont\"\n[21] \"Crash_Time\" \"Crash_Type\" \"Crash_Ty_1\" \"Crash_Year\" \"Crsh_Sevri\"\n[26] \"Developmen\" \"DrvrAge_Gr\" \"Drvr_Age\"   \"Drvr_Alc_D\" \"Drvr_EstSp\"\n[31] \"Drvr_Injur\" \"Drvr_Race\"  \"Drvr_Sex\"   \"Drvr_VehTy\" \"ExcsSpdInd\"\n[36] \"Hit_Run\"    \"Light_Cond\" \"Locality\"   \"Num_Lanes\"  \"Num_Units\" \n[41] \"Rd_Charact\" \"Rd_Class\"   \"Rd_Conditi\" \"Rd_Config\"  \"Rd_Defects\"\n[46] \"Rd_Feature\" \"Rd_Surface\" \"Region\"     \"Rural_Urba\" \"Speed_Limi\"\n[51] \"Traff_Cntr\" \"Weather\"    \"Workzone_I\" \"Location\"",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#viewing-your-data",
+    "href": "02-data/06-dplyr.html#viewing-your-data",
+    "title": "06-dplyr",
+    "section": "Viewing your data",
+    "text": "Viewing your data\n\nIn the Environment, click on the name of the data frame to view it in the data viewer (or use the View function)\n\n. . .\n\nUse the glimpse function to take a peek\n\n\nglimpse(bike)\n\nRows: 5,716\nColumns: 54\n$ FID        &lt;dbl&gt; 18, 29, 33, 35, 49, 53, 56, 60, 63, 66, 72, 75, 82, 84, 85,…\n$ OBJECTID   &lt;dbl&gt; 19, 30, 34, 36, 50, 54, 57, 61, 64, 67, 73, 76, 83, 85, 86,…\n$ AmbulanceR &lt;chr&gt; \"No\", \"Yes\", \"No\", \"Yes\", \"No\", \"Yes\", \"Yes\", \"No\", \"Yes\", …\n$ BikeAge_Gr &lt;chr&gt; NA, \"50-59\", NA, \"16-19\", NA, \"50-59\", \"16-19\", \"40-49\", \"1…\n$ Bike_Age   &lt;dbl&gt; 6, 51, 10, 17, 6, 52, 18, 40, 6, 7, 45, 30, 17, 20, 14, 15,…\n$ Bike_Alc_D &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ Bike_Dir   &lt;chr&gt; \"Not Applicable\", \"With Traffic\", \"With Traffic\", NA, \"Faci…\n$ Bike_Injur &lt;chr&gt; \"C: Possible Injury\", \"C: Possible Injury\", \"Injury\", \"B: E…\n$ Bike_Pos   &lt;chr&gt; \"Driveway / Alley\", \"Travel Lane\", \"Travel Lane\", \"Travel L…\n$ Bike_Race  &lt;chr&gt; \"Black\", \"Black\", \"Black\", \"White\", \"Black\", \"White\", \"Blac…\n$ Bike_Sex   &lt;chr&gt; \"Female\", \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Female\",…\n$ City       &lt;chr&gt; \"Durham\", \"Greenville\", \"Farmville\", \"Charlotte\", \"Charlott…\n$ County     &lt;chr&gt; \"Durham\", \"Pitt\", \"Pitt\", \"Mecklenburg\", \"Mecklenburg\", \"Du…\n$ CrashAlcoh &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ CrashDay   &lt;chr&gt; \"01-01-06\", \"01-01-02\", \"01-01-07\", \"01-01-05\", NA, NA, NA,…\n$ Crash_Date &lt;date&gt; 2007-01-06, 2007-01-09, 2007-01-14, 2007-01-12, 2007-01-15…\n$ Crash_Grp  &lt;chr&gt; \"Bicyclist Failed to Yield - Midblock\", \"Crossing Paths - O…\n$ Crash_Hour &lt;dbl&gt; 13, 23, 16, 19, 12, 20, 19, 14, 16, 0, 17, 18, 14, 17, 19, …\n$ Crash_Loc  &lt;chr&gt; \"Non-Intersection\", \"Intersection-Related\", \"Intersection\",…\n$ Crash_Mont &lt;chr&gt; NA, NA, NA, NA, NA, \"01-04-01\", \"01-04-01\", NA, \"01-02-01\",…\n$ Crash_Time &lt;dttm&gt; 0001-01-01 13:17:58, 0001-01-01 23:08:58, 0001-01-01 16:44…\n$ Crash_Type &lt;chr&gt; \"Bicyclist Ride Out - Residential Driveway\", \"Crossing Path…\n$ Crash_Ty_1 &lt;dbl&gt; 353311, 211180, 111144, 119139, 112114, 311231, 119144, 132…\n$ Crash_Year &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,…\n$ Crsh_Sevri &lt;chr&gt; \"C: Possible Injury\", \"C: Possible Injury\", \"O: No Injury\",…\n$ Developmen &lt;chr&gt; \"Residential\", \"Commercial\", \"Residential\", \"Residential\", …\n$ DrvrAge_Gr &lt;chr&gt; \"60-69\", \"30-39\", \"50-59\", \"30-39\", NA, \"20-24\", \"40-49\", N…\n$ Drvr_Age   &lt;dbl&gt; 66, 34, 52, 33, NA, 20, 40, NA, 17, 51, NA, 64, 50, 66, 30,…\n$ Drvr_Alc_D &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"Missing\", \"No\", \"No\", \"Missing\", \"…\n$ Drvr_EstSp &lt;chr&gt; \"11-15 mph\", \"0-5 mph\", \"21-25 mph\", \"46-50 mph\", \"16-20 mp…\n$ Drvr_Injur &lt;chr&gt; \"O: No Injury\", \"O: No Injury\", \"O: No Injury\", \"O: No Inju…\n$ Drvr_Race  &lt;chr&gt; \"Black\", \"Black\", \"White\", \"White\", \"/Missing\", \"White\", \"B…\n$ Drvr_Sex   &lt;chr&gt; \"Male\", \"Male\", \"Female\", \"Female\", NA, \"Female\", \"Male\", N…\n$ Drvr_VehTy &lt;chr&gt; \"Pickup\", \"Passenger Car\", \"Passenger Car\", \"Sport Utility\"…\n$ ExcsSpdInd &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ Hit_Run    &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"Yes\", \"No\", \"No\", \"Yes\", \"No\", \"No…\n$ Light_Cond &lt;chr&gt; \"Daylight\", \"Dark - Lighted Roadway\", \"Daylight\", \"Dark - R…\n$ Locality   &lt;chr&gt; \"Mixed (30% To 70% Developed)\", \"Urban (&gt;70% Developed)\", \"…\n$ Num_Lanes  &lt;chr&gt; \"2 lanes\", \"5 lanes\", \"2 lanes\", \"4 lanes\", \"2 lanes\", \"4 l…\n$ Num_Units  &lt;dbl&gt; 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…\n$ Rd_Charact &lt;chr&gt; \"Straight - Level\", \"Straight - Level\", \"Straight - Level\",…\n$ Rd_Class   &lt;chr&gt; \"Local Street\", \"Local Street\", \"Local Street\", \"NC Route\",…\n$ Rd_Conditi &lt;chr&gt; \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dr…\n$ Rd_Config  &lt;chr&gt; \"Two-Way, Not Divided\", \"Two-Way, Divided, Unprotected Medi…\n$ Rd_Defects &lt;chr&gt; \"None\", \"None\", \"None\", \"None\", \"None\", \"None\", \"None\", \"No…\n$ Rd_Feature &lt;chr&gt; \"No Special Feature\", \"Four-Way Intersection\", \"Four-Way In…\n$ Rd_Surface &lt;chr&gt; \"Smooth Asphalt\", \"Smooth Asphalt\", \"Smooth Asphalt\", \"Smoo…\n$ Region     &lt;chr&gt; \"Piedmont\", \"Coastal\", \"Coastal\", \"Piedmont\", \"Piedmont\", \"…\n$ Rural_Urba &lt;chr&gt; \"Urban\", \"Urban\", \"Rural\", \"Urban\", \"Urban\", \"Urban\", \"Urba…\n$ Speed_Limi &lt;chr&gt; \"20 - 25  MPH\", \"40 - 45  MPH\", \"30 - 35  MPH\", \"40 - 45  M…\n$ Traff_Cntr &lt;chr&gt; \"No Control Present\", \"Stop And Go Signal\", \"Stop Sign\", \"S…\n$ Weather    &lt;chr&gt; \"Clear\", \"Clear\", \"Clear\", \"Cloudy\", \"Clear\", \"Clear\", \"Cle…\n$ Workzone_I &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ Location   &lt;chr&gt; \"36.002743, -78.8785\", \"35.612984, -77.39265\", \"35.595676, …\n\n\n. . .\n\nUse the skim function to get a sense of the data we have\n\n\nskim(bike)",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#a-grammar-of-data-manipulation",
+    "href": "02-data/06-dplyr.html#a-grammar-of-data-manipulation",
+    "title": "06-dplyr",
+    "section": "A Grammar of Data Manipulation",
+    "text": "A Grammar of Data Manipulation\ndplyr is based on the concepts of functions as verbs that manipulate data frames.\nSingle data frame functions / verbs:\n\nfilter: pick rows matching criteria\nslice: pick rows using index(es)\nselect: pick columns by name\nrename: rename specific columns\narrange: reorder rows\nmutate: add new variables\ncase_when: for conditional assignment\ndistinct: filter for unique rows\ngroup_by: for carrying out operations within groups of data\nsummarize: reduce variables to values\n… (many more)",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#dplyr-rules-for-functions",
+    "href": "02-data/06-dplyr.html#dplyr-rules-for-functions",
+    "title": "06-dplyr",
+    "section": "dplyr rules for functions",
+    "text": "dplyr rules for functions\n\nFirst argument is always a data frame\nSubsequent arguments say what to do with that data frame\nAlways return a data frame\nDo not modify in place\nPerformance via lazy evaluation",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#general-syntax",
+    "href": "02-data/06-dplyr.html#general-syntax",
+    "title": "06-dplyr",
+    "section": "General syntax",
+    "text": "General syntax\n\ndf |&gt; \n  verb(...) |&gt; \n  next_verb(...)",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#filter-rows-with-filter",
+    "href": "02-data/06-dplyr.html#filter-rows-with-filter",
+    "title": "06-dplyr",
+    "section": "Filter rows with filter",
+    "text": "Filter rows with filter\n\nSelect a subset of rows in a data frame.\nEasily filter for many conditions at once.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#filter",
+    "href": "02-data/06-dplyr.html#filter",
+    "title": "06-dplyr",
+    "section": "filter",
+    "text": "filter\nfor crashes in Durham County\n\nbike |&gt;\n  filter(County == \"Durham\")\n\n# A tibble: 253 × 54\n     FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     \n 1    18       19 No         &lt;NA&gt;              6 No         Not Appl… C: Possib…\n 2    53       54 Yes        50-59            52 No         With Tra… A: Disabl…\n 3    56       57 Yes        16-19            18 No         &lt;NA&gt;      C: Possib…\n 4   209      210 No         16-19            16 No         Facing T… C: Possib…\n 5   228      229 Yes        40-49            40 No         With Tra… B: Eviden…\n 6   620      621 Yes        50-59            55 No         With Tra… B: Eviden…\n 7   667      668 Yes        60-69            61 No         Not Appl… B: Eviden…\n 8   458      459 Yes        60-69            62 No         With Tra… B: Eviden…\n 9   576      577 No         40-49            49 No         With Tra… C: Possib…\n10   618      619 No         20-24            23 No         With Tra… C: Possib…\n# ℹ 243 more rows\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;, …",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#filter-multiple-conditions",
+    "href": "02-data/06-dplyr.html#filter-multiple-conditions",
+    "title": "06-dplyr",
+    "section": "filter: multiple conditions",
+    "text": "filter: multiple conditions\nfor crashes in Durham County where biker was &lt; 10 yrs old\n\nbike |&gt;\n  filter(County == \"Durham\", Bike_Age &lt; 10)\n\n# A tibble: 20 × 54\n     FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     \n 1    18       19 No         &lt;NA&gt;              6 No         Not Appl… C: Possib…\n 2    47       48 No         10-Jun            9 No         Not Appl… O: No Inj…\n 3   124      125 Yes        10-Jun            8 No         With Tra… C: Possib…\n 4   531      532 Yes        10-Jun            7 No         With Tra… C: Possib…\n 5   704      705 Yes        10-Jun            9 No         Not Appl… C: Possib…\n 6    42       43 No         10-Jun            8 No         With Tra… O: No Inj…\n 7   392      393 Yes        0-5               2 No         Not Appl… B: Eviden…\n 8   941      942 No         10-Jun            9 No         With Tra… C: Possib…\n 9   436      437 Yes        10-Jun            6 No         Not Appl… O: No Inj…\n10   160      161 Yes        10-Jun            7 No         With Tra… C: Possib…\n11   273      274 Yes        10-Jun            7 No         Facing T… C: Possib…\n12    78       79 Yes        10-Jun            7 No         With Tra… C: Possib…\n13   422      423 No         10-Jun            9 No         Not Appl… O: No Inj…\n14   570      571 No         &lt;NA&gt;              0 Missing    Not Appl… Injury    \n15   683      684 Yes        10-Jun            8 No         Not Appl… C: Possib…\n16    62       63 Yes        10-Jun            7 No         With Tra… C: Possib…\n17   248      249 No         0-5               4 No         Not Appl… O: No Inj…\n18   306      307 Yes        10-Jun            8 No         With Tra… C: Possib…\n19   231      232 Yes        10-Jun            8 No         With Tra… C: Possib…\n20   361      362 Yes        10-Jun            9 No         With Tra… B: Eviden…\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;,\n#   Drvr_Race &lt;chr&gt;, Drvr_Sex &lt;chr&gt;, Drvr_VehTy &lt;chr&gt;, ExcsSpdInd &lt;chr&gt;, …",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#mutate-to-add-new-variables",
+    "href": "02-data/06-dplyr.html#mutate-to-add-new-variables",
+    "title": "06-dplyr",
+    "section": "mutate to add new variables",
+    "text": "mutate to add new variables\n   How is the new alcohol variable determined?\n\nbike |&gt;\n  mutate(alcohol = case_when(\n    Bike_Alc_D == \"No\" & Drvr_Alc_D == \"No\" ~ \"No\",\n    Bike_Alc_D == \"Yes\" | Drvr_Alc_D == \"Yes\" ~ \"Yes\",\n    Bike_Alc_D == \"Missing\" & Drvr_Alc_D == \"No\" ~ \"Missing\",\n    Bike_Alc_D == \"No\" & Drvr_Alc_D == \"Missing\" ~ \"Missing\"\n  ))",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#save-when-you-mutate",
+    "href": "02-data/06-dplyr.html#save-when-you-mutate",
+    "title": "06-dplyr",
+    "section": "“Save” when you mutate",
+    "text": "“Save” when you mutate\nMost often when you define a new variable with mutate you’ll also want to store the resulting data frame, often by writing over the original data frame.\n\nbike &lt;- bike |&gt;\n  mutate(alcohol = case_when(\n    Bike_Alc_D == \"No\" & Drvr_Alc_D == \"No\" ~ \"No\",\n    Bike_Alc_D == \"Yes\" | Drvr_Alc_D == \"Yes\" ~ \"Yes\",\n    Bike_Alc_D == \"Missing\" & Drvr_Alc_D == \"No\" ~ \"Missing\",\n    Bike_Alc_D == \"No\" & Drvr_Alc_D == \"Missing\" ~ \"Missing\"\n  ))",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#practice-1",
+    "href": "02-data/06-dplyr.html#practice-1",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nHow many accidents in our dataset required an ambulance ride (AmbulanceR) and had the Crash_Type “Bicyclist Lost Control - Mechanical Problems”?\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#group_by-summarize",
+    "href": "02-data/06-dplyr.html#group_by-summarize",
+    "title": "06-dplyr",
+    "section": "group_by + summarize",
+    "text": "group_by + summarize\nReal data are messy…\n   What does a BikeAge_gr of 10-Jun or 15-Nov mean?\n\nbike |&gt;\n  group_by(BikeAge_Gr) |&gt;\n  summarize(crash_count = n())\n\n# A tibble: 13 × 2\n   BikeAge_Gr crash_count\n   &lt;chr&gt;            &lt;int&gt;\n 1 0-5                 60\n 2 10-Jun             421\n 3 15-Nov             747\n 4 16-19              605\n 5 20-24              680\n 6 25-29              430\n 7 30-39              658\n 8 40-49              920\n 9 50-59              739\n10 60-69              274\n11 70                  12\n12 70+                 58\n13 &lt;NA&gt;               112\n\n\nNote: summarize is not limited to counting how many observations there are. The median, mean, min, max, etc. can all be summarized…and you can summarize more than one thing at a time.\n. . .\nFor example:\n\nbike |&gt;\n  group_by(BikeAge_Gr) |&gt;\n  summarize(crash_count = n(), \n            mean = mean(Bike_Age, na.rm=TRUE), \n            median = median(Bike_Age, na.rm=TRUE))\n\n# A tibble: 13 × 4\n   BikeAge_Gr crash_count   mean median\n   &lt;chr&gt;            &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1 0-5                 60   4.02      4\n 2 10-Jun             421   8.23      8\n 3 15-Nov             747  13.2      13\n 4 16-19              605  17.5      18\n 5 20-24              680  21.7      22\n 6 25-29              430  26.8      27\n 7 30-39              658  34.4      35\n 8 40-49              920  44.8      45\n 9 50-59              739  53.6      53\n10 60-69              274  63.4      63\n11 70                  12   0         0\n12 70+                 58 NaN        NA\n13 &lt;NA&gt;               112   3.62      0\n\n\n\nna.rm = TRUE specifies to remote any NA values so you can still calculate the mean",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#cleaning-up-the-data",
+    "href": "02-data/06-dplyr.html#cleaning-up-the-data",
+    "title": "06-dplyr",
+    "section": "Cleaning up the data…",
+    "text": "Cleaning up the data…\n\nWe’re going to need to do some text parsing to clean up these data\n\n10-Jun should be 6-10\n15-Nov should be 11-15",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#correct-and-overwrite-mutate",
+    "href": "02-data/06-dplyr.html#correct-and-overwrite-mutate",
+    "title": "06-dplyr",
+    "section": "Correct and overwrite mutate",
+    "text": "Correct and overwrite mutate\n\nRemember we want to do the following in the BikeAge_Gr variable\n\n10-Jun should be 6-10\n15-Nov should be 11-15\n\n\n\nbike &lt;- bike |&gt;\n  mutate(BikeAge_Gr = case_when(BikeAge_Gr == \"10-Jun\" ~ \"6-10\",\n                                BikeAge_Gr == \"15-Nov\" ~ \"11-15\",\n                                .default = BikeAge_Gr     # everything else\n  ))",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#check-before-you-move-on",
+    "href": "02-data/06-dplyr.html#check-before-you-move-on",
+    "title": "06-dplyr",
+    "section": "Check before you move on",
+    "text": "Check before you move on\n\nbike |&gt;\n  group_by(BikeAge_Gr) |&gt;\n  summarize(count = n())\n\n# A tibble: 13 × 2\n   BikeAge_Gr count\n   &lt;chr&gt;      &lt;int&gt;\n 1 0-5           60\n 2 11-15        747\n 3 16-19        605\n 4 20-24        680\n 5 25-29        430\n 6 30-39        658\n 7 40-49        920\n 8 50-59        739\n 9 6-10         421\n10 60-69        274\n11 70            12\n12 70+           58\n13 &lt;NA&gt;         112",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#practice-2",
+    "href": "02-data/06-dplyr.html#practice-2",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nDid the average biker age (Bike_Age) differ between bike crashes that did and did not involve an Ambulance AmbulanceR?\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#slice-for-certain-row-numbers",
+    "href": "02-data/06-dplyr.html#slice-for-certain-row-numbers",
+    "title": "06-dplyr",
+    "section": "slice for certain row numbers",
+    "text": "slice for certain row numbers\nFirst five\n\nbike |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 54\n    FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir   Bike_Injur\n  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     \n1    18       19 No         &lt;NA&gt;              6 No         Not Appli… C: Possib…\n2    29       30 Yes        50-59            51 No         With Traf… C: Possib…\n3    33       34 No         &lt;NA&gt;             10 No         With Traf… Injury    \n4    35       36 Yes        16-19            17 No         &lt;NA&gt;       B: Eviden…\n5    49       50 No         &lt;NA&gt;              6 No         Facing Tr… O: No Inj…\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;,\n#   Drvr_Race &lt;chr&gt;, Drvr_Sex &lt;chr&gt;, Drvr_VehTy &lt;chr&gt;, ExcsSpdInd &lt;chr&gt;, …",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#select-to-keep-only-the-variables-you-mention",
+    "href": "02-data/06-dplyr.html#select-to-keep-only-the-variables-you-mention",
+    "title": "06-dplyr",
+    "section": "select to keep only the variables you mention",
+    "text": "select to keep only the variables you mention\n\nbike |&gt;\n  select(Crash_Loc, Hit_Run)\n\n# A tibble: 5,716 × 2\n   Crash_Loc            Hit_Run\n   &lt;chr&gt;                &lt;chr&gt;  \n 1 Non-Intersection     No     \n 2 Intersection-Related No     \n 3 Intersection         No     \n 4 Intersection         No     \n 5 Intersection         Yes    \n 6 Non-Intersection     No     \n 7 Intersection         No     \n 8 Intersection         Yes    \n 9 Intersection         No     \n10 Non-Roadway          No     \n# ℹ 5,706 more rows\n\n\n. . .\n\nor select to exclude variables\n\nbike |&gt;\n  select(-OBJECTID)\n\n# A tibble: 5,716 × 53\n     FID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur Bike_Pos\n   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;   \n 1    18 No         &lt;NA&gt;              6 No         Not Appl… C: Possib… Drivewa…\n 2    29 Yes        50-59            51 No         With Tra… C: Possib… Travel …\n 3    33 No         &lt;NA&gt;             10 No         With Tra… Injury     Travel …\n 4    35 Yes        16-19            17 No         &lt;NA&gt;      B: Eviden… Travel …\n 5    49 No         &lt;NA&gt;              6 No         Facing T… O: No Inj… Travel …\n 6    53 Yes        50-59            52 No         With Tra… A: Disabl… Travel …\n 7    56 Yes        16-19            18 No         &lt;NA&gt;      C: Possib… Travel …\n 8    60 No         40-49            40 No         Facing T… B: Eviden… Sidewal…\n 9    63 Yes        6-10              6 No         Facing T… B: Eviden… Travel …\n10    66 Yes        6-10              7 No         &lt;NA&gt;      B: Eviden… Non-Roa…\n# ℹ 5,706 more rows\n# ℹ 45 more variables: Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;, City &lt;chr&gt;,\n#   County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;, Crash_Date &lt;date&gt;,\n#   Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;, Crash_Mont &lt;chr&gt;,\n#   Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;, Crash_Year &lt;dbl&gt;,\n#   Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;, Drvr_Age &lt;dbl&gt;,\n#   Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;, Drvr_Race &lt;chr&gt;, …\n\n\n. . .\n\n\nor select a range of variables\n\nbike |&gt;\n  select(OBJECTID:Bike_Injur)\n\n# A tibble: 5,716 × 7\n   OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir       Bike_Injur \n      &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;      \n 1       19 No         &lt;NA&gt;              6 No         Not Applicable C: Possibl…\n 2       30 Yes        50-59            51 No         With Traffic   C: Possibl…\n 3       34 No         &lt;NA&gt;             10 No         With Traffic   Injury     \n 4       36 Yes        16-19            17 No         &lt;NA&gt;           B: Evident…\n 5       50 No         &lt;NA&gt;              6 No         Facing Traffic O: No Inju…\n 6       54 Yes        50-59            52 No         With Traffic   A: Disabli…\n 7       57 Yes        16-19            18 No         &lt;NA&gt;           C: Possibl…\n 8       61 No         40-49            40 No         Facing Traffic B: Evident…\n 9       64 Yes        6-10              6 No         Facing Traffic B: Evident…\n10       67 Yes        6-10              7 No         &lt;NA&gt;           B: Evident…\n# ℹ 5,706 more rows",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#rename-specific-columns",
+    "href": "02-data/06-dplyr.html#rename-specific-columns",
+    "title": "06-dplyr",
+    "section": "rename specific columns",
+    "text": "rename specific columns\nUseful for correcting typos, and renaming to make variable names shorter and/or more informative\n\nOriginal names:\n\n\nnames(bike)\n\n [1] \"FID\"        \"OBJECTID\"   \"AmbulanceR\" \"BikeAge_Gr\" \"Bike_Age\"  \n [6] \"Bike_Alc_D\" \"Bike_Dir\"   \"Bike_Injur\" \"Bike_Pos\"   \"Bike_Race\" \n[11] \"Bike_Sex\"   \"City\"       \"County\"     \"CrashAlcoh\" \"CrashDay\"  \n[16] \"Crash_Date\" \"Crash_Grp\"  \"Crash_Hour\" \"Crash_Loc\"  \"Crash_Mont\"\n[21] \"Crash_Time\" \"Crash_Type\" \"Crash_Ty_1\" \"Crash_Year\" \"Crsh_Sevri\"\n[26] \"Developmen\" \"DrvrAge_Gr\" \"Drvr_Age\"   \"Drvr_Alc_D\" \"Drvr_EstSp\"\n[31] \"Drvr_Injur\" \"Drvr_Race\"  \"Drvr_Sex\"   \"Drvr_VehTy\" \"ExcsSpdInd\"\n[36] \"Hit_Run\"    \"Light_Cond\" \"Locality\"   \"Num_Lanes\"  \"Num_Units\" \n[41] \"Rd_Charact\" \"Rd_Class\"   \"Rd_Conditi\" \"Rd_Config\"  \"Rd_Defects\"\n[46] \"Rd_Feature\" \"Rd_Surface\" \"Region\"     \"Rural_Urba\" \"Speed_Limi\"\n[51] \"Traff_Cntr\" \"Weather\"    \"Workzone_I\" \"Location\"  \n\n\n. . .\n\nRename Speed_Limi to Speed_Limit:\n\n\nbike &lt;- bike |&gt;\n  rename(Speed_Limit = Speed_Limi)\n\n. . .\n\nnames(bike)\n\n [1] \"FID\"         \"OBJECTID\"    \"AmbulanceR\"  \"BikeAge_Gr\"  \"Bike_Age\"   \n [6] \"Bike_Alc_D\"  \"Bike_Dir\"    \"Bike_Injur\"  \"Bike_Pos\"    \"Bike_Race\"  \n[11] \"Bike_Sex\"    \"City\"        \"County\"      \"CrashAlcoh\"  \"CrashDay\"   \n[16] \"Crash_Date\"  \"Crash_Grp\"   \"Crash_Hour\"  \"Crash_Loc\"   \"Crash_Mont\" \n[21] \"Crash_Time\"  \"Crash_Type\"  \"Crash_Ty_1\"  \"Crash_Year\"  \"Crsh_Sevri\" \n[26] \"Developmen\"  \"DrvrAge_Gr\"  \"Drvr_Age\"    \"Drvr_Alc_D\"  \"Drvr_EstSp\" \n[31] \"Drvr_Injur\"  \"Drvr_Race\"   \"Drvr_Sex\"    \"Drvr_VehTy\"  \"ExcsSpdInd\" \n[36] \"Hit_Run\"     \"Light_Cond\"  \"Locality\"    \"Num_Lanes\"   \"Num_Units\"  \n[41] \"Rd_Charact\"  \"Rd_Class\"    \"Rd_Conditi\"  \"Rd_Config\"   \"Rd_Defects\" \n[46] \"Rd_Feature\"  \"Rd_Surface\"  \"Region\"      \"Rural_Urba\"  \"Speed_Limit\"\n[51] \"Traff_Cntr\"  \"Weather\"     \"Workzone_I\"  \"Location\"",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#practice-3",
+    "href": "02-data/06-dplyr.html#practice-3",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nYour boss in Cumberland County gets overwhelmed by data easily, but he wants some data from you. He wants all bike accidents from his County, but he only wants to know the road’s speed limit, the age of the biker, and to know if alcohol was involved. If you have time, mine as well make the column names very clear to your boss while you’re at it…\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#arrange-to-order-rows",
+    "href": "02-data/06-dplyr.html#arrange-to-order-rows",
+    "title": "06-dplyr",
+    "section": "arrange to order rows",
+    "text": "arrange to order rows\n\nbike |&gt;\n  group_by(BikeAge_Gr) |&gt;\n  summarize(crash_count = n()) |&gt;\n  arrange(desc(crash_count))\n\n# A tibble: 13 × 2\n   BikeAge_Gr crash_count\n   &lt;chr&gt;            &lt;int&gt;\n 1 40-49              920\n 2 11-15              747\n 3 50-59              739\n 4 20-24              680\n 5 30-39              658\n 6 16-19              605\n 7 25-29              430\n 8 6-10               421\n 9 60-69              274\n10 &lt;NA&gt;               112\n11 0-5                 60\n12 70+                 58\n13 70                  12",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#count-to-group-by-then-count",
+    "href": "02-data/06-dplyr.html#count-to-group-by-then-count",
+    "title": "06-dplyr",
+    "section": "count to group by then count",
+    "text": "count to group by then count\n\nbike |&gt;\n  count(BikeAge_Gr)\n\n# A tibble: 13 × 2\n   BikeAge_Gr     n\n   &lt;chr&gt;      &lt;int&gt;\n 1 0-5           60\n 2 11-15        747\n 3 16-19        605\n 4 20-24        680\n 5 25-29        430\n 6 30-39        658\n 7 40-49        920\n 8 50-59        739\n 9 6-10         421\n10 60-69        274\n11 70            12\n12 70+           58\n13 &lt;NA&gt;         112\n\n\n   If you wanted to arrange these in ascending order what would you add to the pipe?",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#distinct-to-filter-for-unique-rows",
+    "href": "02-data/06-dplyr.html#distinct-to-filter-for-unique-rows",
+    "title": "06-dplyr",
+    "section": "distinct to filter for unique rows",
+    "text": "distinct to filter for unique rows\n\nbike |&gt; \n  select(County, City) |&gt; \n  distinct() |&gt; \n  arrange(County, City)\n\n# A tibble: 360 × 2\n   County    City              \n   &lt;chr&gt;     &lt;chr&gt;             \n 1 Alamance  Alamance          \n 2 Alamance  Burlington        \n 3 Alamance  Elon College      \n 4 Alamance  Gibsonville       \n 5 Alamance  Graham            \n 6 Alamance  Green Level       \n 7 Alamance  Mebane            \n 8 Alamance  None - Rural Crash\n 9 Alexander None - Rural Crash\n10 Alleghany None - Rural Crash\n# ℹ 350 more rows\n\n\n. . .\n\ndistinct has a .keep_all parameter\n\nbike |&gt; \n  distinct(County, City, .keep_all = TRUE) |&gt; \n  arrange(County, City)\n\n# A tibble: 360 × 54\n     FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     \n 1   524      525 Yes        11-15            12 No         &lt;NA&gt;      B: Eviden…\n 2    84       85 Yes        20-24            20 No         With Tra… B: Eviden…\n 3   571      572 Yes        16-19            16 No         Not Appl… B: Eviden…\n 4   509      510 Yes        40-49            43 Yes        With Tra… K: Killed \n 5   855      856 Yes        30-39            30 No         With Tra… A: Disabl…\n 6     5        6 Yes        40-49            44 Yes        With Tra… C: Possib…\n 7   163      164 Yes        30-39            35 No         Not Appl… C: Possib…\n 8    96       97 Yes        30-39            36 No         With Tra… C: Possib…\n 9    46       47 Yes        50-59            53 No         With Tra… B: Eviden…\n10   485      486 Yes        60-69            62 No         With Tra… C: Possib…\n# ℹ 350 more rows\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;, …",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#practice-storms",
+    "href": "02-data/06-dplyr.html#practice-storms",
+    "title": "06-dplyr",
+    "section": "Practice: storms",
+    "text": "Practice: storms\nThere is an available dataset storms. Using that dataset and common dplyr functions, answer the following questions:\n\nHow many observations are there in this dataset? What is the observational unit?\nHow many unique hurricanes are included in this dataset?\nAmong all storms in this dataset, in which month are storms most common?\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#data-1",
+    "href": "02-data/06-dplyr.html#data-1",
+    "title": "06-dplyr",
+    "section": "Data",
+    "text": "Data\nUsing data you’re likely to encounter…by generating some fake data (used ChatGPT to generate code):\n\nset.seed(321)  # for reproducibility\n\n# Number of unique patients\nnum_patients &lt;- 74000\n\n# Number of observations for each patient\nnum_observations &lt;- rep(2, num_patients)\nnum_observations[sample(num_patients, 16400)] &lt;- 3  # Selecting 16400 patients with at least 3 observations\n\n# Generate patient IDs\npatient_ids &lt;- rep(1:num_patients, num_observations)\n\n# Generate concentrations for two different compounds\ncompound1 &lt;- sample(0.05:100, sum(num_observations), replace = TRUE)\ncompound2 &lt;- sample(0.05:100, sum(num_observations), replace = TRUE)\n\n\n# Combine patient IDs and compound concentrations into a data frame\ndata &lt;- tibble(\n  Patient_ID = patient_ids,\n  Compound1 = compound1,\n  Compound2 = compound2\n)\n\n# Output the dataset\nhead(data)\n\n# A tibble: 6 × 3\n  Patient_ID Compound1 Compound2\n       &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1          1     59.0       3.05\n2          1     64.0      74.0 \n3          2     98.0      42.0 \n4          2     19.0      25.0 \n5          3      6.05      7.05\n6          3     67.0      96.0",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#step-1-filter-data",
+    "href": "02-data/06-dplyr.html#step-1-filter-data",
+    "title": "06-dplyr",
+    "section": "Step 1: Filter data",
+    "text": "Step 1: Filter data\n\nOnly include patients with vales &gt; 50 for Compound1\nThen: only include patients who have at least 3 replicates\n\n\ndf_filtered &lt;- data |&gt;\n  filter(Compound1 &gt; 50) |&gt;\n  group_by(Patient_ID) |&gt;\n  filter(n() &gt;= 3) |&gt;\n  ungroup()",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#step-2-calculate-ratios-practice",
+    "href": "02-data/06-dplyr.html#step-2-calculate-ratios-practice",
+    "title": "06-dplyr",
+    "section": "Step 2: Calculate Ratios (Practice)",
+    "text": "Step 2: Calculate Ratios (Practice)\n\nAdd new column (ratio12) to df_filtered to calculate the ratio between Compound1 and Compound2\n\n\n# Your code here\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#step-3-calculate-intra-patient-cv",
+    "href": "02-data/06-dplyr.html#step-3-calculate-intra-patient-cv",
+    "title": "06-dplyr",
+    "section": "Step 3: Calculate intra-patient CV",
+    "text": "Step 3: Calculate intra-patient CV\n\ncarry out calculations within patient\ndetermine pt mean, sd, CV\nfilter to only include CV &lt;= 10%\n\n\n# calculate the intra-patient coefficient of variation (CV)\n# filter to include only those CV &lt; 10%\ndf_mean &lt;- df_filtered |&gt; \n  group_by(Patient_ID) |&gt; \n  mutate(mean = mean(ratio12),\n         sd = sd(ratio12),\n         CV = sd/mean * 100) |&gt;\n  filter(CV &lt;= 10)",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr.html#step-4-identify-extreme-values",
+    "href": "02-data/06-dplyr.html#step-4-identify-extreme-values",
+    "title": "06-dplyr",
+    "section": "Step 4: Identify extreme values",
+    "text": "Step 4: Identify extreme values\n\nmimicking identification of slow and fast metabolizers\n\nFor “slow metabolizers:..\n\n# calculate threshold\nthreshold &lt;- quantile(df_mean$ratio12, probs = 0.025)\n\n# Filter to extract the rows below the threshold\ndf_mean %&gt;%\n  filter(ratio12 &lt;= threshold)\n\n# A tibble: 4 × 7\n# Groups:   Patient_ID [3]\n  Patient_ID Compound1 Compound2 ratio12  mean     sd    CV\n       &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1      27269      77.0      88.0   0.875 0.904 0.0271  3.00\n2      29555      64.0      75.0   0.853 0.877 0.0794  9.05\n3      29555      78.0      96.0   0.813 0.877 0.0794  9.05\n4      65962      87.0      99.0   0.879 0.935 0.0691  7.39\n\n\n. . .\nHow many “fast metabolizers” are in this dataset, if “fast” is defined as above the 95th quartile?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "06: `dplyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#agenda",
+    "href": "02-data/06-dplyr-reveal.html#agenda",
+    "title": "06-dplyr",
+    "section": "Agenda",
+    "text": "Agenda\ndplyr\n\nphilosophy\ncommon operations\nPractice!"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#setup",
+    "href": "02-data/06-dplyr-reveal.html#setup",
+    "title": "06-dplyr",
+    "section": "Setup",
+    "text": "Setup"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#philosophy",
+    "href": "02-data/06-dplyr-reveal.html#philosophy",
+    "title": "06-dplyr",
+    "section": "Philosophy",
+    "text": "Philosophy\n\ndplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges\n\n\n\nSource: dplyr.tidyverse.org"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#nc-dot-fatal-crashes-in-north-carolina",
+    "href": "02-data/06-dplyr-reveal.html#nc-dot-fatal-crashes-in-north-carolina",
+    "title": "06-dplyr",
+    "section": "NC DOT Fatal Crashes in North Carolina",
+    "text": "NC DOT Fatal Crashes in North Carolina\nTo get practice with common data manipulations, we’ll use data from OpenDurham’s Data Portal.\n\nTo do so, we’ll read the file into R, using the function read_csv2:\n\n\nNote: here we’re using a file called read_csv2. This is used for datasets that use ; for the separator and , for the decimal place (common in some European countries). read_csv() will be used more commonly."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#practice",
+    "href": "02-data/06-dplyr-reveal.html#practice",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nRead the dataset in and determine how many observations and variables there are in the bike dataset.\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#variables",
+    "href": "02-data/06-dplyr-reveal.html#variables",
+    "title": "06-dplyr",
+    "section": "Variables",
+    "text": "Variables\nView the names of variables via:\n\n\n [1] \"FID\"        \"OBJECTID\"   \"AmbulanceR\" \"BikeAge_Gr\" \"Bike_Age\"  \n [6] \"Bike_Alc_D\" \"Bike_Dir\"   \"Bike_Injur\" \"Bike_Pos\"   \"Bike_Race\" \n[11] \"Bike_Sex\"   \"City\"       \"County\"     \"CrashAlcoh\" \"CrashDay\"  \n[16] \"Crash_Date\" \"Crash_Grp\"  \"Crash_Hour\" \"Crash_Loc\"  \"Crash_Mont\"\n[21] \"Crash_Time\" \"Crash_Type\" \"Crash_Ty_1\" \"Crash_Year\" \"Crsh_Sevri\"\n[26] \"Developmen\" \"DrvrAge_Gr\" \"Drvr_Age\"   \"Drvr_Alc_D\" \"Drvr_EstSp\"\n[31] \"Drvr_Injur\" \"Drvr_Race\"  \"Drvr_Sex\"   \"Drvr_VehTy\" \"ExcsSpdInd\"\n[36] \"Hit_Run\"    \"Light_Cond\" \"Locality\"   \"Num_Lanes\"  \"Num_Units\" \n[41] \"Rd_Charact\" \"Rd_Class\"   \"Rd_Conditi\" \"Rd_Config\"  \"Rd_Defects\"\n[46] \"Rd_Feature\" \"Rd_Surface\" \"Region\"     \"Rural_Urba\" \"Speed_Limi\"\n[51] \"Traff_Cntr\" \"Weather\"    \"Workzone_I\" \"Location\""
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#viewing-your-data",
+    "href": "02-data/06-dplyr-reveal.html#viewing-your-data",
+    "title": "06-dplyr",
+    "section": "Viewing your data",
+    "text": "Viewing your data\n\nIn the Environment, click on the name of the data frame to view it in the data viewer (or use the View function)\n\n\n\nUse the glimpse function to take a peek\n\n\n\nRows: 5,716\nColumns: 54\n$ FID        &lt;dbl&gt; 18, 29, 33, 35, 49, 53, 56, 60, 63, 66, 72, 75, 82, 84, 85,…\n$ OBJECTID   &lt;dbl&gt; 19, 30, 34, 36, 50, 54, 57, 61, 64, 67, 73, 76, 83, 85, 86,…\n$ AmbulanceR &lt;chr&gt; \"No\", \"Yes\", \"No\", \"Yes\", \"No\", \"Yes\", \"Yes\", \"No\", \"Yes\", …\n$ BikeAge_Gr &lt;chr&gt; NA, \"50-59\", NA, \"16-19\", NA, \"50-59\", \"16-19\", \"40-49\", \"1…\n$ Bike_Age   &lt;dbl&gt; 6, 51, 10, 17, 6, 52, 18, 40, 6, 7, 45, 30, 17, 20, 14, 15,…\n$ Bike_Alc_D &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ Bike_Dir   &lt;chr&gt; \"Not Applicable\", \"With Traffic\", \"With Traffic\", NA, \"Faci…\n$ Bike_Injur &lt;chr&gt; \"C: Possible Injury\", \"C: Possible Injury\", \"Injury\", \"B: E…\n$ Bike_Pos   &lt;chr&gt; \"Driveway / Alley\", \"Travel Lane\", \"Travel Lane\", \"Travel L…\n$ Bike_Race  &lt;chr&gt; \"Black\", \"Black\", \"Black\", \"White\", \"Black\", \"White\", \"Blac…\n$ Bike_Sex   &lt;chr&gt; \"Female\", \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Female\",…\n$ City       &lt;chr&gt; \"Durham\", \"Greenville\", \"Farmville\", \"Charlotte\", \"Charlott…\n$ County     &lt;chr&gt; \"Durham\", \"Pitt\", \"Pitt\", \"Mecklenburg\", \"Mecklenburg\", \"Du…\n$ CrashAlcoh &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ CrashDay   &lt;chr&gt; \"01-01-06\", \"01-01-02\", \"01-01-07\", \"01-01-05\", NA, NA, NA,…\n$ Crash_Date &lt;date&gt; 2007-01-06, 2007-01-09, 2007-01-14, 2007-01-12, 2007-01-15…\n$ Crash_Grp  &lt;chr&gt; \"Bicyclist Failed to Yield - Midblock\", \"Crossing Paths - O…\n$ Crash_Hour &lt;dbl&gt; 13, 23, 16, 19, 12, 20, 19, 14, 16, 0, 17, 18, 14, 17, 19, …\n$ Crash_Loc  &lt;chr&gt; \"Non-Intersection\", \"Intersection-Related\", \"Intersection\",…\n$ Crash_Mont &lt;chr&gt; NA, NA, NA, NA, NA, \"01-04-01\", \"01-04-01\", NA, \"01-02-01\",…\n$ Crash_Time &lt;dttm&gt; 0001-01-01 13:17:58, 0001-01-01 23:08:58, 0001-01-01 16:44…\n$ Crash_Type &lt;chr&gt; \"Bicyclist Ride Out - Residential Driveway\", \"Crossing Path…\n$ Crash_Ty_1 &lt;dbl&gt; 353311, 211180, 111144, 119139, 112114, 311231, 119144, 132…\n$ Crash_Year &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,…\n$ Crsh_Sevri &lt;chr&gt; \"C: Possible Injury\", \"C: Possible Injury\", \"O: No Injury\",…\n$ Developmen &lt;chr&gt; \"Residential\", \"Commercial\", \"Residential\", \"Residential\", …\n$ DrvrAge_Gr &lt;chr&gt; \"60-69\", \"30-39\", \"50-59\", \"30-39\", NA, \"20-24\", \"40-49\", N…\n$ Drvr_Age   &lt;dbl&gt; 66, 34, 52, 33, NA, 20, 40, NA, 17, 51, NA, 64, 50, 66, 30,…\n$ Drvr_Alc_D &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"Missing\", \"No\", \"No\", \"Missing\", \"…\n$ Drvr_EstSp &lt;chr&gt; \"11-15 mph\", \"0-5 mph\", \"21-25 mph\", \"46-50 mph\", \"16-20 mp…\n$ Drvr_Injur &lt;chr&gt; \"O: No Injury\", \"O: No Injury\", \"O: No Injury\", \"O: No Inju…\n$ Drvr_Race  &lt;chr&gt; \"Black\", \"Black\", \"White\", \"White\", \"/Missing\", \"White\", \"B…\n$ Drvr_Sex   &lt;chr&gt; \"Male\", \"Male\", \"Female\", \"Female\", NA, \"Female\", \"Male\", N…\n$ Drvr_VehTy &lt;chr&gt; \"Pickup\", \"Passenger Car\", \"Passenger Car\", \"Sport Utility\"…\n$ ExcsSpdInd &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ Hit_Run    &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"Yes\", \"No\", \"No\", \"Yes\", \"No\", \"No…\n$ Light_Cond &lt;chr&gt; \"Daylight\", \"Dark - Lighted Roadway\", \"Daylight\", \"Dark - R…\n$ Locality   &lt;chr&gt; \"Mixed (30% To 70% Developed)\", \"Urban (&gt;70% Developed)\", \"…\n$ Num_Lanes  &lt;chr&gt; \"2 lanes\", \"5 lanes\", \"2 lanes\", \"4 lanes\", \"2 lanes\", \"4 l…\n$ Num_Units  &lt;dbl&gt; 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…\n$ Rd_Charact &lt;chr&gt; \"Straight - Level\", \"Straight - Level\", \"Straight - Level\",…\n$ Rd_Class   &lt;chr&gt; \"Local Street\", \"Local Street\", \"Local Street\", \"NC Route\",…\n$ Rd_Conditi &lt;chr&gt; \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dry\", \"Dr…\n$ Rd_Config  &lt;chr&gt; \"Two-Way, Not Divided\", \"Two-Way, Divided, Unprotected Medi…\n$ Rd_Defects &lt;chr&gt; \"None\", \"None\", \"None\", \"None\", \"None\", \"None\", \"None\", \"No…\n$ Rd_Feature &lt;chr&gt; \"No Special Feature\", \"Four-Way Intersection\", \"Four-Way In…\n$ Rd_Surface &lt;chr&gt; \"Smooth Asphalt\", \"Smooth Asphalt\", \"Smooth Asphalt\", \"Smoo…\n$ Region     &lt;chr&gt; \"Piedmont\", \"Coastal\", \"Coastal\", \"Piedmont\", \"Piedmont\", \"…\n$ Rural_Urba &lt;chr&gt; \"Urban\", \"Urban\", \"Rural\", \"Urban\", \"Urban\", \"Urban\", \"Urba…\n$ Speed_Limi &lt;chr&gt; \"20 - 25  MPH\", \"40 - 45  MPH\", \"30 - 35  MPH\", \"40 - 45  M…\n$ Traff_Cntr &lt;chr&gt; \"No Control Present\", \"Stop And Go Signal\", \"Stop Sign\", \"S…\n$ Weather    &lt;chr&gt; \"Clear\", \"Clear\", \"Clear\", \"Cloudy\", \"Clear\", \"Clear\", \"Cle…\n$ Workzone_I &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n$ Location   &lt;chr&gt; \"36.002743, -78.8785\", \"35.612984, -77.39265\", \"35.595676, …\n\n\n\n\n\nUse the skim function to get a sense of the data we have"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#a-grammar-of-data-manipulation",
+    "href": "02-data/06-dplyr-reveal.html#a-grammar-of-data-manipulation",
+    "title": "06-dplyr",
+    "section": "A Grammar of Data Manipulation",
+    "text": "A Grammar of Data Manipulation\ndplyr is based on the concepts of functions as verbs that manipulate data frames.\nSingle data frame functions / verbs:\n\nfilter: pick rows matching criteria\nslice: pick rows using index(es)\nselect: pick columns by name\nrename: rename specific columns\narrange: reorder rows\nmutate: add new variables\ncase_when: for conditional assignment\ndistinct: filter for unique rows\ngroup_by: for carrying out operations within groups of data\nsummarize: reduce variables to values\n… (many more)"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#dplyr-rules-for-functions",
+    "href": "02-data/06-dplyr-reveal.html#dplyr-rules-for-functions",
+    "title": "06-dplyr",
+    "section": "dplyr rules for functions",
+    "text": "dplyr rules for functions\n\nFirst argument is always a data frame\nSubsequent arguments say what to do with that data frame\nAlways return a data frame\nDo not modify in place\nPerformance via lazy evaluation"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#general-syntax",
+    "href": "02-data/06-dplyr-reveal.html#general-syntax",
+    "title": "06-dplyr",
+    "section": "General syntax",
+    "text": "General syntax"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#filter-rows-with-filter",
+    "href": "02-data/06-dplyr-reveal.html#filter-rows-with-filter",
+    "title": "06-dplyr",
+    "section": "Filter rows with filter",
+    "text": "Filter rows with filter\n\nSelect a subset of rows in a data frame.\nEasily filter for many conditions at once."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#filter",
+    "href": "02-data/06-dplyr-reveal.html#filter",
+    "title": "06-dplyr",
+    "section": "filter",
+    "text": "filter\nfor crashes in Durham County\n\n\n# A tibble: 253 × 54\n     FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     \n 1    18       19 No         &lt;NA&gt;              6 No         Not Appl… C: Possib…\n 2    53       54 Yes        50-59            52 No         With Tra… A: Disabl…\n 3    56       57 Yes        16-19            18 No         &lt;NA&gt;      C: Possib…\n 4   209      210 No         16-19            16 No         Facing T… C: Possib…\n 5   228      229 Yes        40-49            40 No         With Tra… B: Eviden…\n 6   620      621 Yes        50-59            55 No         With Tra… B: Eviden…\n 7   667      668 Yes        60-69            61 No         Not Appl… B: Eviden…\n 8   458      459 Yes        60-69            62 No         With Tra… B: Eviden…\n 9   576      577 No         40-49            49 No         With Tra… C: Possib…\n10   618      619 No         20-24            23 No         With Tra… C: Possib…\n# ℹ 243 more rows\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#filter-multiple-conditions",
+    "href": "02-data/06-dplyr-reveal.html#filter-multiple-conditions",
+    "title": "06-dplyr",
+    "section": "filter: multiple conditions",
+    "text": "filter: multiple conditions\nfor crashes in Durham County where biker was &lt; 10 yrs old\n\n\n# A tibble: 20 × 54\n     FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     \n 1    18       19 No         &lt;NA&gt;              6 No         Not Appl… C: Possib…\n 2    47       48 No         10-Jun            9 No         Not Appl… O: No Inj…\n 3   124      125 Yes        10-Jun            8 No         With Tra… C: Possib…\n 4   531      532 Yes        10-Jun            7 No         With Tra… C: Possib…\n 5   704      705 Yes        10-Jun            9 No         Not Appl… C: Possib…\n 6    42       43 No         10-Jun            8 No         With Tra… O: No Inj…\n 7   392      393 Yes        0-5               2 No         Not Appl… B: Eviden…\n 8   941      942 No         10-Jun            9 No         With Tra… C: Possib…\n 9   436      437 Yes        10-Jun            6 No         Not Appl… O: No Inj…\n10   160      161 Yes        10-Jun            7 No         With Tra… C: Possib…\n11   273      274 Yes        10-Jun            7 No         Facing T… C: Possib…\n12    78       79 Yes        10-Jun            7 No         With Tra… C: Possib…\n13   422      423 No         10-Jun            9 No         Not Appl… O: No Inj…\n14   570      571 No         &lt;NA&gt;              0 Missing    Not Appl… Injury    \n15   683      684 Yes        10-Jun            8 No         Not Appl… C: Possib…\n16    62       63 Yes        10-Jun            7 No         With Tra… C: Possib…\n17   248      249 No         0-5               4 No         Not Appl… O: No Inj…\n18   306      307 Yes        10-Jun            8 No         With Tra… C: Possib…\n19   231      232 Yes        10-Jun            8 No         With Tra… C: Possib…\n20   361      362 Yes        10-Jun            9 No         With Tra… B: Eviden…\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;,\n#   Drvr_Race &lt;chr&gt;, Drvr_Sex &lt;chr&gt;, Drvr_VehTy &lt;chr&gt;, ExcsSpdInd &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#mutate-to-add-new-variables",
+    "href": "02-data/06-dplyr-reveal.html#mutate-to-add-new-variables",
+    "title": "06-dplyr",
+    "section": "mutate to add new variables",
+    "text": "mutate to add new variables\n   How is the new alcohol variable determined?"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#save-when-you-mutate",
+    "href": "02-data/06-dplyr-reveal.html#save-when-you-mutate",
+    "title": "06-dplyr",
+    "section": "“Save” when you mutate",
+    "text": "“Save” when you mutate\nMost often when you define a new variable with mutate you’ll also want to store the resulting data frame, often by writing over the original data frame."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#practice-1",
+    "href": "02-data/06-dplyr-reveal.html#practice-1",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nHow many accidents in our dataset required an ambulance ride (AmbulanceR) and had the Crash_Type “Bicyclist Lost Control - Mechanical Problems”?\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#group_by-summarize",
+    "href": "02-data/06-dplyr-reveal.html#group_by-summarize",
+    "title": "06-dplyr",
+    "section": "group_by + summarize",
+    "text": "group_by + summarize\nReal data are messy…\n   What does a BikeAge_gr of 10-Jun or 15-Nov mean?\n\n\n# A tibble: 13 × 2\n   BikeAge_Gr crash_count\n   &lt;chr&gt;            &lt;int&gt;\n 1 0-5                 60\n 2 10-Jun             421\n 3 15-Nov             747\n 4 16-19              605\n 5 20-24              680\n 6 25-29              430\n 7 30-39              658\n 8 40-49              920\n 9 50-59              739\n10 60-69              274\n11 70                  12\n12 70+                 58\n13 &lt;NA&gt;               112\n\n\nNote: summarize is not limited to counting how many observations there are. The median, mean, min, max, etc. can all be summarized…and you can summarize more than one thing at a time.\n\nFor example:\n\n\n# A tibble: 13 × 4\n   BikeAge_Gr crash_count   mean median\n   &lt;chr&gt;            &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1 0-5                 60   4.02      4\n 2 10-Jun             421   8.23      8\n 3 15-Nov             747  13.2      13\n 4 16-19              605  17.5      18\n 5 20-24              680  21.7      22\n 6 25-29              430  26.8      27\n 7 30-39              658  34.4      35\n 8 40-49              920  44.8      45\n 9 50-59              739  53.6      53\n10 60-69              274  63.4      63\n11 70                  12   0         0\n12 70+                 58 NaN        NA\n13 &lt;NA&gt;               112   3.62      0\n\n\n\nna.rm = TRUE specifies to remote any NA values so you can still calculate the mean"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#cleaning-up-the-data",
+    "href": "02-data/06-dplyr-reveal.html#cleaning-up-the-data",
+    "title": "06-dplyr",
+    "section": "Cleaning up the data…",
+    "text": "Cleaning up the data…\n\nWe’re going to need to do some text parsing to clean up these data\n\n10-Jun should be 6-10\n15-Nov should be 11-15"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#correct-and-overwrite-mutate",
+    "href": "02-data/06-dplyr-reveal.html#correct-and-overwrite-mutate",
+    "title": "06-dplyr",
+    "section": "Correct and overwrite mutate",
+    "text": "Correct and overwrite mutate\n\nRemember we want to do the following in the BikeAge_Gr variable\n\n10-Jun should be 6-10\n15-Nov should be 11-15"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#check-before-you-move-on",
+    "href": "02-data/06-dplyr-reveal.html#check-before-you-move-on",
+    "title": "06-dplyr",
+    "section": "Check before you move on",
+    "text": "Check before you move on\n\n\n# A tibble: 13 × 2\n   BikeAge_Gr count\n   &lt;chr&gt;      &lt;int&gt;\n 1 0-5           60\n 2 11-15        747\n 3 16-19        605\n 4 20-24        680\n 5 25-29        430\n 6 30-39        658\n 7 40-49        920\n 8 50-59        739\n 9 6-10         421\n10 60-69        274\n11 70            12\n12 70+           58\n13 &lt;NA&gt;         112"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#practice-2",
+    "href": "02-data/06-dplyr-reveal.html#practice-2",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nDid the average biker age (Bike_Age) differ between bike crashes that did and did not involve an Ambulance AmbulanceR?\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#slice-for-certain-row-numbers",
+    "href": "02-data/06-dplyr-reveal.html#slice-for-certain-row-numbers",
+    "title": "06-dplyr",
+    "section": "slice for certain row numbers",
+    "text": "slice for certain row numbers\nFirst five\n\n\n# A tibble: 5 × 54\n    FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir   Bike_Injur\n  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     \n1    18       19 No         &lt;NA&gt;              6 No         Not Appli… C: Possib…\n2    29       30 Yes        50-59            51 No         With Traf… C: Possib…\n3    33       34 No         &lt;NA&gt;             10 No         With Traf… Injury    \n4    35       36 Yes        16-19            17 No         &lt;NA&gt;       B: Eviden…\n5    49       50 No         &lt;NA&gt;              6 No         Facing Tr… O: No Inj…\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;,\n#   Drvr_Race &lt;chr&gt;, Drvr_Sex &lt;chr&gt;, Drvr_VehTy &lt;chr&gt;, ExcsSpdInd &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#select-to-keep-only-the-variables-you-mention",
+    "href": "02-data/06-dplyr-reveal.html#select-to-keep-only-the-variables-you-mention",
+    "title": "06-dplyr",
+    "section": "select to keep only the variables you mention",
+    "text": "select to keep only the variables you mention\n\n\n# A tibble: 5,716 × 2\n   Crash_Loc            Hit_Run\n   &lt;chr&gt;                &lt;chr&gt;  \n 1 Non-Intersection     No     \n 2 Intersection-Related No     \n 3 Intersection         No     \n 4 Intersection         No     \n 5 Intersection         Yes    \n 6 Non-Intersection     No     \n 7 Intersection         No     \n 8 Intersection         Yes    \n 9 Intersection         No     \n10 Non-Roadway          No     \n# ℹ 5,706 more rows\n\n\n\nor select to exclude variables\n\n\n# A tibble: 5,716 × 53\n     FID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur Bike_Pos\n   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;   \n 1    18 No         &lt;NA&gt;              6 No         Not Appl… C: Possib… Drivewa…\n 2    29 Yes        50-59            51 No         With Tra… C: Possib… Travel …\n 3    33 No         &lt;NA&gt;             10 No         With Tra… Injury     Travel …\n 4    35 Yes        16-19            17 No         &lt;NA&gt;      B: Eviden… Travel …\n 5    49 No         &lt;NA&gt;              6 No         Facing T… O: No Inj… Travel …\n 6    53 Yes        50-59            52 No         With Tra… A: Disabl… Travel …\n 7    56 Yes        16-19            18 No         &lt;NA&gt;      C: Possib… Travel …\n 8    60 No         40-49            40 No         Facing T… B: Eviden… Sidewal…\n 9    63 Yes        6-10              6 No         Facing T… B: Eviden… Travel …\n10    66 Yes        6-10              7 No         &lt;NA&gt;      B: Eviden… Non-Roa…\n# ℹ 5,706 more rows\n# ℹ 45 more variables: Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;, City &lt;chr&gt;,\n#   County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;, Crash_Date &lt;date&gt;,\n#   Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;, Crash_Mont &lt;chr&gt;,\n#   Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;, Crash_Year &lt;dbl&gt;,\n#   Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;, Drvr_Age &lt;dbl&gt;,\n#   Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;, Drvr_Race &lt;chr&gt;, …\n\n\n. . .\nor select a range of variables\n\n\n# A tibble: 5,716 × 7\n   OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir       Bike_Injur \n      &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;      \n 1       19 No         &lt;NA&gt;              6 No         Not Applicable C: Possibl…\n 2       30 Yes        50-59            51 No         With Traffic   C: Possibl…\n 3       34 No         &lt;NA&gt;             10 No         With Traffic   Injury     \n 4       36 Yes        16-19            17 No         &lt;NA&gt;           B: Evident…\n 5       50 No         &lt;NA&gt;              6 No         Facing Traffic O: No Inju…\n 6       54 Yes        50-59            52 No         With Traffic   A: Disabli…\n 7       57 Yes        16-19            18 No         &lt;NA&gt;           C: Possibl…\n 8       61 No         40-49            40 No         Facing Traffic B: Evident…\n 9       64 Yes        6-10              6 No         Facing Traffic B: Evident…\n10       67 Yes        6-10              7 No         &lt;NA&gt;           B: Evident…\n# ℹ 5,706 more rows"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#rename-specific-columns",
+    "href": "02-data/06-dplyr-reveal.html#rename-specific-columns",
+    "title": "06-dplyr",
+    "section": "rename specific columns",
+    "text": "rename specific columns\nUseful for correcting typos, and renaming to make variable names shorter and/or more informative\n\nOriginal names:\n\n\n\n [1] \"FID\"        \"OBJECTID\"   \"AmbulanceR\" \"BikeAge_Gr\" \"Bike_Age\"  \n [6] \"Bike_Alc_D\" \"Bike_Dir\"   \"Bike_Injur\" \"Bike_Pos\"   \"Bike_Race\" \n[11] \"Bike_Sex\"   \"City\"       \"County\"     \"CrashAlcoh\" \"CrashDay\"  \n[16] \"Crash_Date\" \"Crash_Grp\"  \"Crash_Hour\" \"Crash_Loc\"  \"Crash_Mont\"\n[21] \"Crash_Time\" \"Crash_Type\" \"Crash_Ty_1\" \"Crash_Year\" \"Crsh_Sevri\"\n[26] \"Developmen\" \"DrvrAge_Gr\" \"Drvr_Age\"   \"Drvr_Alc_D\" \"Drvr_EstSp\"\n[31] \"Drvr_Injur\" \"Drvr_Race\"  \"Drvr_Sex\"   \"Drvr_VehTy\" \"ExcsSpdInd\"\n[36] \"Hit_Run\"    \"Light_Cond\" \"Locality\"   \"Num_Lanes\"  \"Num_Units\" \n[41] \"Rd_Charact\" \"Rd_Class\"   \"Rd_Conditi\" \"Rd_Config\"  \"Rd_Defects\"\n[46] \"Rd_Feature\" \"Rd_Surface\" \"Region\"     \"Rural_Urba\" \"Speed_Limi\"\n[51] \"Traff_Cntr\" \"Weather\"    \"Workzone_I\" \"Location\"  \n\n\n\n\nRename Speed_Limi to Speed_Limit:\n\n\n\n\n\n [1] \"FID\"         \"OBJECTID\"    \"AmbulanceR\"  \"BikeAge_Gr\"  \"Bike_Age\"   \n [6] \"Bike_Alc_D\"  \"Bike_Dir\"    \"Bike_Injur\"  \"Bike_Pos\"    \"Bike_Race\"  \n[11] \"Bike_Sex\"    \"City\"        \"County\"      \"CrashAlcoh\"  \"CrashDay\"   \n[16] \"Crash_Date\"  \"Crash_Grp\"   \"Crash_Hour\"  \"Crash_Loc\"   \"Crash_Mont\" \n[21] \"Crash_Time\"  \"Crash_Type\"  \"Crash_Ty_1\"  \"Crash_Year\"  \"Crsh_Sevri\" \n[26] \"Developmen\"  \"DrvrAge_Gr\"  \"Drvr_Age\"    \"Drvr_Alc_D\"  \"Drvr_EstSp\" \n[31] \"Drvr_Injur\"  \"Drvr_Race\"   \"Drvr_Sex\"    \"Drvr_VehTy\"  \"ExcsSpdInd\" \n[36] \"Hit_Run\"     \"Light_Cond\"  \"Locality\"    \"Num_Lanes\"   \"Num_Units\"  \n[41] \"Rd_Charact\"  \"Rd_Class\"    \"Rd_Conditi\"  \"Rd_Config\"   \"Rd_Defects\" \n[46] \"Rd_Feature\"  \"Rd_Surface\"  \"Region\"      \"Rural_Urba\"  \"Speed_Limit\"\n[51] \"Traff_Cntr\"  \"Weather\"     \"Workzone_I\"  \"Location\""
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#practice-3",
+    "href": "02-data/06-dplyr-reveal.html#practice-3",
+    "title": "06-dplyr",
+    "section": "Practice",
+    "text": "Practice\nYour boss in Cumberland County gets overwhelmed by data easily, but he wants some data from you. He wants all bike accidents from his County, but he only wants to know the road’s speed limit, the age of the biker, and to know if alcohol was involved. If you have time, mine as well make the column names very clear to your boss while you’re at it…\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#arrange-to-order-rows",
+    "href": "02-data/06-dplyr-reveal.html#arrange-to-order-rows",
+    "title": "06-dplyr",
+    "section": "arrange to order rows",
+    "text": "arrange to order rows\n\n\n# A tibble: 13 × 2\n   BikeAge_Gr crash_count\n   &lt;chr&gt;            &lt;int&gt;\n 1 40-49              920\n 2 11-15              747\n 3 50-59              739\n 4 20-24              680\n 5 30-39              658\n 6 16-19              605\n 7 25-29              430\n 8 6-10               421\n 9 60-69              274\n10 &lt;NA&gt;               112\n11 0-5                 60\n12 70+                 58\n13 70                  12"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#count-to-group-by-then-count",
+    "href": "02-data/06-dplyr-reveal.html#count-to-group-by-then-count",
+    "title": "06-dplyr",
+    "section": "count to group by then count",
+    "text": "count to group by then count\n\n\n# A tibble: 13 × 2\n   BikeAge_Gr     n\n   &lt;chr&gt;      &lt;int&gt;\n 1 0-5           60\n 2 11-15        747\n 3 16-19        605\n 4 20-24        680\n 5 25-29        430\n 6 30-39        658\n 7 40-49        920\n 8 50-59        739\n 9 6-10         421\n10 60-69        274\n11 70            12\n12 70+           58\n13 &lt;NA&gt;         112\n\n\n   If you wanted to arrange these in ascending order what would you add to the pipe?"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#distinct-to-filter-for-unique-rows",
+    "href": "02-data/06-dplyr-reveal.html#distinct-to-filter-for-unique-rows",
+    "title": "06-dplyr",
+    "section": "distinct to filter for unique rows",
+    "text": "distinct to filter for unique rows\n\n\n# A tibble: 360 × 2\n   County    City              \n   &lt;chr&gt;     &lt;chr&gt;             \n 1 Alamance  Alamance          \n 2 Alamance  Burlington        \n 3 Alamance  Elon College      \n 4 Alamance  Gibsonville       \n 5 Alamance  Graham            \n 6 Alamance  Green Level       \n 7 Alamance  Mebane            \n 8 Alamance  None - Rural Crash\n 9 Alexander None - Rural Crash\n10 Alleghany None - Rural Crash\n# ℹ 350 more rows\n\n\n\ndistinct has a .keep_all parameter\n\n\n# A tibble: 360 × 54\n     FID OBJECTID AmbulanceR BikeAge_Gr Bike_Age Bike_Alc_D Bike_Dir  Bike_Injur\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     \n 1   524      525 Yes        11-15            12 No         &lt;NA&gt;      B: Eviden…\n 2    84       85 Yes        20-24            20 No         With Tra… B: Eviden…\n 3   571      572 Yes        16-19            16 No         Not Appl… B: Eviden…\n 4   509      510 Yes        40-49            43 Yes        With Tra… K: Killed \n 5   855      856 Yes        30-39            30 No         With Tra… A: Disabl…\n 6     5        6 Yes        40-49            44 Yes        With Tra… C: Possib…\n 7   163      164 Yes        30-39            35 No         Not Appl… C: Possib…\n 8    96       97 Yes        30-39            36 No         With Tra… C: Possib…\n 9    46       47 Yes        50-59            53 No         With Tra… B: Eviden…\n10   485      486 Yes        60-69            62 No         With Tra… C: Possib…\n# ℹ 350 more rows\n# ℹ 46 more variables: Bike_Pos &lt;chr&gt;, Bike_Race &lt;chr&gt;, Bike_Sex &lt;chr&gt;,\n#   City &lt;chr&gt;, County &lt;chr&gt;, CrashAlcoh &lt;chr&gt;, CrashDay &lt;chr&gt;,\n#   Crash_Date &lt;date&gt;, Crash_Grp &lt;chr&gt;, Crash_Hour &lt;dbl&gt;, Crash_Loc &lt;chr&gt;,\n#   Crash_Mont &lt;chr&gt;, Crash_Time &lt;dttm&gt;, Crash_Type &lt;chr&gt;, Crash_Ty_1 &lt;dbl&gt;,\n#   Crash_Year &lt;dbl&gt;, Crsh_Sevri &lt;chr&gt;, Developmen &lt;chr&gt;, DrvrAge_Gr &lt;chr&gt;,\n#   Drvr_Age &lt;dbl&gt;, Drvr_Alc_D &lt;chr&gt;, Drvr_EstSp &lt;chr&gt;, Drvr_Injur &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#practice-storms",
+    "href": "02-data/06-dplyr-reveal.html#practice-storms",
+    "title": "06-dplyr",
+    "section": "Practice: storms",
+    "text": "Practice: storms\nThere is an available dataset storms. Using that dataset and common dplyr functions, answer the following questions:\n\nHow many observations are there in this dataset? What is the observational unit?\nHow many unique hurricanes are included in this dataset?\nAmong all storms in this dataset, in which month are storms most common?\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#data-1",
+    "href": "02-data/06-dplyr-reveal.html#data-1",
+    "title": "06-dplyr",
+    "section": "Data",
+    "text": "Data\nUsing data you’re likely to encounter…by generating some fake data (used ChatGPT to generate code):\n\n\n# A tibble: 6 × 3\n  Patient_ID Compound1 Compound2\n       &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1          1     59.0       3.05\n2          1     64.0      74.0 \n3          2     98.0      42.0 \n4          2     19.0      25.0 \n5          3      6.05      7.05\n6          3     67.0      96.0"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#step-1-filter-data",
+    "href": "02-data/06-dplyr-reveal.html#step-1-filter-data",
+    "title": "06-dplyr",
+    "section": "Step 1: Filter data",
+    "text": "Step 1: Filter data\n\nOnly include patients with vales &gt; 50 for Compound1\nThen: only include patients who have at least 3 replicates"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#step-2-calculate-ratios-practice",
+    "href": "02-data/06-dplyr-reveal.html#step-2-calculate-ratios-practice",
+    "title": "06-dplyr",
+    "section": "Step 2: Calculate Ratios (Practice)",
+    "text": "Step 2: Calculate Ratios (Practice)\n\nAdd new column (ratio12) to df_filtered to calculate the ratio between Compound1 and Compound2\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#step-3-calculate-intra-patient-cv",
+    "href": "02-data/06-dplyr-reveal.html#step-3-calculate-intra-patient-cv",
+    "title": "06-dplyr",
+    "section": "Step 3: Calculate intra-patient CV",
+    "text": "Step 3: Calculate intra-patient CV\n\ncarry out calculations within patient\ndetermine pt mean, sd, CV\nfilter to only include CV &lt;= 10%"
+  },
+  {
+    "objectID": "02-data/06-dplyr-reveal.html#step-4-identify-extreme-values",
+    "href": "02-data/06-dplyr-reveal.html#step-4-identify-extreme-values",
+    "title": "06-dplyr",
+    "section": "Step 4: Identify extreme values",
+    "text": "Step 4: Identify extreme values\n\nmimicking identification of slow and fast metabolizers\n\nFor “slow metabolizers:..\n\n\n# A tibble: 4 × 7\n# Groups:   Patient_ID [3]\n  Patient_ID Compound1 Compound2 ratio12  mean     sd    CV\n       &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1      27269      77.0      88.0   0.875 0.904 0.0271  3.00\n2      29555      64.0      75.0   0.853 0.877 0.0794  9.05\n3      29555      78.0      96.0   0.813 0.877 0.0794  9.05\n4      65962      87.0      99.0   0.879 0.935 0.0691  7.39\n\n\n\nHow many “fast metabolizers” are in this dataset, if “fast” is defined as above the 95th quartile?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/02-basics.html",
+    "href": "01-intro/02-basics.html",
+    "title": "01-basics",
+    "section": "",
+    "text": "Variables\nOperators\nCode Style\n\n\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#agenda",
+    "href": "01-intro/02-basics.html#agenda",
+    "title": "01-basics",
+    "section": "",
+    "text": "Variables\nOperators\nCode Style",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#setup",
+    "href": "01-intro/02-basics.html#setup",
+    "title": "01-basics",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#variables-assignment-1",
+    "href": "01-intro/02-basics.html#variables-assignment-1",
+    "title": "01-basics",
+    "section": "Variables & Assignment",
+    "text": "Variables & Assignment\nVariables are how we store information so that we can access it later.\n. . .\nVariables are created and stored using the assignment operator &lt;-\n\nfirst_variable &lt;- 3\n\nThe above stores the value 3 in the variable first_variable\n. . .\nNote: Other programming languages use = for assignment. R also uses that for assignment, but it is more typical to see &lt;- in R code, so we’ll stick with that.\n. . .\nThis means that if we ever want to reference the information stored in that variable later, we can “call” (mean, type in our code) the variable’s name:\n\nfirst_variable\n\n[1] 3",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#variable-type",
+    "href": "01-intro/02-basics.html#variable-type",
+    "title": "01-basics",
+    "section": "Variable Type",
+    "text": "Variable Type\n\nEvery variable you create in R will be of a specific type.\n\n. . .\n\nThe type of the variable is determined dynamically on assignment.\n\n. . .\n\nDetermining the type of a variable with class():\n\n\nclass(first_variable)\n\n[1] \"numeric\"",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#basic-variable-types",
+    "href": "01-intro/02-basics.html#basic-variable-types",
+    "title": "01-basics",
+    "section": "Basic Variable Types",
+    "text": "Basic Variable Types\n\n\n\n\n\n\n\n\nVariable Type\nExplanation\nExample\n\n\n\n\ncharacter\nstores a string\n\"cogs137\", \"hi!\"\n\n\nnumeric\nstores whole numbers and decimals\n9, 9.29\n\n\nlogical\nBooleans\nTRUE, FALSE\n\n\nvector\nstore multiple elements\nc(7, 8, 9)\n\n\n\nNote: There are many more. We’ll get to some but not all in this training",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#logical-character",
+    "href": "01-intro/02-basics.html#logical-character",
+    "title": "01-basics",
+    "section": "logical & character",
+    "text": "logical & character\nlogical - Boolean values TRUE and FALSE\n\nclass(TRUE)\n\n[1] \"logical\"\n\n\n. . .\ncharacter - character strings\n\nclass(\"hello\")\n\n[1] \"character\"\n\nclass('precision') # equivalent...but we'll use double quotes!\n\n[1] \"character\"\n\n\n. . .",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#numeric",
+    "href": "01-intro/02-basics.html#numeric",
+    "title": "01-basics",
+    "section": "numeric",
+    "text": "numeric\ndouble - floating point numerical values (default numerical type)\n\nclass(1.335)\n\n[1] \"numeric\"\n\nclass(7)\n\n[1] \"numeric\"",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#vectors",
+    "href": "01-intro/02-basics.html#vectors",
+    "title": "01-basics",
+    "section": "vectors",
+    "text": "vectors\nvector - one way to store multiple values in a single variable:\n\nmy_vec &lt;- c(1, 2, 3)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#aside-missing-values",
+    "href": "01-intro/02-basics.html#aside-missing-values",
+    "title": "01-basics",
+    "section": "Aside: Missing Values",
+    "text": "Aside: Missing Values\nA note: R uses NA to represent missing values in its data structures.\n\nclass(NA)\n\n[1] \"logical\"",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#coercion",
+    "href": "01-intro/02-basics.html#coercion",
+    "title": "01-basics",
+    "section": "Coercion",
+    "text": "Coercion\nR is a dynamically typed language.\nThis means: - R makes its best guess as how to store information - but you can always force a variable to be of the preferred type:\n\nmy_vec\n\n[1] 1 2 3\n\n\n. . .\n\nclass(my_vec)\n\n[1] \"numeric\"\n\n\n. . .\nConvert to character\n\nmy_char &lt;- as.character(my_vec)\n\n. . .\n\nclass(my_char)\n\n[1] \"character\"\n\n\n. . .\n\nmy_char\n\n[1] \"1\" \"2\" \"3\"",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#practice",
+    "href": "01-intro/02-basics.html#practice",
+    "title": "01-basics",
+    "section": "Practice",
+    "text": "Practice\nIn your RScript file: Define variables of each of the following types: character, numeric, logical, vector\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#operators-1",
+    "href": "01-intro/02-basics.html#operators-1",
+    "title": "01-basics",
+    "section": "Operators",
+    "text": "Operators\nAt its simplest, R is a calculator. To carry out mathematical operations, R uses operators.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#arithmetic-operators",
+    "href": "01-intro/02-basics.html#arithmetic-operators",
+    "title": "01-basics",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n\n\n\nOperator\nDescription\n\n\n\n\n+\naddition\n\n\n-\nsubtraction\n\n\n*\nmultiplication\n\n\n/\ndivision\n\n\n^ or **\nexponentiation\n\n\nx %% y\nmodulus (x mod y) 9%%2 is 1\n\n\nx %/% y\ninteger division 9%/%2 is 4",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#arithmetic-operators-examples",
+    "href": "01-intro/02-basics.html#arithmetic-operators-examples",
+    "title": "01-basics",
+    "section": "Arithmetic Operators: Examples",
+    "text": "Arithmetic Operators: Examples\n\n7 + 6  \n\n[1] 13\n\n2 - 3\n\n[1] -1\n\n4 * 2\n\n[1] 8\n\n9 / 2\n\n[1] 4.5",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#reminder",
+    "href": "01-intro/02-basics.html#reminder",
+    "title": "01-basics",
+    "section": "Reminder",
+    "text": "Reminder\nOutput can be stored to a variable\n\nmy_addition &lt;- 7 + 6\n\n. . .\n\nmy_addition\n\n[1] 13",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#comparison-operators",
+    "href": "01-intro/02-basics.html#comparison-operators",
+    "title": "01-basics",
+    "section": "Comparison Operators",
+    "text": "Comparison Operators\nThese operators return a Boolean.\n\n\n\nOperator\nDescription\n\n\n\n\n&lt;\nless than\n\n\n&lt;=\nless than or equal to\n\n\n&gt;\ngreater than\n\n\n&gt;=\ngreater than or equal to\n\n\n==\nexactly equal to\n\n\n!=\nnot equal to",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#comparison-operators-examples",
+    "href": "01-intro/02-basics.html#comparison-operators-examples",
+    "title": "01-basics",
+    "section": "Comparison Operators: Examples",
+    "text": "Comparison Operators: Examples\n\n4 &lt; 12\n\n[1] TRUE\n\n4 &gt;= 3\n\n[1] TRUE\n\n6 == 6\n\n[1] TRUE\n\n7 != 6\n\n[1] TRUE",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#practice-1",
+    "href": "01-intro/02-basics.html#practice-1",
+    "title": "01-basics",
+    "section": "Practice",
+    "text": "Practice\nUse arithmetic and comparison operators to store the value 30 in the variable var_30 and TRUE in the variable true_var.\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/02-basics.html#code-style-1",
+    "href": "01-intro/02-basics.html#code-style-1",
+    "title": "01-basics",
+    "section": "Code Style",
+    "text": "Code Style\n\ntypically variables should use snake_case (all lowercase with _ to separate words)\nLong, descriptive variable names are better than short, uninformative names\nPut spaces around the assignment operator (&lt;-)\nSpaces on either side of mathematical operators apart from ^\n\nGood code style:\n\nparticipants_heights &lt;- c(65, 72, 58, 60)\nparticipants_heights &lt;= 60",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "02: R Basics"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#agenda",
+    "href": "01-intro/01-basics-reveal.html#agenda",
+    "title": "01-basics",
+    "section": "Agenda",
+    "text": "Agenda\n\nVariables\nOperators\nCode Style"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#setup",
+    "href": "01-intro/01-basics-reveal.html#setup",
+    "title": "01-basics",
+    "section": "Setup",
+    "text": "Setup"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#variables-assignment-1",
+    "href": "01-intro/01-basics-reveal.html#variables-assignment-1",
+    "title": "01-basics",
+    "section": "Variables & Assignment",
+    "text": "Variables & Assignment\nVariables are how we store information so that we can access it later.\n\nVariables are created and stored using the assignment operator &lt;-\nThe above stores the value 3 in the variable first_variable\n\n\nNote: Other programming languages use = for assignment. R also uses that for assignment, but it is more typical to see &lt;- in R code, so we’ll stick with that.\n\n\nThis means that if we ever want to reference the information stored in that variable later, we can “call” (mean, type in our code) the variable’s name:\n\n\n[1] 3"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#variable-type",
+    "href": "01-intro/01-basics-reveal.html#variable-type",
+    "title": "01-basics",
+    "section": "Variable Type",
+    "text": "Variable Type\n\nEvery variable you create in R will be of a specific type.\n\n\n\nThe type of the variable is determined dynamically on assignment.\n\n\n\n\nDetermining the type of a variable with class():\n\n\n\n[1] \"numeric\""
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#basic-variable-types",
+    "href": "01-intro/01-basics-reveal.html#basic-variable-types",
+    "title": "01-basics",
+    "section": "Basic Variable Types",
+    "text": "Basic Variable Types\n\n\n\n\n\n\n\n\nVariable Type\nExplanation\nExample\n\n\n\n\ncharacter\nstores a string\n\"cogs137\", \"hi!\"\n\n\nnumeric\nstores whole numbers and decimals\n9, 9.29\n\n\nlogical\nBooleans\nTRUE, FALSE\n\n\nvector\nstore multiple elements\nc(7, 8, 9)\n\n\n\nNote: There are many more. We’ll get to some but not all in this training"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#logical-character",
+    "href": "01-intro/01-basics-reveal.html#logical-character",
+    "title": "01-basics",
+    "section": "logical & character",
+    "text": "logical & character\nlogical - Boolean values TRUE and FALSE\n\n\n[1] \"logical\"\n\n\n\ncharacter - character strings\n\n\n[1] \"character\"\n\n\n[1] \"character\""
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#numeric",
+    "href": "01-intro/01-basics-reveal.html#numeric",
+    "title": "01-basics",
+    "section": "numeric",
+    "text": "numeric\ndouble - floating point numerical values (default numerical type)\n\n\n[1] \"numeric\"\n\n\n[1] \"numeric\""
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#vectors",
+    "href": "01-intro/01-basics-reveal.html#vectors",
+    "title": "01-basics",
+    "section": "vectors",
+    "text": "vectors\nvector - one way to store multiple values in a single variable:"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#aside-missing-values",
+    "href": "01-intro/01-basics-reveal.html#aside-missing-values",
+    "title": "01-basics",
+    "section": "Aside: Missing Values",
+    "text": "Aside: Missing Values\nA note: R uses NA to represent missing values in its data structures.\n\n\n[1] \"logical\""
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#coercion",
+    "href": "01-intro/01-basics-reveal.html#coercion",
+    "title": "01-basics",
+    "section": "Coercion",
+    "text": "Coercion\nR is a dynamically typed language.\nThis means: - R makes its best guess as how to store information - but you can always force a variable to be of the preferred type:\n\n\n[1] 1 2 3\n\n\n\n\n\n[1] \"numeric\"\n\n\n\n\nConvert to character\n\n\n\n\n[1] \"character\"\n\n\n\n\n\n\n[1] \"1\" \"2\" \"3\""
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#practice",
+    "href": "01-intro/01-basics-reveal.html#practice",
+    "title": "01-basics",
+    "section": "Practice",
+    "text": "Practice\nIn your RScript file: Define variables of each of the following types: character, numeric, logical, vector\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#operators-1",
+    "href": "01-intro/01-basics-reveal.html#operators-1",
+    "title": "01-basics",
+    "section": "Operators",
+    "text": "Operators\nAt its simplest, R is a calculator. To carry out mathematical operations, R uses operators."
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#arithmetic-operators",
+    "href": "01-intro/01-basics-reveal.html#arithmetic-operators",
+    "title": "01-basics",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n\n\n\nOperator\nDescription\n\n\n\n\n+\naddition\n\n\n-\nsubtraction\n\n\n*\nmultiplication\n\n\n/\ndivision\n\n\n^ or **\nexponentiation\n\n\nx %% y\nmodulus (x mod y) 9%%2 is 1\n\n\nx %/% y\ninteger division 9%/%2 is 4"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#arithmetic-operators-examples",
+    "href": "01-intro/01-basics-reveal.html#arithmetic-operators-examples",
+    "title": "01-basics",
+    "section": "Arithmetic Operators: Examples",
+    "text": "Arithmetic Operators: Examples\n\n\n[1] 13\n\n\n[1] -1\n\n\n[1] 8\n\n\n[1] 4.5"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#reminder",
+    "href": "01-intro/01-basics-reveal.html#reminder",
+    "title": "01-basics",
+    "section": "Reminder",
+    "text": "Reminder\nOutput can be stored to a variable\n\n\n\n[1] 13"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#comparison-operators",
+    "href": "01-intro/01-basics-reveal.html#comparison-operators",
+    "title": "01-basics",
+    "section": "Comparison Operators",
+    "text": "Comparison Operators\nThese operators return a Boolean.\n\n\n\nOperator\nDescription\n\n\n\n\n&lt;\nless than\n\n\n&lt;=\nless than or equal to\n\n\n&gt;\ngreater than\n\n\n&gt;=\ngreater than or equal to\n\n\n==\nexactly equal to\n\n\n!=\nnot equal to"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#comparison-operators-examples",
+    "href": "01-intro/01-basics-reveal.html#comparison-operators-examples",
+    "title": "01-basics",
+    "section": "Comparison Operators: Examples",
+    "text": "Comparison Operators: Examples\n\n\n[1] TRUE\n\n\n[1] TRUE\n\n\n[1] TRUE\n\n\n[1] TRUE"
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#practice-1",
+    "href": "01-intro/01-basics-reveal.html#practice-1",
+    "title": "01-basics",
+    "section": "Practice",
+    "text": "Practice\nUse arithmetic and comparison operators to store the value 30 in the variable var_30 and TRUE in the variable true_var.\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/01-basics-reveal.html#code-style-1",
+    "href": "01-intro/01-basics-reveal.html#code-style-1",
+    "title": "01-basics",
+    "section": "Code Style",
+    "text": "Code Style\n\ntypically variables should use snake_case (all lowercase with _ to separate words)\nLong, descriptive variable names are better than short, uninformative names\nPut spaces around the assignment operator (&lt;-)\nSpaces on either side of mathematical operators apart from ^\n\nGood code style:"
+  },
+  {
+    "objectID": "01-intro/04-documents.html",
+    "href": "01-intro/04-documents.html",
+    "title": "04-documents",
+    "section": "",
+    "text": "RMarkdown files\nquarto\n\n\n\n\n\nFully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text\n\n\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting\n\n\n\n\n\nKeep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console\n\n\n\n\nQuarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n. . .\nQuarto (.qmd) is what I’ve used for thes notes and the website.\n\n\n\nRecommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n. . .\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#agenda",
+    "href": "01-intro/04-documents.html#agenda",
+    "title": "04-documents",
+    "section": "",
+    "text": "RMarkdown files\nquarto",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#r-markdown-1",
+    "href": "01-intro/04-documents.html#r-markdown-1",
+    "title": "04-documents",
+    "section": "",
+    "text": "Fully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#r-markdown-tour",
+    "href": "01-intro/04-documents.html#r-markdown-tour",
+    "title": "04-documents",
+    "section": "",
+    "text": "[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#r-markdown-tips",
+    "href": "01-intro/04-documents.html#r-markdown-tips",
+    "title": "04-documents",
+    "section": "",
+    "text": "Keep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#aside-quarto",
+    "href": "01-intro/04-documents.html#aside-quarto",
+    "title": "04-documents",
+    "section": "",
+    "text": "Quarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n. . .\nQuarto (.qmd) is what I’ve used for thes notes and the website.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#practice",
+    "href": "01-intro/04-documents.html#practice",
+    "title": "04-documents",
+    "section": "",
+    "text": "Recommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n. . .\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#agenda",
+    "href": "01-intro/04-documents-reveal.html#agenda",
+    "title": "04-documents",
+    "section": "Agenda",
+    "text": "Agenda\n\nRMarkdown files\nquarto"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#r-markdown-1",
+    "href": "01-intro/04-documents-reveal.html#r-markdown-1",
+    "title": "04-documents",
+    "section": "R Markdown",
+    "text": "R Markdown\n\nFully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#r-markdown-tour",
+    "href": "01-intro/04-documents-reveal.html#r-markdown-tour",
+    "title": "04-documents",
+    "section": "R Markdown: tour",
+    "text": "R Markdown: tour\n\n\n[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#r-markdown-tips",
+    "href": "01-intro/04-documents-reveal.html#r-markdown-tips",
+    "title": "04-documents",
+    "section": "R Markdown tips",
+    "text": "R Markdown tips\n\nKeep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#aside-quarto",
+    "href": "01-intro/04-documents-reveal.html#aside-quarto",
+    "title": "04-documents",
+    "section": "Aside: quarto",
+    "text": "Aside: quarto\nQuarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n\nQuarto (.qmd) is what I’ve used for thes notes and the website."
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#practice",
+    "href": "01-intro/04-documents-reveal.html#practice",
+    "title": "04-documents",
+    "section": "Practice",
+    "text": "Practice\nRecommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Precision Diagnostics",
+    "section": "",
+    "text": "Install R and RStudio\nAlternative (if any issues in installation) | https://posit.cloud/\n\n\n\n\n\n\n\nRStudio Tour\nR Basics | Variables and operators\nR Packages\nDatasets in R\nR Markdown & quarto\n\n\n\n\n\nIntroduction to the tidyverse\ndplyr | common operations & pipes\ntidyr | common data manipulations\n\n\n\n\n\n\n\n\nIntroduce the grammar of graphics\nggplot2 | making visuals in R\nCustomizing visualizations in R\ntables in R\n\n\n\n\n\nPutting it all together with a mini case study\n\nCleaning and wrangling data\nExploring data\nAnalyzing data\nVisualizing results"
+  },
+  {
+    "objectID": "index.html#prior-to-training",
+    "href": "index.html#prior-to-training",
+    "title": "Precision Diagnostics",
+    "section": "",
+    "text": "Install R and RStudio\nAlternative (if any issues in installation) | https://posit.cloud/"
+  },
+  {
+    "objectID": "index.html#day-01-may-10th",
+    "href": "index.html#day-01-may-10th",
+    "title": "Precision Diagnostics",
+    "section": "",
+    "text": "RStudio Tour\nR Basics | Variables and operators\nR Packages\nDatasets in R\nR Markdown & quarto\n\n\n\n\n\nIntroduction to the tidyverse\ndplyr | common operations & pipes\ntidyr | common data manipulations"
+  },
+  {
+    "objectID": "index.html#day-02-may-17th",
+    "href": "index.html#day-02-may-17th",
+    "title": "Precision Diagnostics",
+    "section": "",
+    "text": "Introduce the grammar of graphics\nggplot2 | making visuals in R\nCustomizing visualizations in R\ntables in R\n\n\n\n\n\nPutting it all together with a mini case study\n\nCleaning and wrangling data\nExploring data\nAnalyzing data\nVisualizing results"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#agenda",
+    "href": "01-intro/00-tour-reveal.html#agenda",
+    "title": "00-tour",
+    "section": "Agenda",
+    "text": "Agenda\n\nRStudio\nRStudio Project"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#hello",
+    "href": "01-intro/00-tour-reveal.html#hello",
+    "title": "00-tour",
+    "section": "Hello!",
+    "text": "Hello!\nBrief Introductions"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#general-plan",
+    "href": "01-intro/00-tour-reveal.html#general-plan",
+    "title": "00-tour",
+    "section": "General Plan",
+    "text": "General Plan\nFor each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n\nWhere to find these materials:\nAVOCADO"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#rstudio-tour",
+    "href": "01-intro/00-tour-reveal.html#rstudio-tour",
+    "title": "00-tour",
+    "section": "RStudio Tour",
+    "text": "RStudio Tour\n\nR/RStudioTourTry\n\n\nR & RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nConsole\nUsing R as a calculator\nEnvironment\nLoading and viewing a data frame\nAccessing a variable in a data frame\nR functions\n\n\n\nPractice\n\nType a simple math problem (i.e. 3 + 3) in to the console and see the output\nView the airquality dataframe\nDetermine how many rows there are in the airquality dataframe\nAccess a column from the airquality dataframe\nCalculate the median for one of the numeric columns\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#rstudio-projects",
+    "href": "01-intro/00-tour-reveal.html#rstudio-projects",
+    "title": "00-tour",
+    "section": "RStudio Projects",
+    "text": "RStudio Projects\n\nProjectsTourTry\n\n\n\nBuilt-in functionality to keep all files for a single project organized\nBest way to get started on an analysis in R\n\nRStudio Projects Documentation\n\n\n\n[DEMO]\n\nConcepts introduced:\n\n.Rproj file\nOpening up a project\nCreating/saving a file\nRunning Code\nSwitching between projects\n\n\n\nPractice\n\nCreate and open an R Project for this training\nCreate a new Rscript file in your project\nType some R code in the new file\nRun that code\nSave the file\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#for-this-training",
+    "href": "01-intro/00-tour-reveal.html#for-this-training",
+    "title": "00-tour",
+    "section": "For this training…",
+    "text": "For this training…\nFor right now, we can do all R Practice in that file you just created, but we’ll talk about another file type soon that may be helpful for notetaking/practice."
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#additional-resources",
+    "href": "01-intro/00-tour-reveal.html#additional-resources",
+    "title": "00-tour",
+    "section": "Additional Resources:",
+    "text": "Additional Resources:\n\nR4DS - book teaching the basics of using R in the tidyverse\nBig Book of R - lots of free resources for learning and using R; each chapter links to a different resource\nlearnR4free - lots of different free courses/resources for learning R\nChatGPT - really good at writing R code for working with data (be careful about including proprietary information)"
+  },
+  {
+    "objectID": "01-intro/00-tour.html",
+    "href": "01-intro/00-tour.html",
+    "title": "00-tour",
+    "section": "",
+    "text": "RStudio\nRStudio Project\n\n\n\n\nBrief Introductions\n\n\n\nFor each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n. . .\nWhere to find these materials:\nAVOCADO\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nR/RStudioTourTry\n\n\nR & RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nConsole\nUsing R as a calculator\nEnvironment\nLoading and viewing a data frame\nAccessing a variable in a data frame\nR functions\n\n\n\nPractice\n\nType a simple math problem (i.e. 3 + 3) in to the console and see the output\nView the airquality dataframe\nDetermine how many rows there are in the airquality dataframe\nAccess a column from the airquality dataframe\nCalculate the median for one of the numeric columns\n\n\n\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nProjectsTourTry\n\n\n\nBuilt-in functionality to keep all files for a single project organized\nBest way to get started on an analysis in R\n\nRStudio Projects Documentation\n\n\n\n[DEMO]\n\nConcepts introduced:\n\n.Rproj file\nOpening up a project\nCreating/saving a file\nRunning Code\nSwitching between projects\n\n\n\nPractice\n\nCreate and open an R Project for this training\nCreate a new Rscript file in your project\nType some R code in the new file\nRun that code\nSave the file\n\n\n\n\n\n\n\n\nFor right now, we can do all R Practice in that file you just created, but we’ll talk about another file type soon that may be helpful for notetaking/practice.\n\n\n\n\nR4DS - book teaching the basics of using R in the tidyverse\nBig Book of R - lots of free resources for learning and using R; each chapter links to a different resource\nlearnR4free - lots of different free courses/resources for learning R\nChatGPT - really good at writing R code for working with data (be careful about including proprietary information)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#agenda",
+    "href": "01-intro/00-tour.html#agenda",
+    "title": "00-tour",
+    "section": "",
+    "text": "RStudio\nRStudio Project",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#hello",
+    "href": "01-intro/00-tour.html#hello",
+    "title": "00-tour",
+    "section": "",
+    "text": "Brief Introductions",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#general-plan",
+    "href": "01-intro/00-tour.html#general-plan",
+    "title": "00-tour",
+    "section": "",
+    "text": "For each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n. . .\nWhere to find these materials:\nAVOCADO",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#rstudio-tour",
+    "href": "01-intro/00-tour.html#rstudio-tour",
+    "title": "00-tour",
+    "section": "",
+    "text": "Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nR/RStudioTourTry\n\n\nR & RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nConsole\nUsing R as a calculator\nEnvironment\nLoading and viewing a data frame\nAccessing a variable in a data frame\nR functions\n\n\n\nPractice\n\nType a simple math problem (i.e. 3 + 3) in to the console and see the output\nView the airquality dataframe\nDetermine how many rows there are in the airquality dataframe\nAccess a column from the airquality dataframe\nCalculate the median for one of the numeric columns",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#rstudio-projects",
+    "href": "01-intro/00-tour.html#rstudio-projects",
+    "title": "00-tour",
+    "section": "",
+    "text": "Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nProjectsTourTry\n\n\n\nBuilt-in functionality to keep all files for a single project organized\nBest way to get started on an analysis in R\n\nRStudio Projects Documentation\n\n\n\n[DEMO]\n\nConcepts introduced:\n\n.Rproj file\nOpening up a project\nCreating/saving a file\nRunning Code\nSwitching between projects\n\n\n\nPractice\n\nCreate and open an R Project for this training\nCreate a new Rscript file in your project\nType some R code in the new file\nRun that code\nSave the file",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#for-this-training",
+    "href": "01-intro/00-tour.html#for-this-training",
+    "title": "00-tour",
+    "section": "",
+    "text": "For right now, we can do all R Practice in that file you just created, but we’ll talk about another file type soon that may be helpful for notetaking/practice.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#additional-resources",
+    "href": "01-intro/00-tour.html#additional-resources",
+    "title": "00-tour",
+    "section": "",
+    "text": "R4DS - book teaching the basics of using R in the tidyverse\nBig Book of R - lots of free resources for learning and using R; each chapter links to a different resource\nlearnR4free - lots of different free courses/resources for learning R\nChatGPT - really good at writing R code for working with data (be careful about including proprietary information)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#agenda",
+    "href": "01-intro/03-datasets-reveal.html#agenda",
+    "title": "03-datasets",
+    "section": "Agenda",
+    "text": "Agenda\n\nDataframes\nCommon Functions\nAvailable datasets\nData Import"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#setup",
+    "href": "01-intro/03-datasets-reveal.html#setup",
+    "title": "03-datasets",
+    "section": "Setup",
+    "text": "Setup\n\nWill also be helpful to have access to the skimr package:"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#data-sets-in-r",
+    "href": "01-intro/03-datasets-reveal.html#data-sets-in-r",
+    "title": "03-datasets",
+    "section": "Data “sets” in R",
+    "text": "Data “sets” in R\n\n“set” is in quotation marks because it is not a formal data class\nA tidy data “set” can be one of the following types:\n\ntibble\ndata.frame\n\nWe’ll often work with tibbles:\n\nreadr package (e.g. read_csv function) loads data as a tibble by default\ntibbles are part of the tidyverse, so they work well with other packages we are giong to be using\nthey make minimal assumptions about your data, so are less likely to cause hard to track bugs in your code"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#data-frames",
+    "href": "01-intro/03-datasets-reveal.html#data-frames",
+    "title": "03-datasets",
+    "section": "Data Frames",
+    "text": "Data Frames\n\nA data frame is the most commonly used data structure in R, they are list of equal length vectors. Each vector is treated as a column and elements of the vectors as rows.\nA tibble is a type of data frame that … makes your life (i.e. data analysis) easier.\nMost often a data frame will be constructed by reading in from a file, but we can create them from scratch.\n\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#data-frames-cont.",
+    "href": "01-intro/03-datasets-reveal.html#data-frames-cont.",
+    "title": "03-datasets",
+    "section": "Data frames (cont.)",
+    "text": "Data frames (cont.)\n\n\n$class\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n$row.names\n[1] 1 2 3\n\n$names\n[1] \"x\" \"y\"\n\n\n\nColumns (variables) in data frames are accessed with $:\n\n\n\n\n[1] \"integer\"\n\n\n[1] \"character\""
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#functions",
+    "href": "01-intro/03-datasets-reveal.html#functions",
+    "title": "03-datasets",
+    "section": "Functions",
+    "text": "Functions\n\nFunctions are (most often) verbs, followed by what they will be applied to in parentheses.\n\n\nFunctions are:\n\navailable from base R\navailable from packages you import\nable to be defined by the analyst"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#helpful-functions",
+    "href": "01-intro/03-datasets-reveal.html#helpful-functions",
+    "title": "03-datasets",
+    "section": "Helpful Functions",
+    "text": "Helpful Functions\n\nView() - to see the dataset in a new window\n\n\n\nclass() - determine high-level variable type\n\n\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\n\n\n\ndim()- determine dimensions of a df\n\n\n\n[1] 3 2\n\n\n\n\n\nstr() - display the structure of an R object\n\n\n\ntibble [3 × 2] (S3: tbl_df/tbl/data.frame)\n $ x: int [1:3] 1 2 3\n $ y: chr [1:3] \"a\" \"b\" \"c\"\n\n\n\n\n\nglimpse() - give you a summary of what’s in your data\n\n\n\nRows: 3\nColumns: 2\n$ x &lt;int&gt; 1, 2, 3\n$ y &lt;chr&gt; \"a\", \"b\", \"c\"\n\n\n\n\n\nnames - gives you the names of columns in data\n\n\n\n[1] \"x\" \"y\""
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#available-datasets-r",
+    "href": "01-intro/03-datasets-reveal.html#available-datasets-r",
+    "title": "03-datasets",
+    "section": "Available datasets: R",
+    "text": "Available datasets: R\nMany packages have datasets that are available for use/practice.\nTo see list available:"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#more-popular-datasets",
+    "href": "01-intro/03-datasets-reveal.html#more-popular-datasets",
+    "title": "03-datasets",
+    "section": "More popular datasets",
+    "text": "More popular datasets\n\nlibrary(nycflights13)\nggplot2 datasets\nlibrary(palmerpenguins)"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#skimr",
+    "href": "01-intro/03-datasets-reveal.html#skimr",
+    "title": "03-datasets",
+    "section": "skimr",
+    "text": "skimr\n\na packages for getting a summary of your entire dataset at once\n\n\nYou can always pull up additional documentation: ?msleep for a dataset."
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#practice",
+    "href": "01-intro/03-datasets-reveal.html#practice",
+    "title": "03-datasets",
+    "section": "Practice",
+    "text": "Practice\nExplore common functions (dim, class, glimpse, str, class, names, skim, View) to understand one of the popular datasets:\n\nlibrary(help=datasets)\nlibrary(nycflights13) (would require installation)\nggplot2 datasets\nlibrary(palmerpenguins) (would require installation)\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#readr",
+    "href": "01-intro/03-datasets-reveal.html#readr",
+    "title": "03-datasets",
+    "section": "readr",
+    "text": "readr\nThe readr package from the tidyverse has the ability to read in lots of different file types…so long as the data are tabular (stored in rows and columns)\n\nThe functions in readr start with read_*, where the * is filled in by the file type.\n\n\nBy far the most commonly used is read_csv()…but it can also read in other tabular data types\n\n\nHowever, if you want to read in an Excel file, you’ll need to first library(readxl). This is a package in the tidyverse, but it’s not a core package."
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#read_csv",
+    "href": "01-intro/03-datasets-reveal.html#read_csv",
+    "title": "03-datasets",
+    "section": "read_csv()",
+    "text": "read_csv()\nWhen using read_*() functions, the input is either a path to the file on your computer or a URL to the file on the Internet.\nFor example: you could run the following, to read in a CSV file with how many US births there are on a given day stroing it in the variable df using:"
+  },
+  {
+    "objectID": "01-intro/03-datasets-reveal.html#data-export",
+    "href": "01-intro/03-datasets-reveal.html#data-export",
+    "title": "03-datasets",
+    "section": "Data Export",
+    "text": "Data Export\nIt’s also possible to store your dataframe in R back to a file using write_*\nFor example:\n…would store births.csv in your current working directory"
+  },
+  {
+    "objectID": "01-intro/03-datasets.html",
+    "href": "01-intro/03-datasets.html",
+    "title": "03-datasets",
+    "section": "",
+    "text": "Dataframes\nCommon Functions\nAvailable datasets\nData Import\n\n\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n. . .\nWill also be helpful to have access to the skimr package:\n\n# install.packages('skimr')\nlibrary(skimr)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#agenda",
+    "href": "01-intro/03-datasets.html#agenda",
+    "title": "03-datasets",
+    "section": "",
+    "text": "Dataframes\nCommon Functions\nAvailable datasets\nData Import",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#setup",
+    "href": "01-intro/03-datasets.html#setup",
+    "title": "03-datasets",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n. . .\nWill also be helpful to have access to the skimr package:\n\n# install.packages('skimr')\nlibrary(skimr)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#data-sets-in-r",
+    "href": "01-intro/03-datasets.html#data-sets-in-r",
+    "title": "03-datasets",
+    "section": "Data “sets” in R",
+    "text": "Data “sets” in R\n\n“set” is in quotation marks because it is not a formal data class\nA tidy data “set” can be one of the following types:\n\ntibble\ndata.frame\n\nWe’ll often work with tibbles:\n\nreadr package (e.g. read_csv function) loads data as a tibble by default\ntibbles are part of the tidyverse, so they work well with other packages we are giong to be using\nthey make minimal assumptions about your data, so are less likely to cause hard to track bugs in your code",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#data-frames",
+    "href": "01-intro/03-datasets.html#data-frames",
+    "title": "03-datasets",
+    "section": "Data Frames",
+    "text": "Data Frames\n\nA data frame is the most commonly used data structure in R, they are list of equal length vectors. Each vector is treated as a column and elements of the vectors as rows.\nA tibble is a type of data frame that … makes your life (i.e. data analysis) easier.\nMost often a data frame will be constructed by reading in from a file, but we can create them from scratch.\n\n\ndf &lt;- tibble(x = 1:3, y = c(\"a\", \"b\", \"c\"))\ndf\n\n# A tibble: 3 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#data-frames-cont.",
+    "href": "01-intro/03-datasets.html#data-frames-cont.",
+    "title": "03-datasets",
+    "section": "Data frames (cont.)",
+    "text": "Data frames (cont.)\n\nattributes(df)\n\n$class\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n$row.names\n[1] 1 2 3\n\n$names\n[1] \"x\" \"y\"\n\n\n. . .\nColumns (variables) in data frames are accessed with $:\n\ndataframe$var_name\n\n. . .\n\nclass(df$x)  # access variable type for column\n\n[1] \"integer\"\n\nclass(df$y)  \n\n[1] \"character\"",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#functions",
+    "href": "01-intro/03-datasets.html#functions",
+    "title": "03-datasets",
+    "section": "Functions",
+    "text": "Functions\n\nFunctions are (most often) verbs, followed by what they will be applied to in parentheses.\n\n. . .\nFunctions are:\n\navailable from base R\navailable from packages you import\nable to be defined by the analyst",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#helpful-functions",
+    "href": "01-intro/03-datasets.html#helpful-functions",
+    "title": "03-datasets",
+    "section": "Helpful Functions",
+    "text": "Helpful Functions\n\nView() - to see the dataset in a new window\n\n\nView(df)\n\n. . .\n\nclass() - determine high-level variable type\n\n\nclass(df)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\n. . .\n\ndim()- determine dimensions of a df\n\n\ndim(df)\n\n[1] 3 2\n\n\n. . .\n\nstr() - display the structure of an R object\n\n\nstr(df)\n\ntibble [3 × 2] (S3: tbl_df/tbl/data.frame)\n $ x: int [1:3] 1 2 3\n $ y: chr [1:3] \"a\" \"b\" \"c\"\n\n\n. . .\n\nglimpse() - give you a summary of what’s in your data\n\n\nglimpse(df)\n\nRows: 3\nColumns: 2\n$ x &lt;int&gt; 1, 2, 3\n$ y &lt;chr&gt; \"a\", \"b\", \"c\"\n\n\n. . .\n\nnames - gives you the names of columns in data\n\n\nnames(df)\n\n[1] \"x\" \"y\"",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#available-datasets-r",
+    "href": "01-intro/03-datasets.html#available-datasets-r",
+    "title": "03-datasets",
+    "section": "Available datasets: R",
+    "text": "Available datasets: R\nMany packages have datasets that are available for use/practice.\nTo see list available:\n\nlibrary(help=datasets)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#more-popular-datasets",
+    "href": "01-intro/03-datasets.html#more-popular-datasets",
+    "title": "03-datasets",
+    "section": "More popular datasets",
+    "text": "More popular datasets\n\nlibrary(nycflights13)\nggplot2 datasets\nlibrary(palmerpenguins)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#skimr",
+    "href": "01-intro/03-datasets.html#skimr",
+    "title": "03-datasets",
+    "section": "skimr",
+    "text": "skimr\n\na packages for getting a summary of your entire dataset at once\n\n\nskim(msleep)\n\n. . .\nYou can always pull up additional documentation: ?msleep for a dataset.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#practice",
+    "href": "01-intro/03-datasets.html#practice",
+    "title": "03-datasets",
+    "section": "Practice",
+    "text": "Practice\nExplore common functions (dim, class, glimpse, str, class, names, skim, View) to understand one of the popular datasets:\n\nlibrary(help=datasets)\nlibrary(nycflights13) (would require installation)\nggplot2 datasets\nlibrary(palmerpenguins) (would require installation)\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#readr",
+    "href": "01-intro/03-datasets.html#readr",
+    "title": "03-datasets",
+    "section": "readr",
+    "text": "readr\nThe readr package from the tidyverse has the ability to read in lots of different file types…so long as the data are tabular (stored in rows and columns)\n. . .\nThe functions in readr start with read_*, where the * is filled in by the file type.\n. . .\nBy far the most commonly used is read_csv()…but it can also read in other tabular data types\n. . .\nHowever, if you want to read in an Excel file, you’ll need to first library(readxl). This is a package in the tidyverse, but it’s not a core package.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#read_csv",
+    "href": "01-intro/03-datasets.html#read_csv",
+    "title": "03-datasets",
+    "section": "read_csv()",
+    "text": "read_csv()\nWhen using read_*() functions, the input is either a path to the file on your computer or a URL to the file on the Internet.\nFor example: you could run the following, to read in a CSV file with how many US births there are on a given day stroing it in the variable df using:\n\ndf &lt;- read_csv(\"https://raw.githubusercontent.com/ShanEllis/datasets/master/births.csv\")",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/03-datasets.html#data-export",
+    "href": "01-intro/03-datasets.html#data-export",
+    "title": "03-datasets",
+    "section": "Data Export",
+    "text": "Data Export\nIt’s also possible to store your dataframe in R back to a file using write_*\nFor example:\n\nwrite_csv(df, \"births.csv\")\n\n…would store births.csv in your current working directory",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "03: Datasets"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#agenda",
+    "href": "01-intro/01-packages-reveal.html#agenda",
+    "title": "01-packages",
+    "section": "Agenda",
+    "text": "Agenda\n\nR Packages\nInstallation\nLoading"
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#r-packages-1",
+    "href": "01-intro/01-packages-reveal.html#r-packages-1",
+    "title": "01-packages",
+    "section": "R packages",
+    "text": "R packages\n\nPackages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2\n\nWickham and Bryan, R PackagesCRAN contributed packages"
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#package-installation",
+    "href": "01-intro/01-packages-reveal.html#package-installation",
+    "title": "01-packages",
+    "section": "Package Installation",
+    "text": "Package Installation\n\nPackages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)"
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#install-tidyverse",
+    "href": "01-intro/01-packages-reveal.html#install-tidyverse",
+    "title": "01-packages",
+    "section": "Install tidyverse",
+    "text": "Install tidyverse\nFor this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\n\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n^ Be sure to still run the code above in your console after typing it in your script."
+  },
+  {
+    "objectID": "01-intro/01-packages.html",
+    "href": "01-intro/01-packages.html",
+    "title": "01-packages",
+    "section": "",
+    "text": "R Packages\nInstallation\nLoading\n\n\n\n\n\nPackages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2\n\n\n\n\n\nPackages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)\n\n\ninstall.packages(\"package_name\")\nlibrary(package_name)\n\n\n\n\nFor this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n. . .\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\ninstall.packages(\"tidyverse\")\n\n. . .\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n^ Be sure to still run the code above in your console after typing it in your script.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#agenda",
+    "href": "01-intro/01-packages.html#agenda",
+    "title": "01-packages",
+    "section": "",
+    "text": "R Packages\nInstallation\nLoading",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#r-packages-1",
+    "href": "01-intro/01-packages.html#r-packages-1",
+    "title": "01-packages",
+    "section": "",
+    "text": "Packages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#package-installation",
+    "href": "01-intro/01-packages.html#package-installation",
+    "title": "01-packages",
+    "section": "",
+    "text": "Packages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)\n\n\ninstall.packages(\"package_name\")\nlibrary(package_name)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#install-tidyverse",
+    "href": "01-intro/01-packages.html#install-tidyverse",
+    "title": "01-packages",
+    "section": "",
+    "text": "For this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n. . .\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\ninstall.packages(\"tidyverse\")\n\n. . .\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n^ Be sure to still run the code above in your console after typing it in your script.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#footnotes",
+    "href": "01-intro/01-packages.html#footnotes",
+    "title": "01-packages",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWickham and Bryan, R Packages↩︎\nCRAN contributed packages↩︎",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#agenda",
+    "href": "02-data/07-tidyr-reveal.html#agenda",
+    "title": "07-tidyr",
+    "section": "Agenda",
+    "text": "Agenda\n\nTidy Data\nPivoting\nSeparating & Uniting\nJoins"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#setup",
+    "href": "02-data/07-tidyr-reveal.html#setup",
+    "title": "07-tidyr",
+    "section": "Setup",
+    "text": "Setup"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#tidy-data-1",
+    "href": "02-data/07-tidyr-reveal.html#tidy-data-1",
+    "title": "07-tidyr",
+    "section": "Tidy Data",
+    "text": "Tidy Data\nThe opinionated tidyverse is named as such b/c it assumes/necessitates your data be “tidy”.\n\n\nTidy datasets are all alike, but every messy dataset is messy in its own way. —- Hadley Wickham\n\n\n\n\nEach variable must have its own column.\nEach observation must have its own row.\nEach value must have its own cell.\n\n\n\n\nSource: https://r4ds.had.co.nz/tidy-data.html"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#common-issues",
+    "href": "02-data/07-tidyr-reveal.html#common-issues",
+    "title": "07-tidyr",
+    "section": "Common issues",
+    "text": "Common issues\n\nOne variable might be spread across multiple columns.\nOne observation might be scattered across multiple rows.\n\n\nSolution: pivoting!"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#long-vs.-wide",
+    "href": "02-data/07-tidyr-reveal.html#long-vs.-wide",
+    "title": "07-tidyr",
+    "section": "long vs. wide",
+    "text": "long vs. wide\n\nwide data contains values that do not repeat in the first column.\nlong format contains values that do repeat in the first column.\n\nBriefly:\n\nwide data: analysis\nlong data: plotting"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#pivot_longer",
+    "href": "02-data/07-tidyr-reveal.html#pivot_longer",
+    "title": "07-tidyr",
+    "section": "pivot_longer",
+    "text": "pivot_longer\nFor when some of the column names are not names of variables, but values of a variable…\n\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\n\n\n\n\n# A tibble: 6 × 3\n  country     year   cases\n  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\n\n\nNote: backticks around years"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#pivot_wider",
+    "href": "02-data/07-tidyr-reveal.html#pivot_wider",
+    "title": "07-tidyr",
+    "section": "pivot_wider",
+    "text": "pivot_wider\nFor when an observation is scattered across multiple rows…\n\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\n\n\n\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\nNote: no quotes around column names"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#practice",
+    "href": "02-data/07-tidyr-reveal.html#practice",
+    "title": "07-tidyr",
+    "section": "Practice",
+    "text": "Practice\nThe billboard dataset records the billboard rank of songs (2000)\n\n\n# A tibble: 317 × 79\n   artist     track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8\n   &lt;chr&gt;      &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 2 Pac      Baby… 2000-02-26      87    82    72    77    87    94    99    NA\n 2 2Ge+her    The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA\n 3 3 Doors D… Kryp… 2000-04-08      81    70    68    67    66    57    54    53\n 4 3 Doors D… Loser 2000-10-21      76    76    72    69    67    65    55    59\n 5 504 Boyz   Wobb… 2000-04-15      57    34    25    17    17    31    36    49\n 6 98^0       Give… 2000-08-19      51    39    34    26    26    19     2     2\n 7 A*Teens    Danc… 2000-07-08      97    97    96    95   100    NA    NA    NA\n 8 Aaliyah    I Do… 2000-01-29      84    62    51    41    38    35    35    38\n 9 Aaliyah    Try … 2000-03-18      59    53    38    28    21    18    16    14\n10 Adams, Yo… Open… 2000-08-26      76    76    74    69    68    67    61    58\n# ℹ 307 more rows\n# ℹ 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,\n#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,\n#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,\n#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,\n#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,\n#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;, …\n\n\n\nartist, track, date.entered + rank for a given week\n\n\nIf we wanted to take this wide data to long, how would we modify the provided code to accomplish this?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#separate",
+    "href": "02-data/07-tidyr-reveal.html#separate",
+    "title": "07-tidyr",
+    "section": "separate",
+    "text": "separate\nFor when multiple pieces of information are stored in a single column…\n\n\n# A tibble: 6 × 3\n  country      year rate             \n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\n\n\n\n\n# A tibble: 6 × 4\n  country      year cases  population\n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     \n1 Afghanistan  1999 745    19987071  \n2 Afghanistan  2000 2666   20595360  \n3 Brazil       1999 37737  172006362 \n4 Brazil       2000 80488  174504898 \n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\n\n\nbut…cases and population should be numeric…\n\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt;      &lt;int&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#unite",
+    "href": "02-data/07-tidyr-reveal.html#unite",
+    "title": "07-tidyr",
+    "section": "unite",
+    "text": "unite\nUnite is the opposite…it combines data stored across multiple columns.\nThe general syntax is:"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#practice-1",
+    "href": "02-data/07-tidyr-reveal.html#practice-1",
+    "title": "07-tidyr",
+    "section": "Practice",
+    "text": "Practice\nFor this section and next, we’ll read in these data…\n\n\n\n# A tibble: 18,635 × 13\n   congress chamber bioguide firstname middlename lastname  suffix birthday  \n      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;  &lt;date&gt;    \n 1       80 house   M000112  Joseph    Jefferson  Mansfield &lt;NA&gt;   1861-02-09\n 2       80 house   D000448  Robert    Lee        Doughton  &lt;NA&gt;   1863-11-07\n 3       80 house   S000001  Adolph    Joachim    Sabath    &lt;NA&gt;   1866-04-04\n 4       80 house   E000023  Charles   Aubrey     Eaton     &lt;NA&gt;   1868-03-29\n 5       80 house   L000296  William   &lt;NA&gt;       Lewis     &lt;NA&gt;   1868-09-22\n 6       80 house   G000017  James     A.         Gallagher &lt;NA&gt;   1869-01-16\n 7       80 house   W000265  Richard   Joseph     Welch     &lt;NA&gt;   1869-02-13\n 8       80 house   B000565  Sol       &lt;NA&gt;       Bloom     &lt;NA&gt;   1870-03-09\n 9       80 house   H000943  Merlin    &lt;NA&gt;       Hull      &lt;NA&gt;   1870-12-18\n10       80 house   G000169  Charles   Laceille   Gifford   &lt;NA&gt;   1871-03-15\n# ℹ 18,625 more rows\n# ℹ 5 more variables: state &lt;chr&gt;, party &lt;chr&gt;, incumbent &lt;chr&gt;,\n#   termstart &lt;date&gt;, age &lt;dbl&gt;\n\n\n\n\nFor now, what if we wanted a single column with the first, middle, and last name of each cogressperson?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#joins-1",
+    "href": "02-data/07-tidyr-reveal.html#joins-1",
+    "title": "07-tidyr",
+    "section": "Joins",
+    "text": "Joins\nIf we look at table4a, it’s missing the population information. That’s stored in a separate table…table4b\n\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583\n\n\n…which is also in the “wide” format\n\n…so we pivot both tables longer\n\n\n# A tibble: 6 × 3\n  country     year  population\n  &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt;\n1 Afghanistan 1999    19987071\n2 Afghanistan 2000    20595360\n3 Brazil      1999   172006362\n4 Brazil      2000   174504898\n5 China       1999  1272915272\n6 China       2000  1280428583\n\n\n\n\n…but how do we get them into a single tidy dataset?\n\n\nA join!\n\n\n# A tibble: 6 × 4\n  country     year   cases population\n  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan 1999     745   19987071\n2 Afghanistan 2000    2666   20595360\n3 Brazil      1999   37737  172006362\n4 Brazil      2000   80488  174504898\n5 China       1999  212258 1272915272\n6 China       2000  213766 1280428583\n\n\nSource: R4DS"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#the-data-nycflights13",
+    "href": "02-data/07-tidyr-reveal.html#the-data-nycflights13",
+    "title": "07-tidyr",
+    "section": "The Data: nycflights13",
+    "text": "The Data: nycflights13\n\nairlines : links airline to two letter code\nairports : ID’ed by FAA code\nplanes : ID’ed by tailnum\nairport : weather each hour; id’ed by two letter airport code\n\n\n\n\n\nImage Source: https://r4ds.had.co.nz/relational-data.html)\n\n\n\n\n\nflights connects to planes via a single variable, tailnum.\nflights connects to airlines through the carrier variable.\nflights connects to airports in two ways: via the origin and dest variables.\nflights connects to weather via origin (the location), and year, month, day and hour (the time)."
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#mutating-joins",
+    "href": "02-data/07-tidyr-reveal.html#mutating-joins",
+    "title": "07-tidyr",
+    "section": "Mutating Joins",
+    "text": "Mutating Joins\nmutating joins - add new variables to a data frame from matching observations in another\n\nFor simplicity, we’ll work with only a handful of columns…\n\n\n# A tibble: 336,776 × 7\n    year month   day  hour tailnum carrier name                    \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                   \n 1  2013     1     1     5 N14228  UA      United Air Lines Inc.   \n 2  2013     1     1     5 N24211  UA      United Air Lines Inc.   \n 3  2013     1     1     5 N619AA  AA      American Airlines Inc.  \n 4  2013     1     1     5 N804JB  B6      JetBlue Airways         \n 5  2013     1     1     6 N668DN  DL      Delta Air Lines Inc.    \n 6  2013     1     1     5 N39463  UA      United Air Lines Inc.   \n 7  2013     1     1     6 N516JB  B6      JetBlue Airways         \n 8  2013     1     1     6 N829AS  EV      ExpressJet Airlines Inc.\n 9  2013     1     1     6 N593JB  B6      JetBlue Airways         \n10  2013     1     1     6 N3ALAA  AA      American Airlines Inc.  \n# ℹ 336,766 more rows\n\n\nThere is now a new column name…coming from the airlines data frame.\n\n\nleft_join:\n\nkeeps all rows in first df (here: flights)\nadds all matching information from second df (here: airlines); adds NAs for any observations not in airlines\n\n\n\nOther joins:\nright_join: keeps all observations in second df full_join: keeps all observations in either df\n\n\n\n\n\nImage Source: https://r4ds.had.co.nz/relational-data.html\n\n\n\n\ninner_join:\n\ntakes only rows in both dfs\n\n\n\n\nImage Source: https://r4ds.had.co.nz/relational-data.html"
+  },
+  {
+    "objectID": "02-data/07-tidyr-reveal.html#practice-2",
+    "href": "02-data/07-tidyr-reveal.html#practice-2",
+    "title": "07-tidyr",
+    "section": "Practice",
+    "text": "Practice\nAbove we read in some data, but to remind ourselves:\n\n\n# A tibble: 18,635 × 13\n   congress chamber bioguide firstname middlename lastname  suffix birthday  \n      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;  &lt;date&gt;    \n 1       80 house   M000112  Joseph    Jefferson  Mansfield &lt;NA&gt;   1861-02-09\n 2       80 house   D000448  Robert    Lee        Doughton  &lt;NA&gt;   1863-11-07\n 3       80 house   S000001  Adolph    Joachim    Sabath    &lt;NA&gt;   1866-04-04\n 4       80 house   E000023  Charles   Aubrey     Eaton     &lt;NA&gt;   1868-03-29\n 5       80 house   L000296  William   &lt;NA&gt;       Lewis     &lt;NA&gt;   1868-09-22\n 6       80 house   G000017  James     A.         Gallagher &lt;NA&gt;   1869-01-16\n 7       80 house   W000265  Richard   Joseph     Welch     &lt;NA&gt;   1869-02-13\n 8       80 house   B000565  Sol       &lt;NA&gt;       Bloom     &lt;NA&gt;   1870-03-09\n 9       80 house   H000943  Merlin    &lt;NA&gt;       Hull      &lt;NA&gt;   1870-12-18\n10       80 house   G000169  Charles   Laceille   Gifford   &lt;NA&gt;   1871-03-15\n# ℹ 18,625 more rows\n# ℹ 5 more variables: state &lt;chr&gt;, party &lt;chr&gt;, incumbent &lt;chr&gt;,\n#   termstart &lt;date&gt;, age &lt;dbl&gt;\n\n\n\n\n# A tibble: 116 × 2\n   congress  year\n      &lt;dbl&gt; &lt;dbl&gt;\n 1        1  1790\n 2        2  1792\n 3        3  1794\n 4        4  1796\n 5        5  1798\n 6        6  1800\n 7        7  1802\n 8        8  1804\n 9        9  1806\n10       10  1808\n# ℹ 106 more rows\n\n\n\nWhat if we wanted to include the congress year from congress_years into congress_terms? How would we accomplish that goal?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "02-data/07-tidyr.html",
+    "href": "02-data/07-tidyr.html",
+    "title": "07-tidyr",
+    "section": "",
+    "text": "Tidy Data\nPivoting\nSeparating & Uniting\nJoins\n\n\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#agenda",
+    "href": "02-data/07-tidyr.html#agenda",
+    "title": "07-tidyr",
+    "section": "",
+    "text": "Tidy Data\nPivoting\nSeparating & Uniting\nJoins",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#setup",
+    "href": "02-data/07-tidyr.html#setup",
+    "title": "07-tidyr",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#tidy-data-1",
+    "href": "02-data/07-tidyr.html#tidy-data-1",
+    "title": "07-tidyr",
+    "section": "Tidy Data",
+    "text": "Tidy Data\nThe opinionated tidyverse is named as such b/c it assumes/necessitates your data be “tidy”.\n. . .\n\nTidy datasets are all alike, but every messy dataset is messy in its own way. —- Hadley Wickham\n\n. . .\n\nEach variable must have its own column.\nEach observation must have its own row.\nEach value must have its own cell.\n\n\n\nSource: https://r4ds.had.co.nz/tidy-data.html",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#common-issues",
+    "href": "02-data/07-tidyr.html#common-issues",
+    "title": "07-tidyr",
+    "section": "Common issues",
+    "text": "Common issues\n\nOne variable might be spread across multiple columns.\nOne observation might be scattered across multiple rows.\n\n. . .\nSolution: pivoting!",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#long-vs.-wide",
+    "href": "02-data/07-tidyr.html#long-vs.-wide",
+    "title": "07-tidyr",
+    "section": "long vs. wide",
+    "text": "long vs. wide\n\nwide data contains values that do not repeat in the first column.\nlong format contains values that do repeat in the first column.\n\nBriefly:\n\nwide data: analysis\nlong data: plotting",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#pivot_longer",
+    "href": "02-data/07-tidyr.html#pivot_longer",
+    "title": "07-tidyr",
+    "section": "pivot_longer",
+    "text": "pivot_longer\nFor when some of the column names are not names of variables, but values of a variable…\n\ntable4a\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\n\n. . .\n\ntable4a |&gt; \n  pivot_longer(c(`1999`, `2000`), \n               names_to = \"year\", \n               values_to = \"cases\")\n\n# A tibble: 6 × 3\n  country     year   cases\n  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\n. . .\nNote: backticks around years",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#pivot_wider",
+    "href": "02-data/07-tidyr.html#pivot_wider",
+    "title": "07-tidyr",
+    "section": "pivot_wider",
+    "text": "pivot_wider\nFor when an observation is scattered across multiple rows…\n\ntable2\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\n\n. . .\n\ntable2 |&gt;\n    pivot_wider(names_from = type, \n                values_from = count)\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\nNote: no quotes around column names",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#practice",
+    "href": "02-data/07-tidyr.html#practice",
+    "title": "07-tidyr",
+    "section": "Practice",
+    "text": "Practice\nThe billboard dataset records the billboard rank of songs (2000)\n\nbillboard\n\n# A tibble: 317 × 79\n   artist     track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8\n   &lt;chr&gt;      &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 2 Pac      Baby… 2000-02-26      87    82    72    77    87    94    99    NA\n 2 2Ge+her    The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA\n 3 3 Doors D… Kryp… 2000-04-08      81    70    68    67    66    57    54    53\n 4 3 Doors D… Loser 2000-10-21      76    76    72    69    67    65    55    59\n 5 504 Boyz   Wobb… 2000-04-15      57    34    25    17    17    31    36    49\n 6 98^0       Give… 2000-08-19      51    39    34    26    26    19     2     2\n 7 A*Teens    Danc… 2000-07-08      97    97    96    95   100    NA    NA    NA\n 8 Aaliyah    I Do… 2000-01-29      84    62    51    41    38    35    35    38\n 9 Aaliyah    Try … 2000-03-18      59    53    38    28    21    18    16    14\n10 Adams, Yo… Open… 2000-08-26      76    76    74    69    68    67    61    58\n# ℹ 307 more rows\n# ℹ 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,\n#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,\n#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,\n#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,\n#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,\n#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;, …\n\n\n\nartist, track, date.entered + rank for a given week\n\n. . .\nIf we wanted to take this wide data to long, how would we modify the provided code to accomplish this?\n\nbillboard |&gt; \n  ____________(\n    cols = starts_with(\"__\"), \n    names_to = \"_____\", \n    values_to = \"_____\"\n  )\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#separate",
+    "href": "02-data/07-tidyr.html#separate",
+    "title": "07-tidyr",
+    "section": "separate",
+    "text": "separate\nFor when multiple pieces of information are stored in a single column…\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\n\n. . .\n\ntable3 |&gt; \n  separate(rate, into = c(\"cases\", \"population\"))\n\n# A tibble: 6 × 4\n  country      year cases  population\n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     \n1 Afghanistan  1999 745    19987071  \n2 Afghanistan  2000 2666   20595360  \n3 Brazil       1999 37737  172006362 \n4 Brazil       2000 80488  174504898 \n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\n. . .\nbut…cases and population should be numeric…\n\ntable3 |&gt; \n  separate(rate, into = c(\"cases\", \"population\"), convert = TRUE)\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt;      &lt;int&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#unite",
+    "href": "02-data/07-tidyr.html#unite",
+    "title": "07-tidyr",
+    "section": "unite",
+    "text": "unite\nUnite is the opposite…it combines data stored across multiple columns.\nThe general syntax is:\n\ndf |&gt;\n  unite(new_col, first_col, second_col)",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#practice-1",
+    "href": "02-data/07-tidyr.html#practice-1",
+    "title": "07-tidyr",
+    "section": "Practice",
+    "text": "Practice\nFor this section and next, we’ll read in these data…\n\ncongress_terms &lt;- read_csv('https://raw.githubusercontent.com/ShanEllis/datasets/master/congress-terms.csv')\ncongress_years &lt;- read_csv('https://raw.githubusercontent.com/ShanEllis/datasets/master/congress_years.csv')\n\n. . .\n\ncongress_terms\n\n# A tibble: 18,635 × 13\n   congress chamber bioguide firstname middlename lastname  suffix birthday  \n      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;  &lt;date&gt;    \n 1       80 house   M000112  Joseph    Jefferson  Mansfield &lt;NA&gt;   1861-02-09\n 2       80 house   D000448  Robert    Lee        Doughton  &lt;NA&gt;   1863-11-07\n 3       80 house   S000001  Adolph    Joachim    Sabath    &lt;NA&gt;   1866-04-04\n 4       80 house   E000023  Charles   Aubrey     Eaton     &lt;NA&gt;   1868-03-29\n 5       80 house   L000296  William   &lt;NA&gt;       Lewis     &lt;NA&gt;   1868-09-22\n 6       80 house   G000017  James     A.         Gallagher &lt;NA&gt;   1869-01-16\n 7       80 house   W000265  Richard   Joseph     Welch     &lt;NA&gt;   1869-02-13\n 8       80 house   B000565  Sol       &lt;NA&gt;       Bloom     &lt;NA&gt;   1870-03-09\n 9       80 house   H000943  Merlin    &lt;NA&gt;       Hull      &lt;NA&gt;   1870-12-18\n10       80 house   G000169  Charles   Laceille   Gifford   &lt;NA&gt;   1871-03-15\n# ℹ 18,625 more rows\n# ℹ 5 more variables: state &lt;chr&gt;, party &lt;chr&gt;, incumbent &lt;chr&gt;,\n#   termstart &lt;date&gt;, age &lt;dbl&gt;\n\n\n. . .\nFor now, what if we wanted a single column with the first, middle, and last name of each cogressperson?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#joins-1",
+    "href": "02-data/07-tidyr.html#joins-1",
+    "title": "07-tidyr",
+    "section": "Joins",
+    "text": "Joins\nIf we look at table4a, it’s missing the population information. That’s stored in a separate table…table4b\n\ntable4b\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583\n\n\n…which is also in the “wide” format\n. . .\n…so we pivot both tables longer\n\ntidy4a &lt;- table4a |&gt; \n  pivot_longer(c(`1999`, `2000`), names_to = \"year\", values_to = \"cases\")\n\ntidy4b &lt;- table4b |&gt; \n  pivot_longer(c(`1999`, `2000`), names_to = \"year\", values_to = \"population\")\n\ntidy4b\n\n# A tibble: 6 × 3\n  country     year  population\n  &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt;\n1 Afghanistan 1999    19987071\n2 Afghanistan 2000    20595360\n3 Brazil      1999   172006362\n4 Brazil      2000   174504898\n5 China       1999  1272915272\n6 China       2000  1280428583\n\n\n. . .\n…but how do we get them into a single tidy dataset?\n. . .\nA join!\n\nleft_join(tidy4a, tidy4b)\n\nJoining with `by = join_by(country, year)`\n\n\n# A tibble: 6 × 4\n  country     year   cases population\n  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan 1999     745   19987071\n2 Afghanistan 2000    2666   20595360\n3 Brazil      1999   37737  172006362\n4 Brazil      2000   80488  174504898\n5 China       1999  212258 1272915272\n6 China       2000  213766 1280428583\n\n\nSource: R4DS",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#the-data-nycflights13",
+    "href": "02-data/07-tidyr.html#the-data-nycflights13",
+    "title": "07-tidyr",
+    "section": "The Data: nycflights13",
+    "text": "The Data: nycflights13\n\nlibrary(nycflights13)\n\n\nairlines : links airline to two letter code\nairports : ID’ed by FAA code\nplanes : ID’ed by tailnum\nairport : weather each hour; id’ed by two letter airport code\n\n. . .\n\n\n\nImage Source: https://r4ds.had.co.nz/relational-data.html)\n\n\n. . .\n\nflights connects to planes via a single variable, tailnum.\nflights connects to airlines through the carrier variable.\nflights connects to airports in two ways: via the origin and dest variables.\nflights connects to weather via origin (the location), and year, month, day and hour (the time).",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#mutating-joins",
+    "href": "02-data/07-tidyr.html#mutating-joins",
+    "title": "07-tidyr",
+    "section": "Mutating Joins",
+    "text": "Mutating Joins\nmutating joins - add new variables to a data frame from matching observations in another\n. . .\nFor simplicity, we’ll work with only a handful of columns…\n\nflights |&gt; \n  select(year:day, hour, tailnum, carrier) |&gt; \n  left_join(airlines, by = \"carrier\")\n\n# A tibble: 336,776 × 7\n    year month   day  hour tailnum carrier name                    \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                   \n 1  2013     1     1     5 N14228  UA      United Air Lines Inc.   \n 2  2013     1     1     5 N24211  UA      United Air Lines Inc.   \n 3  2013     1     1     5 N619AA  AA      American Airlines Inc.  \n 4  2013     1     1     5 N804JB  B6      JetBlue Airways         \n 5  2013     1     1     6 N668DN  DL      Delta Air Lines Inc.    \n 6  2013     1     1     5 N39463  UA      United Air Lines Inc.   \n 7  2013     1     1     6 N516JB  B6      JetBlue Airways         \n 8  2013     1     1     6 N829AS  EV      ExpressJet Airlines Inc.\n 9  2013     1     1     6 N593JB  B6      JetBlue Airways         \n10  2013     1     1     6 N3ALAA  AA      American Airlines Inc.  \n# ℹ 336,766 more rows\n\n\nThere is now a new column name…coming from the airlines data frame.\n. . .\nleft_join:\n\nkeeps all rows in first df (here: flights)\nadds all matching information from second df (here: airlines); adds NAs for any observations not in airlines\n\n. . .\nOther joins:\nright_join: keeps all observations in second df full_join: keeps all observations in either df\n. . .\n\n\n\nImage Source: https://r4ds.had.co.nz/relational-data.html\n\n\n. . .\ninner_join:\n\ntakes only rows in both dfs\n\n\n\n\nImage Source: https://r4ds.had.co.nz/relational-data.html",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  },
+  {
+    "objectID": "02-data/07-tidyr.html#practice-2",
+    "href": "02-data/07-tidyr.html#practice-2",
+    "title": "07-tidyr",
+    "section": "Practice",
+    "text": "Practice\nAbove we read in some data, but to remind ourselves:\n\ncongress_terms\n\n# A tibble: 18,635 × 13\n   congress chamber bioguide firstname middlename lastname  suffix birthday  \n      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;  &lt;date&gt;    \n 1       80 house   M000112  Joseph    Jefferson  Mansfield &lt;NA&gt;   1861-02-09\n 2       80 house   D000448  Robert    Lee        Doughton  &lt;NA&gt;   1863-11-07\n 3       80 house   S000001  Adolph    Joachim    Sabath    &lt;NA&gt;   1866-04-04\n 4       80 house   E000023  Charles   Aubrey     Eaton     &lt;NA&gt;   1868-03-29\n 5       80 house   L000296  William   &lt;NA&gt;       Lewis     &lt;NA&gt;   1868-09-22\n 6       80 house   G000017  James     A.         Gallagher &lt;NA&gt;   1869-01-16\n 7       80 house   W000265  Richard   Joseph     Welch     &lt;NA&gt;   1869-02-13\n 8       80 house   B000565  Sol       &lt;NA&gt;       Bloom     &lt;NA&gt;   1870-03-09\n 9       80 house   H000943  Merlin    &lt;NA&gt;       Hull      &lt;NA&gt;   1870-12-18\n10       80 house   G000169  Charles   Laceille   Gifford   &lt;NA&gt;   1871-03-15\n# ℹ 18,625 more rows\n# ℹ 5 more variables: state &lt;chr&gt;, party &lt;chr&gt;, incumbent &lt;chr&gt;,\n#   termstart &lt;date&gt;, age &lt;dbl&gt;\n\n\n\n#includes election years\ncongress_years\n\n# A tibble: 116 × 2\n   congress  year\n      &lt;dbl&gt; &lt;dbl&gt;\n 1        1  1790\n 2        2  1792\n 3        3  1794\n 4        4  1796\n 5        5  1798\n 6        6  1800\n 7        7  1802\n 8        8  1804\n 9        9  1806\n10       10  1808\n# ℹ 106 more rows\n\n\n. . .\nWhat if we wanted to include the congress year from congress_years into congress_terms? How would we accomplish that goal?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "07: `tidyr`"
+    ]
+  }
+]

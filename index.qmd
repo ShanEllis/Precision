@@ -1,0 +1,46 @@
+---
+title: "Precision Diagnostics"
+
+format: 
+  html: default
+---
+
+# Plan for R Training
+
+## Prior to training:
+
+- [Install R and RStudio](https://posit.co/download/rstudio-desktop/)
+- Alternative (if any issues in installation) | [https://posit.cloud/](https://posit.cloud/
+)  
+
+## Day 01: May 10th
+
+### Topic 1 | Introduction to R and RStudio
+
+- RStudio Tour
+- R Basics | Variables and operators
+- R Packages
+- Datasets in R
+- R Markdown & quarto
+
+### Topic 2 | working with data in R
+
+- Introduction to the `tidyverse`
+- `dplyr` | common operations & pipes
+- `tidyr` | common data manipulations
+
+## Day 02: May 17th
+
+### Topic 3 | Visualizing data in R
+- Introduce the grammar of graphics
+- `ggplot2` | making visuals in R
+- Customizing visualizations in R
+- tables in R
+
+### Topic 4 | Getting comfortable in R
+
+- Putting it all together with a mini case study
+  - Cleaning and wrangling data
+  - Exploring data
+  - Analyzing data
+  - Visualizing results

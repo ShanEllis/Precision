@@ -1,0 +1,52 @@
+project:
+  type: website
+
+website:
+  title: "R Training: Precision Diagnostics"
+  navbar:
+    background: "#e4282e"
+  page-footer:
+      background: "#e4282e"
+      # right:
+      # - text: "License"
+        # href: LICENSE.md
+
+
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Topic 1: Intro to R"
+        contents:
+        - text: "00: R & RStudio"
+          href: 01-intro/00-tour.qmd
+        - text: "01: Packages"
+          href: 01-intro/01-packages.qmd
+        - text: "02: R Basics"
+          href: 01-intro/02-basics.qmd
+        - text: "03: Datasets"
+          href: 01-intro/03-datasets.qmd
+        - text: "04: Documents"
+          href: 01-intro/04-documents.qmd
+      - section: "Topic 2: Working with Data"
+        contents:
+        - text: "05: The `tidyverse`"
+          href: 02-data/05-tidyverse.qmd
+        - text: "06: `dplyr`"
+          href: 02-data/06-dplyr.qmd
+        - text: "07: `tidyr`"
+          href: 02-data/07-tidyr.qmd
+
+
+format:
+  html:
+    toc: true
+    theme: material
+    css: styles.css
+  revealjs:
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    scrollable: true
+
+editor: visual

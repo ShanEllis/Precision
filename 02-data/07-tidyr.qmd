@@ -1,0 +1,316 @@
+---
+title: "07-tidyr"
+
+format:
+  html: default
+  revealjs:
+    output-file: 07-tidyr-reveal.html
+---
+
+# `tidyr` | Creating tidy data {background-color="#e4282e"}
+
+## Agenda
+
+1. Tidy Data
+2. Pivoting
+3. Separating & Uniting
+4. Joins
+
+## Setup
+
+```{r}
+library(tidyverse)
+```
+
+```{r, include=FALSE}
+library(DT)
+```
+
+# Tidy Data {background-color="#e4282e"}
+
+## Tidy Data
+
+The opinionated `tidyverse` is named as such b/c it assumes/necessitates your data be "tidy".
+
+. . .
+
+> Tidy datasets are all alike, but every messy dataset is messy in its own way. ---- Hadley Wickham
+
+. . .
+
+1.  Each variable must have its own column.
+2.  Each observation must have its own row.
+3.  Each value must have its own cell.
+
+::: aside
+Source: https://r4ds.had.co.nz/tidy-data.html
+:::
+
+
+## Common issues
+
+-   One variable might be spread across multiple columns.
+-   One observation might be scattered across multiple rows.
+
+. . .
+
+Solution: pivoting!
+
+# Pivoting {background-color="#e4282e"}
+
+## long vs. wide
+
+-   **wide** data contains values that do not repeat in the first column.
+-   **long** format contains values that do repeat in the first column.
+
+Briefly:
+
+-   wide data: analysis
+-   long data: plotting
+
+## `pivot_longer`
+
+For when some of the column names are not names of variables, but values of a variable...
+
+```{r}
+table4a
+```
+
+. . . 
+
+```{r}
+table4a |> 
+  pivot_longer(c(`1999`, `2000`), 
+               names_to = "year", 
+               values_to = "cases")
+```
+
+. . . 
+
+*Note*: backticks around years
+
+## `pivot_wider`
+
+For when an observation is scattered across multiple rows...
+
+```{r}
+table2
+```
+
+. . . 
+
+```{r}
+table2 |>
+    pivot_wider(names_from = type, 
+                values_from = count)
+```
+
+*Note*: no quotes around column names
+
+## Practice
+
+The billboard dataset records the billboard rank of songs (2000)
+
+```{r}
+billboard
+```
+
+- `artist`, `track`, `date.entered` + rank for a given week
+
+. . . 
+
+If we wanted to take this wide data to long, how would we modify the provided code to accomplish this?
+
+```{r, eval=FALSE}
+billboard |> 
+  ____________(
+    cols = starts_with("__"), 
+    names_to = "_____", 
+    values_to = "_____"
+  )
+```
+
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+
+# Separating & Uniting {background-color="#e4282e"}
+
+## `separate`
+
+For when multiple pieces of information are stored in a single column...
+
+```{r}
+table3
+```
+
+. . . 
+
+```{r}
+table3 |> 
+  separate(rate, into = c("cases", "population"))
+```
+
+. . . 
+
+but...cases and population should be numeric...
+
+```{r}
+table3 |> 
+  separate(rate, into = c("cases", "population"), convert = TRUE)
+```
+
+## `unite`
+
+Unite is the opposite...it combines data stored across multiple columns.
+
+The general syntax is:
+
+```{r, eval=FALSE}
+df |>
+  unite(new_col, first_col, second_col)
+```
+
+## Practice
+
+For this section and next, we'll read in these data...
+
+```{r, message=FALSE}
+congress_terms <- read_csv('https://raw.githubusercontent.com/ShanEllis/datasets/master/congress-terms.csv')
+congress_years <- read_csv('https://raw.githubusercontent.com/ShanEllis/datasets/master/congress_years.csv')
+```
+
+. . . 
+
+```{r}
+congress_terms
+```
+
+. . . 
+
+For now, what if we wanted a single column with the first, middle, and last name of each cogressperson?
+
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+
+# Joins {background-color="#e4282e"}
+
+## Joins 
+
+If we look at `table4a`, it's missing the population information. That's stored in a separate table...`table4b`
+
+```{r}
+table4b
+```
+
+...which is also in the "wide" format
+
+. . .
+
+...so we pivot both tables longer
+
+```{r}
+tidy4a <- table4a |> 
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
+
+tidy4b <- table4b |> 
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population")
+
+tidy4b
+```
+
+. . .
+
+...but how do we get them into a single tidy dataset?
+
+. . .
+
+A join!
+
+```{r}
+left_join(tidy4a, tidy4b)
+```
+
+Source: [R4DS](https://r4ds.had.co.nz/relational-data.html)
+
+## The Data: `nycflights13` {.smaller}
+
+```{r}
+library(nycflights13)
+```
+
+-   `airlines` : links airline to two letter code
+-   `airports` : ID'ed by FAA code
+-   `planes` : ID'ed by tailnum
+-   `airport` : weather each hour; id'ed by two letter airport code
+
+. . .
+
+![Image Source: [https://r4ds.had.co.nz/relational-data.html)](https://r4ds.had.co.nz/relational-data.html)](images/relational-nycflights.png)
+
+. . .
+
+-   `flights` connects to `planes` via a single variable, `tailnum`.
+
+-   `flights` connects to `airlines` through the `carrier` variable.
+
+-   `flights` connects to `airports` in two ways: via the `origin` and `dest` variables.
+
+-   `flights` connects to `weather` via `origin` (the location), and `year`, `month`, `day` and `hour` (the time).
+
+## Mutating Joins
+
+**mutating joins** - add new variables to a data frame from matching observations in another
+
+. . .
+
+For simplicity, we'll work with only a handful of columns...
+
+```{r}
+flights |> 
+  select(year:day, hour, tailnum, carrier) |> 
+  left_join(airlines, by = "carrier")
+```
+
+There is now a new column `name`...coming from the `airlines` data frame.
+
+. . .
+
+**`left_join`**:
+
+-   keeps all rows in first df (here: `flights`)
+-   adds all matching information from second df (here: `airlines`); adds NAs for any observations not in `airlines`
+
+. . .
+
+Other joins:
+
+**`right_join`**: keeps all observations in second df **`full_join`**: keeps all observations in either df
+
+. . .
+
+![Image Source: <https://r4ds.had.co.nz/relational-data.html>](images/join-outer.png)
+
+. . .
+
+**`inner_join`**:
+
+-   takes only rows in *both* dfs
+
+![Image Source: <https://r4ds.had.co.nz/relational-data.html>](images/join-inner.png)
+
+## Practice
+
+Above we read in some data, but to remind ourselves: 
+
+```{r}
+congress_terms
+```
+
+```{r}
+#includes election years
+congress_years
+```
+
+. . . 
+
+What if we wanted to include the congress `year` from `congress_years` into `congress_terms`? How would we accomplish that goal?
+
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.

@@ -1,0 +1,257 @@
+---
+title: "01-basics"
+
+format:
+  html: default
+  revealjs:
+    output-file: 01-basics-reveal.html
+---
+
+# R Basics: Variables & Operators {background-color="#e4282e"}
+
+## Agenda
+
+1.  Variables
+2.  Operators
+3.  Code Style 
+
+
+## Setup
+
+```{r}
+library(tidyverse)
+```
+
+
+# Variables & Assignment {background-color="#e4282e"}
+
+## Variables & Assignment
+
+Variables are how we store information so that we can access it later.
+
+. . .
+
+Variables are created and stored using the assignment operator `<-`
+
+```{r}
+first_variable <- 3
+```
+
+The above stores the value 3 in the variable `first_variable`
+
+. . .
+
+Note: Other programming languages use `=` for assignment. R *also* uses that for assignment, but it is more typical to see `<-` in R code, so we'll stick with that.
+
+. . .
+
+This means that if we ever want to reference the information stored in that variable later, we can "call" (mean, type in our code) the variable's name:
+
+```{r}
+first_variable
+```
+
+## Variable Type
+
+-   Every variable you create in R will be of a specific type.
+
+. . .
+
+-   The type of the variable is determined dynamically on assignment.
+
+. . .
+
+-   Determining the type of a variable with `class()`:
+
+```{r}
+class(first_variable)
+```
+
+## Basic Variable Types
+
+| Variable Type | Explanation                       | Example                                     |
+|-------------------|-----------------------|-------------------------------|
+| character     | stores a string                   | `"cogs137"`, `"hi!"`                        |
+| numeric       | stores whole numbers and decimals | `9`, `9.29`                                 |
+| logical       | Booleans                          | `TRUE`, `FALSE`                             |
+| vector          | store multiple elements           | `c(7, 8, 9)`                        |
+
+Note: There are many more. We'll get to some but not all in this training
+
+## logical & character
+
+**logical** - Boolean values `TRUE` and `FALSE`
+
+```{r}
+class(TRUE)
+```
+
+. . .
+
+**character** - character strings
+
+```{r}
+class("hello")
+class('precision') # equivalent...but we'll use double quotes!
+```
+
+. . .
+
+## numeric
+
+**double** - floating point numerical values (default numerical type)
+
+```{r}
+class(1.335)
+class(7)
+```
+
+## vectors
+
+**vector** - one way to store multiple values in a single variable:
+
+```{r}
+my_vec <- c(1, 2, 3)
+```
+
+## Aside: Missing Values
+
+A note: R uses `NA` to represent missing values in its data structures.
+
+```{r}
+class(NA)
+```
+
+## Coercion
+
+R is a dynamically typed language.
+
+This means:
+- R makes its best guess as how to store information
+- but you can always force a variable to be of the preferred type:
+
+```{r}
+my_vec
+```
+. . .
+
+```{r}
+class(my_vec)
+```
+
+. . .
+
+Convert to character
+
+```{r}
+my_char <- as.character(my_vec)
+```
+
+. . . 
+```{r}
+class(my_char)
+```
+
+. . .
+
+```{r}
+my_char
+```
+
+## Practice
+
+In your RScript file: Define variables of each of the following types: character, numeric, logical, vector
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+
+# Operators {background-color="#e4282e"}
+
+## Operators
+
+At its simplest, R is a calculator. To carry out mathematical operations, R uses **operators**.
+
+## Arithmetic Operators
+
+| Operator    | Description                   |
+|-------------|-------------------------------|
+| `+`         | addition                      |
+| `-`         | subtraction                   |
+| `*`         | multiplication                |
+| `/`         | division                      |
+| `^` or `**` | exponentiation                |
+| `x %% y`    | modulus (x mod y) `9%%2` is 1 |
+| `x %/% y`   | integer division `9%/%2` is 4 |
+
+## Arithmetic Operators: Examples
+
+```{r}
+7 + 6  
+2 - 3
+4 * 2
+9 / 2
+```
+
+## Reminder
+
+Output can be stored to a variable
+
+```{r}
+my_addition <- 7 + 6
+```
+
+. . .
+
+```{r}
+my_addition
+```
+
+## Comparison Operators
+
+These operators return a Boolean.
+
+| Operator | Description              |
+|----------|--------------------------|
+| `<`      | less than                |
+| `<=`     | less than or equal to    |
+| `>`      | greater than             |
+| `>=`     | greater than or equal to |
+| `==`     | exactly equal to         |
+| `!=`     | not equal to             |
+
+## Comparison Operators: Examples
+
+```{r}
+4 < 12
+4 >= 3
+6 == 6
+7 != 6
+```
+
+## Practice
+
+Use arithmetic and comparison operators to store the value 30 in the variable `var_30` and `TRUE` in the variable `true_var`.
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+
+# Code Style {background-color="#e4282e"}
+
+## Code Style 
+
+- typically variables should use snake_case (all lowercase with `_` to separate words)
+- Long, descriptive variable names are better than short, uninformative names
+- Put spaces around the assignment operator (`<-`)
+- Spaces on either side of mathematical operators apart from `^`
+
+
+Good code style: 
+```{r, eval=FALSE}
+participants_heights <- c(65, 72, 58, 60)
+participants_heights <= 60
+```
+

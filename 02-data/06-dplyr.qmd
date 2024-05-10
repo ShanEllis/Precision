@@ -1,0 +1,509 @@
+---
+title: "06-dplyr"
+
+format:
+  html: default
+  revealjs:
+    output-file: 06-dplyr-reveal.html
+---
+
+# `dplyr` | Common data operations {background-color="#e4282e"}
+
+## Agenda
+
+`dplyr`
+
+1. philosophy
+2. common operations
+3. Practice!
+
+## Setup
+ 
+```{r}
+library(tidyverse)
+```
+
+
+## Philosophy
+
+> `dplyr` is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges
+
+::: aside
+Source: [dplyr.tidyverse.org](https://dplyr.tidyverse.org/)
+:::
+
+# Data {background-color="#e4282e"}
+
+## NC DOT Fatal Crashes in North Carolina
+
+To get practice with common data manipulations, we'll use data from OpenDurham's Data Portal.
+
+. . . 
+
+To do so, we'll read the file into R, using the function `read_csv2`:
+
+```{r load-data-fake, message=FALSE}
+bike <- read_csv2("https://raw.githubusercontent.com/COGS137/datasets/main/nc_bike_crash.csv",
+                  na = c("NA", "", "."))
+```
+
+. . . 
+
+Note: here we're using a file called `read_csv2`. This is used for datasets that use ; for the separator and , for the decimal place (common in some European countries). `read_csv()` will be used more commonly.
+
+## Practice
+
+Read the dataset in and determine how many observations and variables there are in the `bike` dataset.
+
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+## Variables
+
+View the names of variables via:
+
+```{r}
+names(bike)
+```
+
+## Viewing your data
+
+-   In the Environment, click on the name of the data frame to view it in the data viewer (or use the `View` function)
+
+. . . 
+
+-   Use the `glimpse` function to take a peek
+
+```{r}
+glimpse(bike)
+```
+
+. . . 
+
+- Use the `skim` function to get a sense of the data we have
+
+```{r, eval=FALSE}
+skim(bike)
+```
+
+
+# `dplyr` {background-color="#e4282e"}
+
+## A Grammar of Data Manipulation {.smaller .scrollable}
+
+**dplyr** is based on the concepts of functions as verbs that manipulate data frames.
+
+Single data frame functions / verbs:
+
+-   `filter`: pick rows matching criteria
+-   `slice`: pick rows using index(es)
+-   `select`: pick columns by name
+-   `rename`: rename specific columns
+-   `arrange`: reorder rows
+-   `mutate`: add new variables
+-   `case_when`: for conditional assignment
+-   `distinct`: filter for unique rows
+-   `group_by`: for carrying out operations within groups of data
+-   `summarize`: reduce variables to values
+-   ... (many more)
+
+## **`dplyr`** rules for functions
+
+1.  First argument is *always* a data frame
+
+2.  Subsequent arguments say what to do with that data frame
+
+3.  Always return a data frame
+
+4.  Do not modify in place
+
+5.  Performance via lazy evaluation
+
+## General syntax
+
+```{r, eval=FALSE}
+df |> 
+  verb(...) |> 
+  next_verb(...)
+```
+
+
+## Filter rows with `filter`
+
+-   Select a subset of rows in a data frame.
+-   Easily filter for many conditions at once.
+
+## `filter`
+
+for crashes in Durham County
+
+```{r}
+#| code-line-numbers: "2"
+
+bike |>
+  filter(County == "Durham")
+```
+
+## `filter`: multiple conditions
+
+for crashes in Durham County where biker was \< 10 yrs old
+
+```{r}
+#| code-line-numbers: "2"
+
+bike |>
+  filter(County == "Durham", Bike_Age < 10)
+```
+
+## `mutate` to add new variables
+
+[<i class="fa fa-user" aria-hidden="true"></i>   How is the new `alcohol` variable determined?]{style="background-color: #ADD8E6"}
+
+```{r eval=FALSE}
+bike |>
+  mutate(alcohol = case_when(
+    Bike_Alc_D == "No" & Drvr_Alc_D == "No" ~ "No",
+    Bike_Alc_D == "Yes" | Drvr_Alc_D == "Yes" ~ "Yes",
+    Bike_Alc_D == "Missing" & Drvr_Alc_D == "No" ~ "Missing",
+    Bike_Alc_D == "No" & Drvr_Alc_D == "Missing" ~ "Missing"
+  ))
+```
+
+## "Save" when you `mutate`
+
+Most often when you define a new variable with `mutate` you'll also want to store the resulting data frame, often by writing over the original data frame.
+
+```{r eval=FALSE}
+bike <- bike |>
+  mutate(alcohol = case_when(
+    Bike_Alc_D == "No" & Drvr_Alc_D == "No" ~ "No",
+    Bike_Alc_D == "Yes" | Drvr_Alc_D == "Yes" ~ "Yes",
+    Bike_Alc_D == "Missing" & Drvr_Alc_D == "No" ~ "Missing",
+    Bike_Alc_D == "No" & Drvr_Alc_D == "Missing" ~ "Missing"
+  ))
+```
+
+## Practice
+
+How many accidents in our dataset required an ambulance ride (`AmbulanceR`) *and* had the `Crash_Type` "Bicyclist Lost Control - Mechanical Problems"?
+
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+
+## `group_by` + `summarize`
+
+Real data are messy...
+
+[<i class="fa fa-user" aria-hidden="true"></i>   What does a `BikeAge_gr` of `10-Jun` or `15-Nov` mean?]{style="background-color: #ADD8E6"}
+
+```{r}
+bike |>
+  group_by(BikeAge_Gr) |>
+  summarize(crash_count = n())
+```
+
+Note: `summarize` is *not* limited to counting how many observations there are. The median, mean, min, max, etc. can all be `summarize`d...and you can summarize more than one thing at a time.
+
+. . . 
+
+For example:
+
+```{r}
+bike |>
+  group_by(BikeAge_Gr) |>
+  summarize(crash_count = n(), 
+            mean = mean(Bike_Age, na.rm=TRUE), 
+            median = median(Bike_Age, na.rm=TRUE))
+```
+
+- `na.rm = TRUE` specifies to remote any NA values so you can still calculate the mean
+
+## Cleaning up the data...
+
+-   We're going to need to do some text parsing to clean up these data
+    -   `10-Jun` should be `6-10`
+    -   `15-Nov` should be `11-15`
+
+## Correct and overwrite `mutate` {.scrollable}
+
+-   Remember we want to do the following in the `BikeAge_Gr` variable
+    -   `10-Jun` should be `6-10`
+    -   `15-Nov` should be `11-15`
+
+```{r}
+#| code-line-numbers: "2,8|"
+
+bike <- bike |>
+  mutate(BikeAge_Gr = case_when(BikeAge_Gr == "10-Jun" ~ "6-10",
+                                BikeAge_Gr == "15-Nov" ~ "11-15",
+                                .default = BikeAge_Gr     # everything else
+  ))
+```
+
+
+## Check before you move on
+
+```{r}
+bike |>
+  group_by(BikeAge_Gr) |>
+  summarize(count = n())
+```
+
+## Practice
+
+Did the average biker age (`Bike_Age`) differ between bike crashes that did and did not involve an Ambulance `AmbulanceR`? 
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+## `slice` for certain row numbers
+
+First five
+
+```{r}
+#| code-line-numbers: "2"
+
+bike |>
+  slice(1:5)
+```
+
+
+## `select` to keep only the variables you mention
+
+```{r}
+#| code-line-numbers: "2"
+
+bike |>
+  select(Crash_Loc, Hit_Run)
+```
+
+. . . 
+
+### or `select` to exclude variables
+
+```{r}
+#| code-line-numbers: "2"
+
+bike |>
+  select(-OBJECTID)
+```
+
+. . . 
+
+### or `select` a range of variables
+
+```{r}
+#| code-line-numbers: "2"
+
+bike |>
+  select(OBJECTID:Bike_Injur)
+```
+
+## `rename` specific columns
+
+Useful for correcting typos, and renaming to make variable names shorter and/or more informative
+
+-   Original names:
+
+```{r}
+names(bike)
+```
+
+. . . 
+
+-   Rename `Speed_Limi` to `Speed_Limit`:
+
+```{r}
+#| code-line-numbers: "2"
+
+bike <- bike |>
+  rename(Speed_Limit = Speed_Limi)
+```
+
+. . . 
+
+```{r}
+names(bike)
+```
+
+## Practice
+
+Your boss in Cumberland County gets overwhelmed by data easily, but he wants some data from you. He wants all bike accidents from his County, but he only wants to know the road's speed limit, the age of the biker, and to know if alcohol was involved. If you have time, mine as well make the column names very clear to your boss while you're at it...
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+::::::
+
+## `arrange` to order rows
+
+```{r}
+#| code-line-numbers: "4"
+
+bike |>
+  group_by(BikeAge_Gr) |>
+  summarize(crash_count = n()) |>
+  arrange(desc(crash_count))
+```
+
+## `count` to group by then count
+
+```{r}
+bike |>
+  count(BikeAge_Gr)
+```
+
+[<i class="fa fa-user" aria-hidden="true"></i>   If you wanted to arrange these in ascending order what would you add to the pipe?]{style="background-color: #ADD8E6"}
+
+
+## `distinct` to filter for unique rows
+
+```{r}
+#| code-line-numbers: "3"
+
+bike |> 
+  select(County, City) |> 
+  distinct() |> 
+  arrange(County, City)
+```
+
+. . . 
+
+### `distinct` has a .keep_all parameter
+
+```{r}
+#| code-line-numbers: "2"
+
+bike |> 
+  distinct(County, City, .keep_all = TRUE) |> 
+  arrange(County, City)
+```
+
+## Practice: `storms`
+
+There is an available dataset `storms`. Using that dataset and common `dplyr` functions, answer the following questions:
+
+1. How many observations are there in this dataset? What is the observational unit?
+2. How many unique hurricanes are included in this dataset?
+3. Among all storms in this dataset, in which month are storms most common?
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+# Calculating Common Metrics {background-color="#e4282e"}
+
+## Data
+
+Using data you're likely to encounter...by generating some fake data (used ChatGPT to generate code):
+
+```{r}
+set.seed(321)  # for reproducibility
+
+# Number of unique patients
+num_patients <- 74000
+
+# Number of observations for each patient
+num_observations <- rep(2, num_patients)
+num_observations[sample(num_patients, 16400)] <- 3  # Selecting 16400 patients with at least 3 observations
+
+# Generate patient IDs
+patient_ids <- rep(1:num_patients, num_observations)
+
+# Generate concentrations for two different compounds
+compound1 <- sample(0.05:100, sum(num_observations), replace = TRUE)
+compound2 <- sample(0.05:100, sum(num_observations), replace = TRUE)
+
+
+# Combine patient IDs and compound concentrations into a data frame
+data <- tibble(
+  Patient_ID = patient_ids,
+  Compound1 = compound1,
+  Compound2 = compound2
+)
+
+# Output the dataset
+head(data)
+```
+
+## Step 1: Filter data
+
+- Only include patients with vales > 50 for `Compound1`
+- Then: only include patients who have at least 3 replicates
+
+```{r}
+df_filtered <- data |>
+  filter(Compound1 > 50) |>
+  group_by(Patient_ID) |>
+  filter(n() >= 3) |>
+  ungroup()
+```
+
+## Step 2: Calculate Ratios (Practice)
+
+- Add new column (`ratio12`) to `df_filtered` to calculate the ratio between Compound1 and Compound2
+
+```{r, eval=FALSE}
+# Your code here
+```
+
+
+```{r, include=FALSE, echo=FALSE}
+df_filtered <- df_filtered |>
+  mutate(ratio12 = Compound1/Compound2)
+```
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+## Step 3: Calculate intra-patient CV
+
+- carry out calculations within patient
+- determine pt mean, sd, CV
+- filter to only include CV <= 10%
+
+```{r}
+# calculate the intra-patient coefficient of variation (CV)
+# filter to include only those CV < 10%
+df_mean <- df_filtered |> 
+  group_by(Patient_ID) |> 
+  mutate(mean = mean(ratio12),
+         sd = sd(ratio12),
+         CV = sd/mean * 100) |>
+  filter(CV <= 10)
+```
+
+## Step 4: Identify extreme values 
+
+- mimicking identification of slow and fast metabolizers
+
+For "slow metabolizers:..
+
+```{r}
+# calculate threshold
+threshold <- quantile(df_mean$ratio12, probs = 0.025)
+
+# Filter to extract the rows below the threshold
+df_mean %>%
+  filter(ratio12 <= threshold)
+```
+
+. . . 
+
+How many "fast metabolizers" are in this dataset, if "fast" is defined as above the 95th quartile?
+
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+
+
+# Summary
+
+- `dplyr` is an incredibly powerful package for manipulating data in R
+  - carries out common manipulation tasks
+  - helpful for calculating common metrics/statistics 
+  - able to do this within groups

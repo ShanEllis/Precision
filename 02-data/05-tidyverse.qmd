@@ -1,0 +1,126 @@
+---
+title: "05-tidyverse"
+
+format:
+  html: default
+  revealjs:
+    output-file: 05-tidyverse-reveal.html
+---
+
+# The `tidyverse` {background-color="#e4282e"}
+
+## Agenda
+
+1. `tidyverse`
+2. package summary
+3. The pipe
+
+## What is the Tidyverse?
+
+::: columns
+::: {.column width="40%"}
+![](images/tidyverse.png)
+:::
+
+::: {.column width="60%"}
+<center><a href="https://www.tidyverse.org/">tidyverse.org</a></center>
+
+-   The tidyverse is an opinionated collection of R packages designed for data science.
+-   All packages share an underlying philosophy and a common syntax.
+:::
+:::
+
+## History: `tidyverse`?
+
+There are two "dialects" in R: baseR and `tidyverse`
+
+- `baseR` syntax existed first (1993)
+- `tidyverse` became a "thing" in the late 2010s
+
+## Why `tidyverse`?
+
+- `tidyverse` syntax has been referred to as "supremely readable" 
+- the tools in the `tidyverse` all work really well together
+- specifically designed for working with tabular data
+
+## Package Summary
+
+There are currently 8 core packages in the `tidyverse`: [https://www.tidyverse.org/packages/](https://www.tidyverse.org/packages/)
+
+. . . 
+
+We'll focus on:
+
+- `readr` | data import
+- `dplyr` | grammar of data manipulations
+- `tidyr` | helps tidying data
+- `ggplot2` | grammar of graphics (data visualization)
+- `tibble` | working behind the scenes to enable it all
+. . . 
+
+All 8 are loaded and can be used when you run `library(tidyverse)` 
+
+# Pipes {background-color="#e4282e"}
+
+## The pipe in baseR
+
+<p align="center">
+
+<img src="images/baseR_hex.jpeg" width="300" height="300" align="center"/>
+
+</p>
+
+-   `|>` should be read as "and then"
+-   for example "Wake up \|\> brush teeth" would be read as "wake up *and then* brush teeth"
+
+## Where does the name come from?
+
+The pipe operator was *first* implemented in the package **magrittr**.
+
+::: columns
+::: {.column width="50%"}
+![](images/magritte.jpg)
+:::
+
+::: {.column width="50%"}
+![](images/magrittr.jpg)
+:::
+:::
+
+You will see this frequently in code online. It's equivalent to `|>`.
+
+. . . 
+
+Most people have recently transitioned to |>, so I'll try to use that.
+
+
+## Review: How does a pipe work? 
+
+-   You can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.
+
+. . .
+
+-   Expressed as a set of nested functions in baseR pseudocode, this would look like:
+
+```{r eval=FALSE}
+park(drive(start_car(find("keys")), to = "campus"))
+```
+
+. . .
+
+-   Writing it out using pipes give it a more natural (and easier to read) structure:
+
+```{r eval=FALSE}
+find("keys") |>
+  start_car() |>
+  drive(to = "campus") |>
+  park()
+```
+
+
+
+## Code Style: pipes (`|>`)
+
+- should have a space before it 
+- is most often the last thing on a line
+

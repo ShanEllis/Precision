@@ -1,0 +1,233 @@
+---
+title: "03-datasets"
+
+format:
+  html: default
+  revealjs:
+    output-file: 03-datasets-reveal.html
+---
+
+# Datasets {background-color="#e4282e"}
+
+## Agenda
+
+1. Dataframes
+2. Common Functions
+3. Available datasets
+4. Data Import
+
+## Setup
+
+```{r}
+library(tidyverse)
+```
+
+. . . 
+
+Will also be helpful to have access to the `skimr` package:
+
+```{r}
+# install.packages('skimr')
+library(skimr)
+```
+
+# Dataframes & tibbles {background-color="#e4282e"}
+
+
+## Data "sets" in R {.scrollable .smaller}
+
+-   "set" is in quotation marks because it is not a formal data class
+
+-   A tidy data "set" can be one of the following types:
+
+    -   `tibble`
+    -   `data.frame`
+
+-   We'll often work with `tibble`s:
+
+    -   `readr` package (e.g. `read_csv` function) loads data as a `tibble` by default
+    -   `tibble`s are part of the `tidyverse`, so they work well with other packages we are giong to be using
+    -   they make minimal assumptions about your data, so are less likely to cause hard to track bugs in your code
+
+## Data Frames
+
+-   A data frame is the most commonly used data structure in R, they are list of equal length vectors. Each vector is treated as a column and elements of the vectors as rows.
+
+-   A tibble is a type of data frame that ... makes your life (i.e. data analysis) easier.
+
+-   Most often a data frame will be constructed by reading in from a file, but we can create them from scratch.
+
+```{r}
+df <- tibble(x = 1:3, y = c("a", "b", "c"))
+df
+
+```
+
+## Data frames (cont.)
+
+```{r}
+attributes(df)
+```
+
+. . .
+
+Columns (variables) in data frames are accessed with `$`:
+
+```{r eval=FALSE}
+dataframe$var_name
+```
+
+. . . 
+
+```{r}
+class(df$x)  # access variable type for column
+class(df$y)  
+```
+
+
+# Common dataset operations {background-color="#e4282e"}
+
+## Functions
+
+-   Functions are (most often) verbs, followed by what they will be applied to in parentheses.
+
+. . . 
+
+Functions are:
+
+-   available from base R
+-   available from packages you import
+-   able to be defined by the analyst
+
+## Helpful Functions
+
+- `View()` - to see the dataset in a new window
+
+```{r, eval=FALSE}
+View(df)
+```
+
+. . .
+
+-   `class()` - determine high-level variable type
+
+```{r}
+class(df)
+```
+
+. . .
+
+-   `dim()`- determine dimensions of a df
+
+```{r}
+dim(df)
+```
+
+. . .
+
+-   `str()` - display the structure of an R object
+
+```{r}
+str(df)
+```
+
+. . .
+
+- `glimpse()` - give you a summary of what's in your data
+
+```{r}
+glimpse(df)
+```
+
+. . .
+
+- `names` - gives you the names of columns in data
+
+```{r}
+names(df)
+```
+
+
+# Available Datasets {background-color="#e4282e"}
+
+## Available datasets: R
+
+Many packages have datasets that are available for use/practice.
+
+To see list available:
+
+```{r, eval=FALSE}
+library(help=datasets)
+```
+
+## More popular datasets
+
+- `library(nycflights13)`
+- [`ggplot2 datasets`](https://ggplot2.tidyverse.org/reference/)
+- `library(palmerpenguins)`
+
+## `skimr`
+
+- a packages for getting a summary of your entire dataset at once
+
+```{r, eval=FALSE}
+skim(msleep)
+```
+
+. . . 
+
+You can always pull up additional documentation: `?msleep` for a dataset. 
+
+## Practice
+
+Explore common functions (`dim`, `class`, `glimpse`, `str`, `class`, `names`, `skim`, `View`) to understand one of the popular datasets: 
+
+- `library(help=datasets)`
+- `library(nycflights13)` (would require installation)
+- [`ggplot2 datasets`](https://ggplot2.tidyverse.org/reference/)
+- `library(palmerpenguins)` (would require installation)
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+
+# Data Import {background-color="#e4282e"}
+
+## `readr`
+
+The `readr` package from the tidyverse has the ability to read in *lots* of different file types...so long as the data are tabular (stored in rows and columns)
+
+. . .
+
+The functions in `readr` start with `read_*`, where the * is filled in by the file type.
+
+. . . 
+
+By far the most commonly used is `read_csv()`...but it can also read in other tabular data types 
+
+. . . 
+
+However, if you want to read in an Excel file, you'll need to first `library(readxl)`. This *is* a package in the `tidyverse`, but it's not a *core* package.
+
+## `read_csv()`
+
+When using `read_*()` functions, the input is either a path to the file on your computer or a URL to the file on the Internet.
+
+For example: you could run the following, to read in a CSV file with how many US births there are on a given day stroing it in the variable `df` using:
+
+```{r, eval = FALSE}
+df <- read_csv("https://raw.githubusercontent.com/ShanEllis/datasets/master/births.csv")
+```
+
+## Data Export
+
+It's also possible to store your dataframe in R back to a file using `write_*`
+
+For example: 
+
+```{r}
+write_csv(df, "births.csv")
+```
+
+...would store `births.csv` in your current working directory
+

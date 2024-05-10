@@ -1,0 +1,58 @@
+---
+title: "01-packages"
+
+format:
+  html: default
+  revealjs:
+    output-file: 01-packages-reveal.html
+---
+
+# R Packages {background-color="#e4282e"}
+
+## Agenda
+
+1.  R Packages
+2.  Installation
+3.  Loading
+
+## R packages
+
+-   **Packages** are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data [^1]
+-   People use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.
+-   As of Sept 2023, there are \~20,700 R packages available on **CRAN** (the Comprehensive R Archive Network)[^2]
+
+[^1]: Wickham and Bryan, [R Packages](https://r-pkgs.org/)
+
+[^2]: [CRAN contributed packages](https://cran.r-project.org/web/packages/)
+
+## Package Installation
+
+- Packages are installed with the `install.packages` function (do this once per package)
+- Loaded with the `library` function (once per session)
+
+```{r eval=FALSE}
+install.packages("package_name")
+library(package_name)
+```
+
+## Install `tidyverse`
+
+For this training, we'll primarily use one suite of packages. We'll discuss more about what this includes later, but for now, let's just install and load `tidyverse`.
+
+. . .
+
+This only has to be run a single time, so it's best to do it directly in your console:
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+
+. . .
+
+But, this has to be done every time you're working with code that requires the tidyverse, so best to add this to that RScript file you created.
+
+```{r}
+library(tidyverse)
+```
+
+^ Be sure to still run the code above in your console after typing it in your script.
