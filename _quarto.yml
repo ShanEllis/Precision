@@ -1,5 +1,10 @@
 project:
   type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!src/"
+    - "!data/"
 
 website:
   title: "R Training: Precision Diagnostics"

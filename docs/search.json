@@ -1,176 +1,31 @@
 [
   {
-    "objectID": "02-data/05-tidyverse.html",
-    "href": "02-data/05-tidyverse.html",
-    "title": "05-tidyverse",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Precision Diagnostics",
     "section": "",
-    "text": "tidyverse\npackage summary\nThe pipe\n\n\n\n\n\n\n\n\n\ntidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax.\n\n\n\n\n\n\nThere are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s\n\n\n\n\n\ntidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data\n\n\n\n\nThere are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n. . .\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
+    "text": "Install R and RStudio\nAlternative (if any issues in installation) | https://posit.cloud/\n\n\n\n\n\n\n\nRStudio Tour\nR Basics | Variables and operators\nR Packages\nDatasets in R\nR Markdown & quarto\n\n\n\n\n\nIntroduction to the tidyverse\ndplyr | common operations & pipes\ntidyr | common data manipulations\n\n\n\n\n\n\n\n\nIntroduce the grammar of graphics\nggplot2 | making visuals in R\nCustomizing visualizations in R\ntables in R\n\n\n\n\n\nPutting it all together with a mini case study\n\nCleaning and wrangling data\nExploring data\nAnalyzing data\nVisualizing results"
   },
   {
-    "objectID": "02-data/05-tidyverse.html#agenda",
-    "href": "02-data/05-tidyverse.html#agenda",
-    "title": "05-tidyverse",
+    "objectID": "index.html#prior-to-training",
+    "href": "index.html#prior-to-training",
+    "title": "Precision Diagnostics",
     "section": "",
-    "text": "tidyverse\npackage summary\nThe pipe",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
+    "text": "Install R and RStudio\nAlternative (if any issues in installation) | https://posit.cloud/"
   },
   {
-    "objectID": "02-data/05-tidyverse.html#what-is-the-tidyverse",
-    "href": "02-data/05-tidyverse.html#what-is-the-tidyverse",
-    "title": "05-tidyverse",
+    "objectID": "index.html#day-01-may-10th",
+    "href": "index.html#day-01-may-10th",
+    "title": "Precision Diagnostics",
     "section": "",
-    "text": "tidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax.",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
+    "text": "RStudio Tour\nR Basics | Variables and operators\nR Packages\nDatasets in R\nR Markdown & quarto\n\n\n\n\n\nIntroduction to the tidyverse\ndplyr | common operations & pipes\ntidyr | common data manipulations"
   },
   {
-    "objectID": "02-data/05-tidyverse.html#history-tidyverse",
-    "href": "02-data/05-tidyverse.html#history-tidyverse",
-    "title": "05-tidyverse",
+    "objectID": "index.html#day-02-may-17th",
+    "href": "index.html#day-02-may-17th",
+    "title": "Precision Diagnostics",
     "section": "",
-    "text": "There are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
-  },
-  {
-    "objectID": "02-data/05-tidyverse.html#why-tidyverse",
-    "href": "02-data/05-tidyverse.html#why-tidyverse",
-    "title": "05-tidyverse",
-    "section": "",
-    "text": "tidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
-  },
-  {
-    "objectID": "02-data/05-tidyverse.html#package-summary",
-    "href": "02-data/05-tidyverse.html#package-summary",
-    "title": "05-tidyverse",
-    "section": "",
-    "text": "There are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n. . .\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
-  },
-  {
-    "objectID": "02-data/05-tidyverse.html#the-pipe-in-baser",
-    "href": "02-data/05-tidyverse.html#the-pipe-in-baser",
-    "title": "05-tidyverse",
-    "section": "The pipe in baseR",
-    "text": "The pipe in baseR\n\n\n\n\n|&gt; should be read as “and then”\nfor example “Wake up |&gt; brush teeth” would be read as “wake up and then brush teeth”",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
-  },
-  {
-    "objectID": "02-data/05-tidyverse.html#where-does-the-name-come-from",
-    "href": "02-data/05-tidyverse.html#where-does-the-name-come-from",
-    "title": "05-tidyverse",
-    "section": "Where does the name come from?",
-    "text": "Where does the name come from?\nThe pipe operator was first implemented in the package magrittr.\n\n\n\n\n\n\n\nYou will see this frequently in code online. It’s equivalent to |&gt;.\n. . .\nMost people have recently transitioned to |&gt;, so I’ll try to use that.",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
-  },
-  {
-    "objectID": "02-data/05-tidyverse.html#review-how-does-a-pipe-work",
-    "href": "02-data/05-tidyverse.html#review-how-does-a-pipe-work",
-    "title": "05-tidyverse",
-    "section": "Review: How does a pipe work?",
-    "text": "Review: How does a pipe work?\n\nYou can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.\n\n. . .\n\nExpressed as a set of nested functions in baseR pseudocode, this would look like:\n\n\npark(drive(start_car(find(\"keys\")), to = \"campus\"))\n\n. . .\n\nWriting it out using pipes give it a more natural (and easier to read) structure:\n\n\nfind(\"keys\") |&gt;\n  start_car() |&gt;\n  drive(to = \"campus\") |&gt;\n  park()",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
-  },
-  {
-    "objectID": "02-data/05-tidyverse.html#code-style-pipes",
-    "href": "02-data/05-tidyverse.html#code-style-pipes",
-    "title": "05-tidyverse",
-    "section": "Code Style: pipes (|>)",
-    "text": "Code Style: pipes (|&gt;)\n\nshould have a space before it\nis most often the last thing on a line",
-    "crumbs": [
-      "Topic 2: Working with Data",
-      "05: The `tidyverse`"
-    ]
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#agenda",
-    "href": "02-data/05-tidyverse-reveal.html#agenda",
-    "title": "05-tidyverse",
-    "section": "Agenda",
-    "text": "Agenda\n\ntidyverse\npackage summary\nThe pipe"
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#what-is-the-tidyverse",
-    "href": "02-data/05-tidyverse-reveal.html#what-is-the-tidyverse",
-    "title": "05-tidyverse",
-    "section": "What is the Tidyverse?",
-    "text": "What is the Tidyverse?\n\n\n\n\n\ntidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax."
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#history-tidyverse",
-    "href": "02-data/05-tidyverse-reveal.html#history-tidyverse",
-    "title": "05-tidyverse",
-    "section": "History: tidyverse?",
-    "text": "History: tidyverse?\nThere are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s"
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#why-tidyverse",
-    "href": "02-data/05-tidyverse-reveal.html#why-tidyverse",
-    "title": "05-tidyverse",
-    "section": "Why tidyverse?",
-    "text": "Why tidyverse?\n\ntidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data"
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#package-summary",
-    "href": "02-data/05-tidyverse-reveal.html#package-summary",
-    "title": "05-tidyverse",
-    "section": "Package Summary",
-    "text": "Package Summary\nThere are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)"
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#the-pipe-in-baser",
-    "href": "02-data/05-tidyverse-reveal.html#the-pipe-in-baser",
-    "title": "05-tidyverse",
-    "section": "The pipe in baseR",
-    "text": "The pipe in baseR\n\n\n\n\n|&gt; should be read as “and then”\nfor example “Wake up |&gt; brush teeth” would be read as “wake up and then brush teeth”"
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#where-does-the-name-come-from",
-    "href": "02-data/05-tidyverse-reveal.html#where-does-the-name-come-from",
-    "title": "05-tidyverse",
-    "section": "Where does the name come from?",
-    "text": "Where does the name come from?\nThe pipe operator was first implemented in the package magrittr.\n\n\n\n\n\n\n\nYou will see this frequently in code online. It’s equivalent to |&gt;.\n\nMost people have recently transitioned to |&gt;, so I’ll try to use that."
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#review-how-does-a-pipe-work",
-    "href": "02-data/05-tidyverse-reveal.html#review-how-does-a-pipe-work",
-    "title": "05-tidyverse",
-    "section": "Review: How does a pipe work?",
-    "text": "Review: How does a pipe work?\n\nYou can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.\n\n\n\nExpressed as a set of nested functions in baseR pseudocode, this would look like:\n\n\n\n\nWriting it out using pipes give it a more natural (and easier to read) structure:"
-  },
-  {
-    "objectID": "02-data/05-tidyverse-reveal.html#code-style-pipes",
-    "href": "02-data/05-tidyverse-reveal.html#code-style-pipes",
-    "title": "05-tidyverse",
-    "section": "Code Style: pipes (|>)",
-    "text": "Code Style: pipes (|&gt;)\n\nshould have a space before it\nis most often the last thing on a line"
+    "text": "Introduce the grammar of graphics\nggplot2 | making visuals in R\nCustomizing visualizations in R\ntables in R\n\n\n\n\n\nPutting it all together with a mini case study\n\nCleaning and wrangling data\nExploring data\nAnalyzing data\nVisualizing results"
   },
   {
     "objectID": "02-data/06-dplyr.html",
@@ -796,6 +651,125 @@
     "text": "Step 4: Identify extreme values\n\nmimicking identification of slow and fast metabolizers\n\nFor “slow metabolizers:..\n\n\n# A tibble: 4 × 7\n# Groups:   Patient_ID [3]\n  Patient_ID Compound1 Compound2 ratio12  mean     sd    CV\n       &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1      27269      77.0      88.0   0.875 0.904 0.0271  3.00\n2      29555      64.0      75.0   0.853 0.877 0.0794  9.05\n3      29555      78.0      96.0   0.813 0.877 0.0794  9.05\n4      65962      87.0      99.0   0.879 0.935 0.0691  7.39\n\n\n\nHow many “fast metabolizers” are in this dataset, if “fast” is defined as above the 95th quartile?\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
   },
   {
+    "objectID": "01-intro/04-documents.html",
+    "href": "01-intro/04-documents.html",
+    "title": "04-documents",
+    "section": "",
+    "text": "RMarkdown files\nquarto\n\n\n\n\n\nFully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text\n\n\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting\n\n\n\n\n\nKeep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console\n\n\n\n\nQuarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n. . .\nQuarto (.qmd) is what I’ve used for thes notes and the website.\n\n\n\nRecommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n. . .\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#agenda",
+    "href": "01-intro/04-documents.html#agenda",
+    "title": "04-documents",
+    "section": "",
+    "text": "RMarkdown files\nquarto",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#r-markdown-1",
+    "href": "01-intro/04-documents.html#r-markdown-1",
+    "title": "04-documents",
+    "section": "",
+    "text": "Fully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#r-markdown-tour",
+    "href": "01-intro/04-documents.html#r-markdown-tour",
+    "title": "04-documents",
+    "section": "",
+    "text": "[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#r-markdown-tips",
+    "href": "01-intro/04-documents.html#r-markdown-tips",
+    "title": "04-documents",
+    "section": "",
+    "text": "Keep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#aside-quarto",
+    "href": "01-intro/04-documents.html#aside-quarto",
+    "title": "04-documents",
+    "section": "",
+    "text": "Quarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n. . .\nQuarto (.qmd) is what I’ve used for thes notes and the website.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents.html#practice",
+    "href": "01-intro/04-documents.html#practice",
+    "title": "04-documents",
+    "section": "",
+    "text": "Recommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n. . .\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "04: Documents"
+    ]
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#agenda",
+    "href": "01-intro/04-documents-reveal.html#agenda",
+    "title": "04-documents",
+    "section": "Agenda",
+    "text": "Agenda\n\nRMarkdown files\nquarto"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#r-markdown-1",
+    "href": "01-intro/04-documents-reveal.html#r-markdown-1",
+    "title": "04-documents",
+    "section": "R Markdown",
+    "text": "R Markdown\n\nFully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#r-markdown-tour",
+    "href": "01-intro/04-documents-reveal.html#r-markdown-tour",
+    "title": "04-documents",
+    "section": "R Markdown: tour",
+    "text": "R Markdown: tour\n\n\n[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#r-markdown-tips",
+    "href": "01-intro/04-documents-reveal.html#r-markdown-tips",
+    "title": "04-documents",
+    "section": "R Markdown tips",
+    "text": "R Markdown tips\n\nKeep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console"
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#aside-quarto",
+    "href": "01-intro/04-documents-reveal.html#aside-quarto",
+    "title": "04-documents",
+    "section": "Aside: quarto",
+    "text": "Aside: quarto\nQuarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n\nQuarto (.qmd) is what I’ve used for thes notes and the website."
+  },
+  {
+    "objectID": "01-intro/04-documents-reveal.html#practice",
+    "href": "01-intro/04-documents-reveal.html#practice",
+    "title": "04-documents",
+    "section": "Practice",
+    "text": "Practice\nRecommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
     "objectID": "01-intro/02-basics.html",
     "href": "01-intro/02-basics.html",
     "title": "01-basics",
@@ -1149,207 +1123,11 @@
     "text": "Code Style\n\ntypically variables should use snake_case (all lowercase with _ to separate words)\nLong, descriptive variable names are better than short, uninformative names\nPut spaces around the assignment operator (&lt;-)\nSpaces on either side of mathematical operators apart from ^\n\nGood code style:"
   },
   {
-    "objectID": "01-intro/04-documents.html",
-    "href": "01-intro/04-documents.html",
-    "title": "04-documents",
-    "section": "",
-    "text": "RMarkdown files\nquarto\n\n\n\n\n\nFully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text\n\n\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting\n\n\n\n\n\nKeep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console\n\n\n\n\nQuarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n. . .\nQuarto (.qmd) is what I’ve used for thes notes and the website.\n\n\n\nRecommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n. . .\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
-    "crumbs": [
-      "Topic 1: Intro to R",
-      "04: Documents"
-    ]
-  },
-  {
-    "objectID": "01-intro/04-documents.html#agenda",
-    "href": "01-intro/04-documents.html#agenda",
-    "title": "04-documents",
-    "section": "",
-    "text": "RMarkdown files\nquarto",
-    "crumbs": [
-      "Topic 1: Intro to R",
-      "04: Documents"
-    ]
-  },
-  {
-    "objectID": "01-intro/04-documents.html#r-markdown-1",
-    "href": "01-intro/04-documents.html#r-markdown-1",
-    "title": "04-documents",
-    "section": "",
-    "text": "Fully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text",
-    "crumbs": [
-      "Topic 1: Intro to R",
-      "04: Documents"
-    ]
-  },
-  {
-    "objectID": "01-intro/04-documents.html#r-markdown-tour",
-    "href": "01-intro/04-documents.html#r-markdown-tour",
-    "title": "04-documents",
-    "section": "",
-    "text": "[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting",
-    "crumbs": [
-      "Topic 1: Intro to R",
-      "04: Documents"
-    ]
-  },
-  {
-    "objectID": "01-intro/04-documents.html#r-markdown-tips",
-    "href": "01-intro/04-documents.html#r-markdown-tips",
-    "title": "04-documents",
-    "section": "",
-    "text": "Keep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console",
-    "crumbs": [
-      "Topic 1: Intro to R",
-      "04: Documents"
-    ]
-  },
-  {
-    "objectID": "01-intro/04-documents.html#aside-quarto",
-    "href": "01-intro/04-documents.html#aside-quarto",
-    "title": "04-documents",
-    "section": "",
-    "text": "Quarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n. . .\nQuarto (.qmd) is what I’ve used for thes notes and the website.",
-    "crumbs": [
-      "Topic 1: Intro to R",
-      "04: Documents"
-    ]
-  },
-  {
-    "objectID": "01-intro/04-documents.html#practice",
-    "href": "01-intro/04-documents.html#practice",
-    "title": "04-documents",
-    "section": "",
-    "text": "Recommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n. . .\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.",
-    "crumbs": [
-      "Topic 1: Intro to R",
-      "04: Documents"
-    ]
-  },
-  {
-    "objectID": "01-intro/04-documents-reveal.html#agenda",
-    "href": "01-intro/04-documents-reveal.html#agenda",
-    "title": "04-documents",
-    "section": "Agenda",
-    "text": "Agenda\n\nRMarkdown files\nquarto"
-  },
-  {
-    "objectID": "01-intro/04-documents-reveal.html#r-markdown-1",
-    "href": "01-intro/04-documents-reveal.html#r-markdown-1",
-    "title": "04-documents",
-    "section": "R Markdown",
-    "text": "R Markdown\n\nFully reproducible reports/analyses\nCode + text & output in a single document\nCan be rendered (knit) to many different file formats (PDF, HTML, Word Doc, etc.)\nEach time you knit, the code in the document is run from top to bottom\nCode goes in chunks, defined by three backticks, narrative goes outside of chunks\nSimple markdown syntax for text"
-  },
-  {
-    "objectID": "01-intro/04-documents-reveal.html#r-markdown-tour",
-    "href": "01-intro/04-documents-reveal.html#r-markdown-tour",
-    "title": "04-documents",
-    "section": "R Markdown: tour",
-    "text": "R Markdown: tour\n\n\n[DEMO]\n\nConcepts introduced:\n\nCreating a file\nSaving a file\nYAML\nMarkdown\nCode Chunks\nKnitting"
-  },
-  {
-    "objectID": "01-intro/04-documents-reveal.html#r-markdown-tips",
-    "href": "01-intro/04-documents-reveal.html#r-markdown-tips",
-    "title": "04-documents",
-    "section": "R Markdown tips",
-    "text": "R Markdown tips\n\nKeep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we’ll refer to it often as the course progresses\nThe workspace of your R Markdown document is separate from the Console"
-  },
-  {
-    "objectID": "01-intro/04-documents-reveal.html#aside-quarto",
-    "href": "01-intro/04-documents-reveal.html#aside-quarto",
-    "title": "04-documents",
-    "section": "Aside: quarto",
-    "text": "Aside: quarto\nQuarto documents are very much like RMarkdown documents…but allow for additional programming languages to be run in a single document.\n\nQuarto (.qmd) is what I’ve used for thes notes and the website."
-  },
-  {
-    "objectID": "01-intro/04-documents-reveal.html#practice",
-    "href": "01-intro/04-documents-reveal.html#practice",
-    "title": "04-documents",
-    "section": "Practice",
-    "text": "Practice\nRecommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.\n\nYour turn: Add some markdown text to take notes of something we’ve discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.\n\n\n\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Precision Diagnostics",
-    "section": "",
-    "text": "Install R and RStudio\nAlternative (if any issues in installation) | https://posit.cloud/\n\n\n\n\n\n\n\nRStudio Tour\nR Basics | Variables and operators\nR Packages\nDatasets in R\nR Markdown & quarto\n\n\n\n\n\nIntroduction to the tidyverse\ndplyr | common operations & pipes\ntidyr | common data manipulations\n\n\n\n\n\n\n\n\nIntroduce the grammar of graphics\nggplot2 | making visuals in R\nCustomizing visualizations in R\ntables in R\n\n\n\n\n\nPutting it all together with a mini case study\n\nCleaning and wrangling data\nExploring data\nAnalyzing data\nVisualizing results"
-  },
-  {
-    "objectID": "index.html#prior-to-training",
-    "href": "index.html#prior-to-training",
-    "title": "Precision Diagnostics",
-    "section": "",
-    "text": "Install R and RStudio\nAlternative (if any issues in installation) | https://posit.cloud/"
-  },
-  {
-    "objectID": "index.html#day-01-may-10th",
-    "href": "index.html#day-01-may-10th",
-    "title": "Precision Diagnostics",
-    "section": "",
-    "text": "RStudio Tour\nR Basics | Variables and operators\nR Packages\nDatasets in R\nR Markdown & quarto\n\n\n\n\n\nIntroduction to the tidyverse\ndplyr | common operations & pipes\ntidyr | common data manipulations"
-  },
-  {
-    "objectID": "index.html#day-02-may-17th",
-    "href": "index.html#day-02-may-17th",
-    "title": "Precision Diagnostics",
-    "section": "",
-    "text": "Introduce the grammar of graphics\nggplot2 | making visuals in R\nCustomizing visualizations in R\ntables in R\n\n\n\n\n\nPutting it all together with a mini case study\n\nCleaning and wrangling data\nExploring data\nAnalyzing data\nVisualizing results"
-  },
-  {
-    "objectID": "01-intro/00-tour-reveal.html#agenda",
-    "href": "01-intro/00-tour-reveal.html#agenda",
-    "title": "00-tour",
-    "section": "Agenda",
-    "text": "Agenda\n\nRStudio\nRStudio Project"
-  },
-  {
-    "objectID": "01-intro/00-tour-reveal.html#hello",
-    "href": "01-intro/00-tour-reveal.html#hello",
-    "title": "00-tour",
-    "section": "Hello!",
-    "text": "Hello!\nBrief Introductions"
-  },
-  {
-    "objectID": "01-intro/00-tour-reveal.html#general-plan",
-    "href": "01-intro/00-tour-reveal.html#general-plan",
-    "title": "00-tour",
-    "section": "General Plan",
-    "text": "General Plan\nFor each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n\nWhere to find these materials:\nAVOCADO"
-  },
-  {
-    "objectID": "01-intro/00-tour-reveal.html#rstudio-tour",
-    "href": "01-intro/00-tour-reveal.html#rstudio-tour",
-    "title": "00-tour",
-    "section": "RStudio Tour",
-    "text": "RStudio Tour\n\nR/RStudioTourTry\n\n\nR & RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nConsole\nUsing R as a calculator\nEnvironment\nLoading and viewing a data frame\nAccessing a variable in a data frame\nR functions\n\n\n\nPractice\n\nType a simple math problem (i.e. 3 + 3) in to the console and see the output\nView the airquality dataframe\nDetermine how many rows there are in the airquality dataframe\nAccess a column from the airquality dataframe\nCalculate the median for one of the numeric columns\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
-  },
-  {
-    "objectID": "01-intro/00-tour-reveal.html#rstudio-projects",
-    "href": "01-intro/00-tour-reveal.html#rstudio-projects",
-    "title": "00-tour",
-    "section": "RStudio Projects",
-    "text": "RStudio Projects\n\nProjectsTourTry\n\n\n\nBuilt-in functionality to keep all files for a single project organized\nBest way to get started on an analysis in R\n\nRStudio Projects Documentation\n\n\n\n[DEMO]\n\nConcepts introduced:\n\n.Rproj file\nOpening up a project\nCreating/saving a file\nRunning Code\nSwitching between projects\n\n\n\nPractice\n\nCreate and open an R Project for this training\nCreate a new Rscript file in your project\nType some R code in the new file\nRun that code\nSave the file\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
-  },
-  {
-    "objectID": "01-intro/00-tour-reveal.html#for-this-training",
-    "href": "01-intro/00-tour-reveal.html#for-this-training",
-    "title": "00-tour",
-    "section": "For this training…",
-    "text": "For this training…\nFor right now, we can do all R Practice in that file you just created, but we’ll talk about another file type soon that may be helpful for notetaking/practice."
-  },
-  {
-    "objectID": "01-intro/00-tour-reveal.html#additional-resources",
-    "href": "01-intro/00-tour-reveal.html#additional-resources",
-    "title": "00-tour",
-    "section": "Additional Resources:",
-    "text": "Additional Resources:\n\nR4DS - book teaching the basics of using R in the tidyverse\nBig Book of R - lots of free resources for learning and using R; each chapter links to a different resource\nlearnR4free - lots of different free courses/resources for learning R\nChatGPT - really good at writing R code for working with data (be careful about including proprietary information)"
-  },
-  {
     "objectID": "01-intro/00-tour.html",
     "href": "01-intro/00-tour.html",
     "title": "00-tour",
     "section": "",
-    "text": "RStudio\nRStudio Project\n\n\n\n\nBrief Introductions\n\n\n\nFor each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n. . .\nWhere to find these materials:\nAVOCADO\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nR/RStudioTourTry\n\n\nR & RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nConsole\nUsing R as a calculator\nEnvironment\nLoading and viewing a data frame\nAccessing a variable in a data frame\nR functions\n\n\n\nPractice\n\nType a simple math problem (i.e. 3 + 3) in to the console and see the output\nView the airquality dataframe\nDetermine how many rows there are in the airquality dataframe\nAccess a column from the airquality dataframe\nCalculate the median for one of the numeric columns\n\n\n\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nProjectsTourTry\n\n\n\nBuilt-in functionality to keep all files for a single project organized\nBest way to get started on an analysis in R\n\nRStudio Projects Documentation\n\n\n\n[DEMO]\n\nConcepts introduced:\n\n.Rproj file\nOpening up a project\nCreating/saving a file\nRunning Code\nSwitching between projects\n\n\n\nPractice\n\nCreate and open an R Project for this training\nCreate a new Rscript file in your project\nType some R code in the new file\nRun that code\nSave the file\n\n\n\n\n\n\n\n\nFor right now, we can do all R Practice in that file you just created, but we’ll talk about another file type soon that may be helpful for notetaking/practice.\n\n\n\n\nR4DS - book teaching the basics of using R in the tidyverse\nBig Book of R - lots of free resources for learning and using R; each chapter links to a different resource\nlearnR4free - lots of different free courses/resources for learning R\nChatGPT - really good at writing R code for working with data (be careful about including proprietary information)",
+    "text": "RStudio\nRStudio Project\n\n\n\n\nBrief Introductions\n\n\n\nFor each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n. . .\nWhere to find these materials: https://shanellis.github.io/Precision/\n\n\n\n\nbuilt for analysis by statisticians\nreproducibility\nwell-designed plots & tables\nRStudio\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nR/RStudioTourTry\n\n\nR & RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nConsole\nUsing R as a calculator\nEnvironment\nLoading and viewing a data frame\nAccessing a variable in a data frame\nR functions\n\n\n\nPractice\n\nType a simple math problem (i.e. 3 + 3) in to the console and see the output\nView the airquality dataframe\nDetermine how many rows there are in the airquality dataframe\nAccess a column from the airquality dataframe\nCalculate the median for one of the numeric columns\n\n\n\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll.\n\nProjectsTourTry\n\n\n\nBuilt-in functionality to keep all files for a single project organized\nBest way to get started on an analysis in R\n\nRStudio Projects Documentation\n\n\n\n[DEMO]\n\nConcepts introduced:\n\n.Rproj file\nOpening up a project\nCreating/saving a file\nRunning Code\nSwitching between projects\n\n\n\nPractice\n\nCreate and open an R Project for this training\nCreate a new Rscript file in your project\nType some R code in the new file\nRun that code\nSave the file\n\n\n\n\n\n\n\n\nFor right now, we can do all R Practice in that file you just created, but we’ll talk about another file type soon that may be helpful for notetaking/practice.\n\n\n\n\nR4DS - book teaching the basics of using R in the tidyverse\nBig Book of R - lots of free resources for learning and using R; each chapter links to a different resource\nlearnR4free - lots of different free courses/resources for learning R\nChatGPT - really good at writing R code for working with data (be careful about including proprietary information)",
     "crumbs": [
       "Topic 1: Intro to R",
       "00: R & RStudio"
@@ -1382,7 +1160,18 @@
     "href": "01-intro/00-tour.html#general-plan",
     "title": "00-tour",
     "section": "",
-    "text": "For each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n. . .\nWhere to find these materials:\nAVOCADO",
+    "text": "For each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n. . .\nWhere to find these materials: https://shanellis.github.io/Precision/",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour.html#why-r",
+    "href": "01-intro/00-tour.html#why-r",
+    "title": "00-tour",
+    "section": "",
+    "text": "built for analysis by statisticians\nreproducibility\nwell-designed plots & tables\nRStudio",
     "crumbs": [
       "Topic 1: Intro to R",
       "00: R & RStudio"
@@ -1430,6 +1219,156 @@
     "crumbs": [
       "Topic 1: Intro to R",
       "00: R & RStudio"
+    ]
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#agenda",
+    "href": "01-intro/00-tour-reveal.html#agenda",
+    "title": "00-tour",
+    "section": "Agenda",
+    "text": "Agenda\n\nRStudio\nRStudio Project"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#hello",
+    "href": "01-intro/00-tour-reveal.html#hello",
+    "title": "00-tour",
+    "section": "Hello!",
+    "text": "Hello!\nBrief Introductions"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#general-plan",
+    "href": "01-intro/00-tour-reveal.html#general-plan",
+    "title": "00-tour",
+    "section": "General Plan",
+    "text": "General Plan\nFor each topic:\n\nBite size pieces of concepts explained\nPractice & Questions\n\n\nWhere to find these materials: https://shanellis.github.io/Precision/"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#why-r",
+    "href": "01-intro/00-tour-reveal.html#why-r",
+    "title": "00-tour",
+    "section": "Why R?",
+    "text": "Why R?\n\nbuilt for analysis by statisticians\nreproducibility\nwell-designed plots & tables\nRStudio"
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#rstudio-tour",
+    "href": "01-intro/00-tour-reveal.html#rstudio-tour",
+    "title": "00-tour",
+    "section": "RStudio Tour",
+    "text": "RStudio Tour\n\nR/RStudioTourTry\n\n\nR & RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\n\n[DEMO]\n\nConcepts introduced:\n\nConsole\nUsing R as a calculator\nEnvironment\nLoading and viewing a data frame\nAccessing a variable in a data frame\nR functions\n\n\n\nPractice\n\nType a simple math problem (i.e. 3 + 3) in to the console and see the output\nView the airquality dataframe\nDetermine how many rows there are in the airquality dataframe\nAccess a column from the airquality dataframe\nCalculate the median for one of the numeric columns\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#rstudio-projects",
+    "href": "01-intro/00-tour-reveal.html#rstudio-projects",
+    "title": "00-tour",
+    "section": "RStudio Projects",
+    "text": "RStudio Projects\n\nProjectsTourTry\n\n\n\nBuilt-in functionality to keep all files for a single project organized\nBest way to get started on an analysis in R\n\nRStudio Projects Documentation\n\n\n\n[DEMO]\n\nConcepts introduced:\n\n.Rproj file\nOpening up a project\nCreating/saving a file\nRunning Code\nSwitching between projects\n\n\n\nPractice\n\nCreate and open an R Project for this training\nCreate a new Rscript file in your project\nType some R code in the new file\nRun that code\nSave the file\n\n\n\n\n\n\nUnmute to ask or put any questions in the chat. When completed, respond to the zoom poll."
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#for-this-training",
+    "href": "01-intro/00-tour-reveal.html#for-this-training",
+    "title": "00-tour",
+    "section": "For this training…",
+    "text": "For this training…\nFor right now, we can do all R Practice in that file you just created, but we’ll talk about another file type soon that may be helpful for notetaking/practice."
+  },
+  {
+    "objectID": "01-intro/00-tour-reveal.html#additional-resources",
+    "href": "01-intro/00-tour-reveal.html#additional-resources",
+    "title": "00-tour",
+    "section": "Additional Resources:",
+    "text": "Additional Resources:\n\nR4DS - book teaching the basics of using R in the tidyverse\nBig Book of R - lots of free resources for learning and using R; each chapter links to a different resource\nlearnR4free - lots of different free courses/resources for learning R\nChatGPT - really good at writing R code for working with data (be careful about including proprietary information)"
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#agenda",
+    "href": "01-intro/01-packages-reveal.html#agenda",
+    "title": "01-packages",
+    "section": "Agenda",
+    "text": "Agenda\n\nR Packages\nInstallation\nLoading"
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#r-packages-1",
+    "href": "01-intro/01-packages-reveal.html#r-packages-1",
+    "title": "01-packages",
+    "section": "R packages",
+    "text": "R packages\n\nPackages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2\n\nWickham and Bryan, R PackagesCRAN contributed packages"
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#package-installation",
+    "href": "01-intro/01-packages-reveal.html#package-installation",
+    "title": "01-packages",
+    "section": "Package Installation",
+    "text": "Package Installation\n\nPackages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)"
+  },
+  {
+    "objectID": "01-intro/01-packages-reveal.html#install-tidyverse",
+    "href": "01-intro/01-packages-reveal.html#install-tidyverse",
+    "title": "01-packages",
+    "section": "Install tidyverse",
+    "text": "Install tidyverse\nFor this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\n\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n^ Be sure to still run the code above in your console after typing it in your script."
+  },
+  {
+    "objectID": "01-intro/01-packages.html",
+    "href": "01-intro/01-packages.html",
+    "title": "01-packages",
+    "section": "",
+    "text": "R Packages\nInstallation\nLoading\n\n\n\n\n\nPackages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2\n\n\n\n\n\nPackages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)\n\n\ninstall.packages(\"package_name\")\nlibrary(package_name)\n\n\n\n\nFor this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n. . .\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\ninstall.packages(\"tidyverse\")\n\n. . .\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n^ Be sure to still run the code above in your console after typing it in your script.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#agenda",
+    "href": "01-intro/01-packages.html#agenda",
+    "title": "01-packages",
+    "section": "",
+    "text": "R Packages\nInstallation\nLoading",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#r-packages-1",
+    "href": "01-intro/01-packages.html#r-packages-1",
+    "title": "01-packages",
+    "section": "",
+    "text": "Packages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#package-installation",
+    "href": "01-intro/01-packages.html#package-installation",
+    "title": "01-packages",
+    "section": "",
+    "text": "Packages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)\n\n\ninstall.packages(\"package_name\")\nlibrary(package_name)",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#install-tidyverse",
+    "href": "01-intro/01-packages.html#install-tidyverse",
+    "title": "01-packages",
+    "section": "",
+    "text": "For this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n. . .\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\ninstall.packages(\"tidyverse\")\n\n. . .\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n^ Be sure to still run the code above in your console after typing it in your script.",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
+    ]
+  },
+  {
+    "objectID": "01-intro/01-packages.html#footnotes",
+    "href": "01-intro/01-packages.html#footnotes",
+    "title": "01-packages",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWickham and Bryan, R Packages↩︎\nCRAN contributed packages↩︎",
+    "crumbs": [
+      "Topic 1: Intro to R",
+      "01: Packages"
     ]
   },
   {
@@ -1696,97 +1635,176 @@
     ]
   },
   {
-    "objectID": "01-intro/01-packages-reveal.html#agenda",
-    "href": "01-intro/01-packages-reveal.html#agenda",
-    "title": "01-packages",
+    "objectID": "02-data/05-tidyverse-reveal.html#agenda",
+    "href": "02-data/05-tidyverse-reveal.html#agenda",
+    "title": "05-tidyverse",
     "section": "Agenda",
-    "text": "Agenda\n\nR Packages\nInstallation\nLoading"
+    "text": "Agenda\n\ntidyverse\npackage summary\nThe pipe"
   },
   {
-    "objectID": "01-intro/01-packages-reveal.html#r-packages-1",
-    "href": "01-intro/01-packages-reveal.html#r-packages-1",
-    "title": "01-packages",
-    "section": "R packages",
-    "text": "R packages\n\nPackages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2\n\nWickham and Bryan, R PackagesCRAN contributed packages"
+    "objectID": "02-data/05-tidyverse-reveal.html#what-is-the-tidyverse",
+    "href": "02-data/05-tidyverse-reveal.html#what-is-the-tidyverse",
+    "title": "05-tidyverse",
+    "section": "What is the Tidyverse?",
+    "text": "What is the Tidyverse?\n\n\n\n\n\ntidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax."
   },
   {
-    "objectID": "01-intro/01-packages-reveal.html#package-installation",
-    "href": "01-intro/01-packages-reveal.html#package-installation",
-    "title": "01-packages",
-    "section": "Package Installation",
-    "text": "Package Installation\n\nPackages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)"
+    "objectID": "02-data/05-tidyverse-reveal.html#history-tidyverse",
+    "href": "02-data/05-tidyverse-reveal.html#history-tidyverse",
+    "title": "05-tidyverse",
+    "section": "History: tidyverse?",
+    "text": "History: tidyverse?\nThere are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s"
   },
   {
-    "objectID": "01-intro/01-packages-reveal.html#install-tidyverse",
-    "href": "01-intro/01-packages-reveal.html#install-tidyverse",
-    "title": "01-packages",
-    "section": "Install tidyverse",
-    "text": "Install tidyverse\nFor this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\n\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n^ Be sure to still run the code above in your console after typing it in your script."
+    "objectID": "02-data/05-tidyverse-reveal.html#why-tidyverse",
+    "href": "02-data/05-tidyverse-reveal.html#why-tidyverse",
+    "title": "05-tidyverse",
+    "section": "Why tidyverse?",
+    "text": "Why tidyverse?\n\ntidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data"
   },
   {
-    "objectID": "01-intro/01-packages.html",
-    "href": "01-intro/01-packages.html",
-    "title": "01-packages",
+    "objectID": "02-data/05-tidyverse-reveal.html#package-summary",
+    "href": "02-data/05-tidyverse-reveal.html#package-summary",
+    "title": "05-tidyverse",
+    "section": "Package Summary",
+    "text": "Package Summary\nThere are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#the-pipe-in-baser",
+    "href": "02-data/05-tidyverse-reveal.html#the-pipe-in-baser",
+    "title": "05-tidyverse",
+    "section": "The pipe in baseR",
+    "text": "The pipe in baseR\n\n\n\n\n|&gt; should be read as “and then”\nfor example “Wake up |&gt; brush teeth” would be read as “wake up and then brush teeth”"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#where-does-the-name-come-from",
+    "href": "02-data/05-tidyverse-reveal.html#where-does-the-name-come-from",
+    "title": "05-tidyverse",
+    "section": "Where does the name come from?",
+    "text": "Where does the name come from?\nThe pipe operator was first implemented in the package magrittr.\n\n\n\n\n\n\n\nYou will see this frequently in code online. It’s equivalent to |&gt;.\n\nMost people have recently transitioned to |&gt;, so I’ll try to use that."
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#review-how-does-a-pipe-work",
+    "href": "02-data/05-tidyverse-reveal.html#review-how-does-a-pipe-work",
+    "title": "05-tidyverse",
+    "section": "Review: How does a pipe work?",
+    "text": "Review: How does a pipe work?\n\nYou can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.\n\n\n\nExpressed as a set of nested functions in baseR pseudocode, this would look like:\n\n\n\n\nWriting it out using pipes give it a more natural (and easier to read) structure:"
+  },
+  {
+    "objectID": "02-data/05-tidyverse-reveal.html#code-style-pipes",
+    "href": "02-data/05-tidyverse-reveal.html#code-style-pipes",
+    "title": "05-tidyverse",
+    "section": "Code Style: pipes (|>)",
+    "text": "Code Style: pipes (|&gt;)\n\nshould have a space before it\nis most often the last thing on a line"
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html",
+    "href": "02-data/05-tidyverse.html",
+    "title": "05-tidyverse",
     "section": "",
-    "text": "R Packages\nInstallation\nLoading\n\n\n\n\n\nPackages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2\n\n\n\n\n\nPackages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)\n\n\ninstall.packages(\"package_name\")\nlibrary(package_name)\n\n\n\n\nFor this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n. . .\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\ninstall.packages(\"tidyverse\")\n\n. . .\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n^ Be sure to still run the code above in your console after typing it in your script.",
+    "text": "tidyverse\npackage summary\nThe pipe\n\n\n\n\n\n\n\n\n\ntidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax.\n\n\n\n\n\n\nThere are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s\n\n\n\n\n\ntidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data\n\n\n\n\nThere are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n. . .\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)",
     "crumbs": [
-      "Topic 1: Intro to R",
-      "01: Packages"
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
     ]
   },
   {
-    "objectID": "01-intro/01-packages.html#agenda",
-    "href": "01-intro/01-packages.html#agenda",
-    "title": "01-packages",
+    "objectID": "02-data/05-tidyverse.html#agenda",
+    "href": "02-data/05-tidyverse.html#agenda",
+    "title": "05-tidyverse",
     "section": "",
-    "text": "R Packages\nInstallation\nLoading",
+    "text": "tidyverse\npackage summary\nThe pipe",
     "crumbs": [
-      "Topic 1: Intro to R",
-      "01: Packages"
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
     ]
   },
   {
-    "objectID": "01-intro/01-packages.html#r-packages-1",
-    "href": "01-intro/01-packages.html#r-packages-1",
-    "title": "01-packages",
+    "objectID": "02-data/05-tidyverse.html#what-is-the-tidyverse",
+    "href": "02-data/05-tidyverse.html#what-is-the-tidyverse",
+    "title": "05-tidyverse",
     "section": "",
-    "text": "Packages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data 1\nPeople use R for lots of different tasks (data management, statistical analysis, visualization, genomics, etc.). Packages help make these different things easier/possible.\nAs of Sept 2023, there are ~20,700 R packages available on CRAN (the Comprehensive R Archive Network)2",
+    "text": "tidyverse.org\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science.\nAll packages share an underlying philosophy and a common syntax.",
     "crumbs": [
-      "Topic 1: Intro to R",
-      "01: Packages"
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
     ]
   },
   {
-    "objectID": "01-intro/01-packages.html#package-installation",
-    "href": "01-intro/01-packages.html#package-installation",
-    "title": "01-packages",
+    "objectID": "02-data/05-tidyverse.html#history-tidyverse",
+    "href": "02-data/05-tidyverse.html#history-tidyverse",
+    "title": "05-tidyverse",
     "section": "",
-    "text": "Packages are installed with the install.packages function (do this once per package)\nLoaded with the library function (once per session)\n\n\ninstall.packages(\"package_name\")\nlibrary(package_name)",
+    "text": "There are two “dialects” in R: baseR and tidyverse\n\nbaseR syntax existed first (1993)\ntidyverse became a “thing” in the late 2010s",
     "crumbs": [
-      "Topic 1: Intro to R",
-      "01: Packages"
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
     ]
   },
   {
-    "objectID": "01-intro/01-packages.html#install-tidyverse",
-    "href": "01-intro/01-packages.html#install-tidyverse",
-    "title": "01-packages",
+    "objectID": "02-data/05-tidyverse.html#why-tidyverse",
+    "href": "02-data/05-tidyverse.html#why-tidyverse",
+    "title": "05-tidyverse",
     "section": "",
-    "text": "For this training, we’ll primarily use one suite of packages. We’ll discuss more about what this includes later, but for now, let’s just install and load tidyverse.\n. . .\nThis only has to be run a single time, so it’s best to do it directly in your console:\n\ninstall.packages(\"tidyverse\")\n\n. . .\nBut, this has to be done every time you’re working with code that requires the tidyverse, so best to add this to that RScript file you created.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n^ Be sure to still run the code above in your console after typing it in your script.",
+    "text": "tidyverse syntax has been referred to as “supremely readable”\nthe tools in the tidyverse all work really well together\nspecifically designed for working with tabular data",
     "crumbs": [
-      "Topic 1: Intro to R",
-      "01: Packages"
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
     ]
   },
   {
-    "objectID": "01-intro/01-packages.html#footnotes",
-    "href": "01-intro/01-packages.html#footnotes",
-    "title": "01-packages",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nWickham and Bryan, R Packages↩︎\nCRAN contributed packages↩︎",
+    "objectID": "02-data/05-tidyverse.html#package-summary",
+    "href": "02-data/05-tidyverse.html#package-summary",
+    "title": "05-tidyverse",
+    "section": "",
+    "text": "There are currently 8 core packages in the tidyverse: https://www.tidyverse.org/packages/\n. . .\nWe’ll focus on:\n\nreadr | data import\ndplyr | grammar of data manipulations\ntidyr | helps tidying data\nggplot2 | grammar of graphics (data visualization)\ntibble | working behind the scenes to enable it all . . .\n\nAll 8 are loaded and can be used when you run library(tidyverse)",
     "crumbs": [
-      "Topic 1: Intro to R",
-      "01: Packages"
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#the-pipe-in-baser",
+    "href": "02-data/05-tidyverse.html#the-pipe-in-baser",
+    "title": "05-tidyverse",
+    "section": "The pipe in baseR",
+    "text": "The pipe in baseR\n\n\n\n\n|&gt; should be read as “and then”\nfor example “Wake up |&gt; brush teeth” would be read as “wake up and then brush teeth”",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#where-does-the-name-come-from",
+    "href": "02-data/05-tidyverse.html#where-does-the-name-come-from",
+    "title": "05-tidyverse",
+    "section": "Where does the name come from?",
+    "text": "Where does the name come from?\nThe pipe operator was first implemented in the package magrittr.\n\n\n\n\n\n\n\nYou will see this frequently in code online. It’s equivalent to |&gt;.\n. . .\nMost people have recently transitioned to |&gt;, so I’ll try to use that.",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#review-how-does-a-pipe-work",
+    "href": "02-data/05-tidyverse.html#review-how-does-a-pipe-work",
+    "title": "05-tidyverse",
+    "section": "Review: How does a pipe work?",
+    "text": "Review: How does a pipe work?\n\nYou can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.\n\n. . .\n\nExpressed as a set of nested functions in baseR pseudocode, this would look like:\n\n\npark(drive(start_car(find(\"keys\")), to = \"campus\"))\n\n. . .\n\nWriting it out using pipes give it a more natural (and easier to read) structure:\n\n\nfind(\"keys\") |&gt;\n  start_car() |&gt;\n  drive(to = \"campus\") |&gt;\n  park()",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
+    ]
+  },
+  {
+    "objectID": "02-data/05-tidyverse.html#code-style-pipes",
+    "href": "02-data/05-tidyverse.html#code-style-pipes",
+    "title": "05-tidyverse",
+    "section": "Code Style: pipes (|>)",
+    "text": "Code Style: pipes (|&gt;)\n\nshould have a space before it\nis most often the last thing on a line",
+    "crumbs": [
+      "Topic 2: Working with Data",
+      "05: The `tidyverse`"
     ]
   },
   {

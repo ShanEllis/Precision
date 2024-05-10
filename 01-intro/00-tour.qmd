@@ -16,19 +16,25 @@ format:
 
 ## Hello!
 
-Brief Introductions 
+Brief Introductions
 
 ## General Plan
 
-For each topic: 
+For each topic:
 
-- Bite size pieces of concepts explained
-- Practice & Questions
+-   Bite size pieces of concepts explained
+-   Practice & Questions
 
 . . .
 
-Where to find these materials: [https://shanellis.github.io/Precision/](https://shanellis.github.io/Precision/)
+Where to find these materials: <https://shanellis.github.io/Precision/>
 
+## Why R?
+
+- built for analysis by statisticians
+- reproducibility
+- well-designed plots & tables
+- RStudio
 
 ## RStudio Tour
 
@@ -69,12 +75,12 @@ Unmute to ask or put any questions in the chat. When completed, respond to the z
 :::
 
 ## RStudio Projects
-::: panel-tabset
 
+::: panel-tabset
 ### Projects
 
-- Built-in functionality to keep all files for a single project organized
-- Best way to get started on an analysis in R
+-   Built-in functionality to keep all files for a single project organized
+-   Best way to get started on an analysis in R
 
 [RStudio Projects Documentation](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
 
@@ -84,21 +90,21 @@ Unmute to ask or put any questions in the chat. When completed, respond to the z
 
 Concepts introduced:
 
-- .Rproj file
-- Opening up a project
-- Creating/saving a file
-- Running Code
-- Switching between projects
+-   .Rproj file
+-   Opening up a project
+-   Creating/saving a file
+-   Running Code
+-   Switching between projects
 
 ### Try
 
 **Practice**
 
-1. Create and open an R Project for this training
-2. Create a new Rscript file in your project
-3. Type some R code in the new file
-4. Run that code
-5. Save the file
+1.  Create and open an R Project for this training
+2.  Create a new Rscript file in your project
+3.  Type some R code in the new file
+4.  Run that code
+5.  Save the file
 
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
@@ -107,11 +113,11 @@ Unmute to ask or put any questions in the chat. When completed, respond to the z
 
 ## For this training...
 
-For right now, we can do all R Practice in that file  you just created, but we'll talk about another file type soon that may be helpful for notetaking/practice.
+For right now, we can do all R Practice in that file you just created, but we'll talk about another file type soon that may be helpful for notetaking/practice.
 
 ## Additional Resources:
 
-- [R4DS](https://r4ds.hadley.nz/) - book teaching the basics of using R in the `tidyverse`
-- [Big Book of R](https://www.bigbookofr.com/) - lots of free resources for learning and using R; each chapter links to a different resource
-- [learnR4free](https://www.learnr4free.com/) - lots of different free courses/resources for learning R
-- [ChatGPT](https://chatgpt.com/?oai-dm=1) - really good at writing R code for working with data (be careful about including proprietary information)
+-   [R4DS](https://r4ds.hadley.nz/) - book teaching the basics of using R in the `tidyverse`
+-   [Big Book of R](https://www.bigbookofr.com/) - lots of free resources for learning and using R; each chapter links to a different resource
+-   [learnR4free](https://www.learnr4free.com/) - lots of different free courses/resources for learning R
+-   [ChatGPT](https://chatgpt.com/?oai-dm=1) - really good at writing R code for working with data (be careful about including proprietary information)
