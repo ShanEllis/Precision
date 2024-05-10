@@ -27,9 +27,8 @@ For each topic:
 
 . . .
 
-Where to find these materials: 
+Where to find these materials: [https://shanellis.github.io/Precision/](https://shanellis.github.io/Precision/)
 
-AVOCADO 
 
 ## RStudio Tour
 
