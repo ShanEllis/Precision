@@ -11,9 +11,9 @@ format:
 
 ## Agenda
 
-1. `tidyverse`
-2. package summary
-3. The pipe
+1.  `tidyverse`
+2.  package summary
+3.  The pipe
 
 ## What is the Tidyverse?
 
@@ -34,31 +34,30 @@ format:
 
 There are two "dialects" in R: baseR and `tidyverse`
 
-- `baseR` syntax existed first (1993)
-- `tidyverse` became a "thing" in the late 2010s
+-   `baseR` syntax existed first (1993)
+-   `tidyverse` became a "thing" in the late 2010s
 
 ## Why `tidyverse`?
 
-- `tidyverse` syntax has been referred to as "supremely readable" 
-- the tools in the `tidyverse` all work really well together
-- specifically designed for working with tabular data
+-   `tidyverse` syntax has been referred to as "supremely readable"
+-   the tools in the `tidyverse` all work really well together
+-   specifically designed for working with tabular data
 
 ## Package Summary
 
-There are currently 8 core packages in the `tidyverse`: [https://www.tidyverse.org/packages/](https://www.tidyverse.org/packages/)
+There are currently 8 core packages in the `tidyverse`: <https://www.tidyverse.org/packages/>
 
-. . . 
+. . .
 
 We'll focus on:
 
-- `readr` | data import
-- `dplyr` | grammar of data manipulations
-- `tidyr` | helps tidying data
-- `ggplot2` | grammar of graphics (data visualization)
-- `tibble` | working behind the scenes to enable it all
-. . . 
+-   `readr` \| data import
+-   `dplyr` \| grammar of data manipulations
+-   `tidyr` \| helps tidying data
+-   `ggplot2` \| grammar of graphics (data visualization)
+-   `tibble` \| working behind the scenes to enable it all . . .
 
-All 8 are loaded and can be used when you run `library(tidyverse)` 
+All 8 are loaded and can be used when you run `library(tidyverse)`
 
 # Pipes {background-color="#e4282e"}
 
@@ -89,12 +88,11 @@ The pipe operator was *first* implemented in the package **magrittr**.
 
 You will see this frequently in code online. It's equivalent to `|>`.
 
-. . . 
+. . .
 
-Most people have recently transitioned to |>, so I'll try to use that.
+Most people have recently transitioned to \|\>, so I'll try to use that.
 
-
-## Review: How does a pipe work? 
+## Review: How does a pipe work?
 
 -   You can think about the following sequence of actions - find key, unlock car, start car, drive to school, park.
 
@@ -117,10 +115,7 @@ find("keys") |>
   park()
 ```
 
-
-
 ## Code Style: pipes (`|>`)
 
-- should have a space before it 
-- is most often the last thing on a line
-
+-   should have a space before it
+-   is most often the last thing on a line

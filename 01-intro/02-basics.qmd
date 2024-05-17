@@ -13,15 +13,13 @@ format:
 
 1.  Variables
 2.  Operators
-3.  Code Style 
-
+3.  Code Style
 
 ## Setup
 
 ```{r}
 library(tidyverse)
 ```
-
 
 # Variables & Assignment {background-color="#e4282e"}
 
@@ -69,12 +67,12 @@ class(first_variable)
 
 ## Basic Variable Types
 
-| Variable Type | Explanation                       | Example                                     |
-|-------------------|-----------------------|-------------------------------|
-| character     | stores a string                   | `"cogs137"`, `"hi!"`                        |
-| numeric       | stores whole numbers and decimals | `9`, `9.29`                                 |
-| logical       | Booleans                          | `TRUE`, `FALSE`                             |
-| vector          | store multiple elements           | `c(7, 8, 9)`                        |
+| Variable Type | Explanation                       | Example              |
+|---------------|-----------------------------------|----------------------|
+| character     | stores a string                   | `"cogs137"`, `"hi!"` |
+| numeric       | stores whole numbers and decimals | `9`, `9.29`          |
+| logical       | Booleans                          | `TRUE`, `FALSE`      |
+| vector        | store multiple elements           | `c(7, 8, 9)`         |
 
 Note: There are many more. We'll get to some but not all in this training
 
@@ -126,13 +124,12 @@ class(NA)
 
 R is a dynamically typed language.
 
-This means:
-- R makes its best guess as how to store information
-- but you can always force a variable to be of the preferred type:
+This means: - R makes its best guess as how to store information - but you can always force a variable to be of the preferred type:
 
 ```{r}
 my_vec
 ```
+
 . . .
 
 ```{r}
@@ -147,7 +144,8 @@ Convert to character
 my_char <- as.character(my_vec)
 ```
 
-. . . 
+. . .
+
 ```{r}
 class(my_char)
 ```
@@ -165,7 +163,6 @@ In your RScript file: Define variables of each of the following types: character
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
 :::
-
 
 # Operators {background-color="#e4282e"}
 
@@ -238,20 +235,18 @@ Use arithmetic and comparison operators to store the value 30 in the variable `v
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
 :::
 
-
 # Code Style {background-color="#e4282e"}
 
-## Code Style 
+## Code Style
 
-- typically variables should use snake_case (all lowercase with `_` to separate words)
-- Long, descriptive variable names are better than short, uninformative names
-- Put spaces around the assignment operator (`<-`)
-- Spaces on either side of mathematical operators apart from `^`
+-   typically variables should use snake_case (all lowercase with `_` to separate words)
+-   Long, descriptive variable names are better than short, uninformative names
+-   Put spaces around the assignment operator (`<-`)
+-   Spaces on either side of mathematical operators apart from `^`
 
+Good code style:
 
-Good code style: 
 ```{r, eval=FALSE}
 participants_heights <- c(65, 72, 58, 60)
 participants_heights <= 60
 ```
-

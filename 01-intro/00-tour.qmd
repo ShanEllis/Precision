@@ -31,10 +31,10 @@ Where to find these materials: <https://shanellis.github.io/Precision/>
 
 ## Why R?
 
-- built for analysis by statisticians
-- reproducibility
-- well-designed plots & tables
-- RStudio
+-   built for analysis by statisticians
+-   reproducibility
+-   well-designed plots & tables
+-   RStudio
 
 ## RStudio Tour
 

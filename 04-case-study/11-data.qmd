@@ -1,0 +1,60 @@
+---
+title: "11-data"
+
+format:
+  html: default
+  revealjs:
+    output-file: 11-data-reveal.html
+---
+
+# 
+
+## Agenda
+
+## Setup
+
+```{r}
+library(tidyverse)
+library(here) 
+library(skimr) 
+```
+
+
+## A Brief Aside on filepaths
+
+- relative paths | from your current working directory (.RProj)
+- absolute paths | from the root directory on your computer
+
+## The `here` package
+
+Generally, best practice to avoid using `setwd()` and use `here()` instead.
+
+- paths with `here()` will continue to work even if the working directory is changed
+- with `here()` paths will work when anyone else on any other computer runs this code...so long as they have access to the project files
+
+## The Data
+
+Steps: 
+
+1. Create a folder `data/` where you're keeping your notes for this training
+2. Add the file shared in the chat to that folder
+3. Read the data into R using the following
+
+```{r}
+df <- read_csv(here("data/Ascent_results_sample_pivot_v2.csv"))
+```
+
+## Take a look at the data
+
+- `skim()`
+- `View()`
+- `glimpse()`/`str()`
+- etc.
+
+## Practice
+
+Read the data in and add something you learned about these data while taking a look at the data
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::

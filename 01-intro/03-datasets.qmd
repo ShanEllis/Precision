@@ -11,10 +11,10 @@ format:
 
 ## Agenda
 
-1. Dataframes
-2. Common Functions
-3. Available datasets
-4. Data Import
+1.  Dataframes
+2.  Common Functions
+3.  Available datasets
+4.  Data Import
 
 ## Setup
 
@@ -22,7 +22,7 @@ format:
 library(tidyverse)
 ```
 
-. . . 
+. . .
 
 Will also be helpful to have access to the `skimr` package:
 
@@ -32,7 +32,6 @@ library(skimr)
 ```
 
 # Dataframes & tibbles {background-color="#e4282e"}
-
 
 ## Data "sets" in R {.scrollable .smaller}
 
@@ -77,13 +76,12 @@ Columns (variables) in data frames are accessed with `$`:
 dataframe$var_name
 ```
 
-. . . 
+. . .
 
 ```{r}
 class(df$x)  # access variable type for column
 class(df$y)  
 ```
-
 
 # Common dataset operations {background-color="#e4282e"}
 
@@ -91,7 +89,7 @@ class(df$y)
 
 -   Functions are (most often) verbs, followed by what they will be applied to in parentheses.
 
-. . . 
+. . .
 
 Functions are:
 
@@ -101,7 +99,7 @@ Functions are:
 
 ## Helpful Functions
 
-- `View()` - to see the dataset in a new window
+-   `View()` - to see the dataset in a new window
 
 ```{r, eval=FALSE}
 View(df)
@@ -133,7 +131,7 @@ str(df)
 
 . . .
 
-- `glimpse()` - give you a summary of what's in your data
+-   `glimpse()` - give you a summary of what's in your data
 
 ```{r}
 glimpse(df)
@@ -141,12 +139,11 @@ glimpse(df)
 
 . . .
 
-- `names` - gives you the names of columns in data
+-   `names` - gives you the names of columns in data
 
 ```{r}
 names(df)
 ```
-
 
 # Available Datasets {background-color="#e4282e"}
 
@@ -162,30 +159,30 @@ library(help=datasets)
 
 ## More popular datasets
 
-- `library(nycflights13)`
-- [`ggplot2 datasets`](https://ggplot2.tidyverse.org/reference/)
-- `library(palmerpenguins)`
+-   `library(nycflights13)`
+-   [`ggplot2 datasets`](https://ggplot2.tidyverse.org/reference/)
+-   `library(palmerpenguins)`
 
 ## `skimr`
 
-- a packages for getting a summary of your entire dataset at once
+-   a packages for getting a summary of your entire dataset at once
 
 ```{r, eval=FALSE}
 skim(msleep)
 ```
 
-. . . 
+. . .
 
-You can always pull up additional documentation: `?msleep` for a dataset. 
+You can always pull up additional documentation: `?msleep` for a dataset.
 
 ## Practice
 
-Explore common functions (`dim`, `class`, `glimpse`, `str`, `class`, `names`, `skim`, `View`) to understand one of the popular datasets: 
+Explore common functions (`dim`, `class`, `glimpse`, `str`, `class`, `names`, `skim`, `View`) to understand one of the popular datasets:
 
-- `library(help=datasets)`
-- `library(nycflights13)` (would require installation)
-- [`ggplot2 datasets`](https://ggplot2.tidyverse.org/reference/)
-- `library(palmerpenguins)` (would require installation)
+-   `library(help=datasets)`
+-   `library(nycflights13)` (would require installation)
+-   [`ggplot2 datasets`](https://ggplot2.tidyverse.org/reference/)
+-   `library(palmerpenguins)` (would require installation)
 
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
@@ -199,13 +196,13 @@ The `readr` package from the tidyverse has the ability to read in *lots* of diff
 
 . . .
 
-The functions in `readr` start with `read_*`, where the * is filled in by the file type.
+The functions in `readr` start with `read_*`, where the \* is filled in by the file type.
 
-. . . 
+. . .
 
-By far the most commonly used is `read_csv()`...but it can also read in other tabular data types 
+By far the most commonly used is `read_csv()`...but it can also read in other tabular data types
 
-. . . 
+. . .
 
 However, if you want to read in an Excel file, you'll need to first `library(readxl)`. This *is* a package in the `tidyverse`, but it's not a *core* package.
 
@@ -223,11 +220,10 @@ df <- read_csv("https://raw.githubusercontent.com/ShanEllis/datasets/master/birt
 
 It's also possible to store your dataframe in R back to a file using `write_*`
 
-For example: 
+For example:
 
 ```{r}
 write_csv(df, "births.csv")
 ```
 
 ...would store `births.csv` in your current working directory
-

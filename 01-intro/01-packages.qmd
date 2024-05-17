@@ -27,8 +27,8 @@ format:
 
 ## Package Installation
 
-- Packages are installed with the `install.packages` function (do this once per package)
-- Loaded with the `library` function (once per session)
+-   Packages are installed with the `install.packages` function (do this once per package)
+-   Loaded with the `library` function (once per session)
 
 ```{r eval=FALSE}
 install.packages("package_name")
@@ -55,4 +55,4 @@ But, this has to be done every time you're working with code that requires the t
 library(tidyverse)
 ```
 
-^ Be sure to still run the code above in your console after typing it in your script.
+\^ Be sure to still run the code above in your console after typing it in your script.

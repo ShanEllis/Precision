@@ -41,8 +41,21 @@ website:
           href: 02-data/06-dplyr.qmd
         - text: "07: `tidyr`"
           href: 02-data/07-tidyr.qmd
-
-
+      - section: "Topic 3: Data Visualization"
+        contents:
+        - text: "08: The grammar of graphics"
+          href: 03-viz/08-grammar-graphics.qmd
+        - text: "09: `ggplot2`"
+          href: 03-viz/09-ggplot2.qmd
+        - text: "10: Tables"
+          href: 03-viz/10-tables.qmd
+      - section: "Topic 4: Case Study"
+        contents:
+        - text: "11: The Data"
+          href: 04-case-study/11-data.qmd
+        - text: "12: Analysis"
+          href: 04-case-study/12-analysis.qmd
+          
 format:
   html:
     toc: true
@@ -54,4 +67,7 @@ format:
     preview-links: auto
     scrollable: true
 
+execute:
+  echo: true
+  
 editor: visual

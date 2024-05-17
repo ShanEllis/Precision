@@ -9,38 +9,53 @@ format:
 
 ## Prior to training:
 
-- [Install R and RStudio](https://posit.co/download/rstudio-desktop/)
-- Alternative (if any issues in installation) | [https://posit.cloud/](https://posit.cloud/
-)  
+-   [Install R and RStudio](https://posit.co/download/rstudio-desktop/)
+-   Alternative (if any issues in installation) \| <https://posit.cloud/>
 
 ## Day 01: May 10th
 
-### Topic 1 | Introduction to R and RStudio
+### Topic 1 \| Introduction to R and RStudio
 
-- RStudio Tour
-- R Basics | Variables and operators
-- R Packages
-- Datasets in R
-- R Markdown & quarto
+-   RStudio Tour
+-   R Basics \| Variables and operators
+-   R Packages
+-   Datasets in R
+-   R Markdown & quarto
 
-### Topic 2 | working with data in R
+### Topic 2 \| working with data in R
 
-- Introduction to the `tidyverse`
-- `dplyr` | common operations & pipes
-- `tidyr` | common data manipulations
+-   Introduction to the `tidyverse`
+-   `dplyr` \| common operations & pipes
+-   `tidyr` \| common data manipulations
 
 ## Day 02: May 17th
 
-### Topic 3 | Visualizing data in R
-- Introduce the grammar of graphics
-- `ggplot2` | making visuals in R
-- Customizing visualizations in R
-- tables in R
+### Topic 3 \| Visualizing data in R
 
-### Topic 4 | Getting comfortable in R
+-   Introduce the grammar of graphics
+-   `ggplot2` \| making visuals in R
+-   Customizing visualizations in R
+-   tables in R
 
-- Putting it all together with a mini case study
-  - Cleaning and wrangling data
-  - Exploring data
-  - Analyzing data
-  - Visualizing results
+### Topic 4 \| Getting comfortable in R
+
+-   Putting it all together with a mini case study
+    -   Cleaning and wrangling data
+    -   Exploring data
+    -   Visualizing results
+    
+### Additional Resources
+-   [R4DS](https://r4ds.hadley.nz/) - book teaching the basics of using R in the `tidyverse`
+-   [Big Book of R](https://www.bigbookofr.com/) - lots of free resources for learning and using R; each chapter links to a different resource
+-   [learnR4free](https://www.learnr4free.com/) - lots of different free courses/resources for learning R
+-   [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) - descriptive statistics & statistical inference (with examples in R)
+-   [ChatGPT](https://chatgpt.com/?oai-dm=1) - really good at writing R code for working with data (be careful about including proprietary information)
+-  [`ggplot2`: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/) - book all about making plots using `ggplot2` in R
+
+### Next Steps
+
+1. **Data** | Take a dataset you're familiar with in Excel and carry out your analysis (or part of it in R)
+2. **Viz** | Find a visualization out "in the wild" and try to recreate it in R using `ggplot2`
+3. **R Packages** | Find a package [here](https://support.posit.co/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages) (or elsewhere) that sounds interesting and learn to do something with it
+4. **Open Case Studies** | Work through a case study [here](https://www.opencasestudies.org/) using the code alongside the text to understand more complex analyses ...that have already been worked out!
+5. **Statistical Analysis** | Work through interactive tutorials in [IMS](https://openintro-ims.netlify.app/)

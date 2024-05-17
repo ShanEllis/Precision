@@ -11,9 +11,8 @@ format:
 
 ## Agenda
 
-1. RMarkdown files
-2. `quarto`
-
+1.  RMarkdown files
+2.  `quarto`
 
 ## R Markdown
 
@@ -32,12 +31,12 @@ format:
 
 Concepts introduced:
 
-- Creating a file
-- Saving a file
-- YAML
-- Markdown
-- Code Chunks
-- Knitting
+-   Creating a file
+-   Saving a file
+-   YAML
+-   Markdown
+-   Code Chunks
+-   Knitting
 
 ## R Markdown tips
 
@@ -47,9 +46,9 @@ Concepts introduced:
 
 ## Aside: `quarto`
 
-Quarto documents are very much like RMarkdown documents...but allow for additional programming languages to be run in a single document. 
+Quarto documents are very much like RMarkdown documents...but allow for additional programming languages to be run in a single document.
 
-. . . 
+. . .
 
 Quarto (`.qmd`) is what I've used for thes notes and the website.
 
@@ -57,11 +56,10 @@ Quarto (`.qmd`) is what I've used for thes notes and the website.
 
 Recommendation: For practice and taking notes today (and next week), I recommend either one large R Markdown document or separate RMarkdown for each topic to take notes and practice.
 
-. . . 
+. . .
 
 Your turn: Add some markdown text to take notes of something we've discussed thus far along with at least one code chunk in an RMarkdown document in the R Project you started earlier.
 
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
 :::
-

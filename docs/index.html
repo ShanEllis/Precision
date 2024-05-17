@@ -182,6 +182,58 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Topic 3: Data Visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-viz/08-grammar-graphics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08: The grammar of graphics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-viz/09-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09: <code>ggplot2</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-viz/10-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10: Tables</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Topic 4: Case Study</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-case-study/11-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11: The Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-case-study/12-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12: Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -204,6 +256,8 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#topic-3-visualizing-data-in-r" id="toc-topic-3-visualizing-data-in-r" class="nav-link" data-scroll-target="#topic-3-visualizing-data-in-r">Topic 3 | Visualizing data in R</a></li>
   <li><a href="#topic-4-getting-comfortable-in-r" id="toc-topic-4-getting-comfortable-in-r" class="nav-link" data-scroll-target="#topic-4-getting-comfortable-in-r">Topic 4 | Getting comfortable in R</a></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -237,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="prior-to-training">Prior to training:</h2>
 <ul>
 <li><a href="https://posit.co/download/rstudio-desktop/">Install R and RStudio</a></li>
-<li>Alternative (if any issues in installation) | <a href="https://posit.cloud/">https://posit.cloud/</a></li>
+<li>Alternative (if any issues in installation) | <a href="https://posit.cloud/" class="uri">https://posit.cloud/</a></li>
 </ul>
 </section>
 <section id="day-01-may-10th" class="level2">
@@ -279,10 +333,30 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Cleaning and wrangling data</li>
 <li>Exploring data</li>
-<li>Analyzing data</li>
 <li>Visualizing results</li>
 </ul></li>
 </ul>
+</section>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li><a href="https://r4ds.hadley.nz/">R4DS</a> - book teaching the basics of using R in the <code>tidyverse</code></li>
+<li><a href="https://www.bigbookofr.com/">Big Book of R</a> - lots of free resources for learning and using R; each chapter links to a different resource</li>
+<li><a href="https://www.learnr4free.com/">learnR4free</a> - lots of different free courses/resources for learning R</li>
+<li><a href="https://openintro-ims.netlify.app/">Introduction to Modern Statistics</a> - descriptive statistics &amp; statistical inference (with examples in R)</li>
+<li><a href="https://chatgpt.com/?oai-dm=1">ChatGPT</a> - really good at writing R code for working with data (be careful about including proprietary information)</li>
+<li><a href="https://ggplot2-book.org/"><code>ggplot2</code>: Elegant Graphics for Data Analysis (3e)</a> - book all about making plots using <code>ggplot2</code> in R</li>
+</ul>
+</section>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">Next Steps</h3>
+<ol type="1">
+<li><strong>Data</strong> | Take a dataset you’re familiar with in Excel and carry out your analysis (or part of it in R)</li>
+<li><strong>Viz</strong> | Find a visualization out “in the wild” and try to recreate it in R using <code>ggplot2</code></li>
+<li><strong>R Packages</strong> | Find a package <a href="https://support.posit.co/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages">here</a> (or elsewhere) that sounds interesting and learn to do something with it</li>
+<li><strong>Open Case Studies</strong> | Work through a case study <a href="https://www.opencasestudies.org/">here</a> using the code alongside the text to understand more complex analyses …that have already been worked out!</li>
+<li><strong>Statistical Analysis</strong> | Work through interactive tutorials in <a href="https://openintro-ims.netlify.app/">IMS</a></li>
+</ol>
 
 
 </section>

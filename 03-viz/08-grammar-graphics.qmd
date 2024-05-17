@@ -1,0 +1,64 @@
+---
+title: "08_grammar_graphics"
+
+format:
+  html: default
+  revealjs:
+    output-file: 08_grammar_graphics-reveal.html
+---
+
+# The Grammar of Graphics {background-color="#e4282e"}
+
+## The Grammar of Graphics
+
+- Written by Leland Wilkinson (1942; 2e in 2005)
+- Grammar for Effective Data Visualization
+- `ggplot2`: Adopted into R by Hadley Wickham (2005)
+
+## The Basics
+
+The "grammar" for any graphic (plot) maps the data to the aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars). This is the process of **map**ing **data**.
+
+Source: *[`ggplot2` book](https://ggplot2-book.org/introduction)*. 
+
+. . . 
+
+There are additional layers (transformations, faceting, etc.). The combination of these leads to a graphic.
+
+## `ggplot2` goals
+
+- consistent grammar/syntax
+- high quality graphics
+- combination of independent components
+
+## Layering
+
+The `ggplot2` approach:
+
+1. Start with the data
+2. Add annotations and summaries
+3. Customize 
+
+## Terminology
+
+1. **layer** - geometric elements & statistical transformations
+2. **scales** - map values (data space) to plot (aesthetic space)
+3. **coord** - coordinate system (default: Cartesian)
+4. **facet** - small multiples
+5. **theme** - fine-tune a plot
+
+## Before today...:
+
+We'll use additional packages today:
+
+```{r, eval=FALSE, include=TRUE}
+install.packages("gt")
+install.packages("here")
+install.packages("palmerpenguins")
+install.packages("patchwork")
+```
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
+

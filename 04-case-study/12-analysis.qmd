@@ -1,0 +1,111 @@
+---
+title: "12-eda"
+
+format:
+  html: default
+  revealjs:
+    output-file: 12-eda-reveal.html
+---
+
+## Agenda
+
+- Just get started:
+  - data operations
+  - calculations
+- open-ended!
+
+## Setup
+
+```{r}
+library(tidyverse)
+library(patchwork)
+library(here)
+
+df_back <- read_csv(here("data/Ascent_results_sample_pivot_v2.csv"))
+```
+
+## Data Operations
+
+- Filter to only include samples with Fentanyl levels > 0 
+- Select only columns of interest: sample, Morphine, Oxycodone, Fentanyl
+
+```{r}
+filtered_data <- df_back |>
+  filter(Fentanyl > 0) |>
+  select(sample, Morphine, Oxycodone, Fentanyl)
+```
+
+## Calculate ratios
+
+```{r}
+filtered_data <- filtered_data |> 
+  mutate(Morphine_Oxycodone = Morphine / Oxycodone)
+```
+
+## Plot new variable
+```{r}
+ggplot(filtered_data, aes(x = Morphine_Oxycodone)) +
+  geom_histogram()
+```
+
+
+## Aside: functions
+
+- user-defined functions : for tasks that you'll carry out more than twice
+- avoid copy + pasting very similar code
+
+```{r}
+# Function to calculate log10
+log10_safe <- function(x) {
+  ifelse(x > 0, log10(x), NA)
+}
+```
+
+## Use function
+
+```{r}
+filtered_data <- filtered_data |> 
+  mutate(log10_Morphine_Oxycodone = log10_safe(Morphine_Oxycodone))
+
+```
+
+```{r}
+summarized_data <- filtered_data |>
+  summarise(mean_morphine = mean(Morphine, na.rm=TRUE),
+            mean_oxycodone = mean(Oxycodone, na.rm=TRUE), 
+            mean_fentanyl = mean(Fentanyl, na.rm=TRUE),
+            sd_morphine = sd(Morphine, na.rm=TRUE),
+            sd_oxycodone = sd(Oxycodone, na.rm=TRUE), 
+            sd_fentanyl = sd(Fentanyl, na.rm=TRUE))
+
+```
+
+## Find outliers
+```{r}
+high_morphine <- filtered_data |>
+  filter(Morphine > (summarized_data$mean_morphine + 2 * summarized_data$sd_morphine))
+
+high_morphine
+```
+
+## Plot relationships
+
+```{r}
+plot_all <- ggplot(filtered_data, aes(x=Morphine, y=Fentanyl)) + 
+  geom_point() +
+  labs(title="All Data")
+plot_sub <- ggplot(high_morphine, aes(x=Morphine, y=Fentanyl)) + 
+  geom_point() +
+  labs(title="High Morphine")
+
+# combine plots
+plot_all + plot_sub
+```
+
+## Practice
+
+Learn something new about this dataset that we haven't yet discussed!
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::

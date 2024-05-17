@@ -7,14 +7,14 @@ format:
     output-file: 07-tidyr-reveal.html
 ---
 
-# `tidyr` | Creating tidy data {background-color="#e4282e"}
+# `tidyr` \| Creating tidy data {background-color="#e4282e"}
 
 ## Agenda
 
-1. Tidy Data
-2. Pivoting
-3. Separating & Uniting
-4. Joins
+1.  Tidy Data
+2.  Pivoting
+3.  Separating & Uniting
+4.  Joins
 
 ## Setup
 
@@ -46,7 +46,6 @@ The opinionated `tidyverse` is named as such b/c it assumes/necessitates your da
 Source: https://r4ds.had.co.nz/tidy-data.html
 :::
 
-
 ## Common issues
 
 -   One variable might be spread across multiple columns.
@@ -76,7 +75,7 @@ For when some of the column names are not names of variables, but values of a va
 table4a
 ```
 
-. . . 
+. . .
 
 ```{r}
 table4a |> 
@@ -85,7 +84,7 @@ table4a |>
                values_to = "cases")
 ```
 
-. . . 
+. . .
 
 *Note*: backticks around years
 
@@ -97,7 +96,7 @@ For when an observation is scattered across multiple rows...
 table2
 ```
 
-. . . 
+. . .
 
 ```{r}
 table2 |>
@@ -115,9 +114,9 @@ The billboard dataset records the billboard rank of songs (2000)
 billboard
 ```
 
-- `artist`, `track`, `date.entered` + rank for a given week
+-   `artist`, `track`, `date.entered` + rank for a given week
 
-. . . 
+. . .
 
 If we wanted to take this wide data to long, how would we modify the provided code to accomplish this?
 
@@ -142,14 +141,14 @@ For when multiple pieces of information are stored in a single column...
 table3
 ```
 
-. . . 
+. . .
 
 ```{r}
 table3 |> 
   separate(rate, into = c("cases", "population"))
 ```
 
-. . . 
+. . .
 
 but...cases and population should be numeric...
 
@@ -178,13 +177,13 @@ congress_terms <- read_csv('https://raw.githubusercontent.com/ShanEllis/datasets
 congress_years <- read_csv('https://raw.githubusercontent.com/ShanEllis/datasets/master/congress_years.csv')
 ```
 
-. . . 
+. . .
 
 ```{r}
 congress_terms
 ```
 
-. . . 
+. . .
 
 For now, what if we wanted a single column with the first, middle, and last name of each cogressperson?
 
@@ -192,7 +191,7 @@ Unmute to ask or put any questions in the chat. When completed, respond to the z
 
 # Joins {background-color="#e4282e"}
 
-## Joins 
+## Joins
 
 If we look at `table4a`, it's missing the population information. That's stored in a separate table...`table4b`
 
@@ -239,7 +238,7 @@ library(nycflights13)
 -   `airlines` : links airline to two letter code
 -   `airports` : ID'ed by FAA code
 -   `planes` : ID'ed by tailnum
--   `airport` : weather each hour; id'ed by two letter airport code
+-   `weather` : weather each hour; id'ed by two letter airport code
 
 . . .
 
@@ -298,7 +297,7 @@ Other joins:
 
 ## Practice
 
-Above we read in some data, but to remind ourselves: 
+Above we read in some data, but to remind ourselves:
 
 ```{r}
 congress_terms
@@ -309,7 +308,7 @@ congress_terms
 congress_years
 ```
 
-. . . 
+. . .
 
 What if we wanted to include the congress `year` from `congress_years` into `congress_terms`? How would we accomplish that goal?
 

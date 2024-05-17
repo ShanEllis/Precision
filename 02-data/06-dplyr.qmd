@@ -7,22 +7,21 @@ format:
     output-file: 06-dplyr-reveal.html
 ---
 
-# `dplyr` | Common data operations {background-color="#e4282e"}
+# `dplyr` \| Common data operations {background-color="#e4282e"}
 
 ## Agenda
 
 `dplyr`
 
-1. philosophy
-2. common operations
-3. Practice!
+1.  philosophy
+2.  common operations
+3.  Practice!
 
 ## Setup
- 
+
 ```{r}
 library(tidyverse)
 ```
-
 
 ## Philosophy
 
@@ -38,7 +37,7 @@ Source: [dplyr.tidyverse.org](https://dplyr.tidyverse.org/)
 
 To get practice with common data manipulations, we'll use data from OpenDurham's Data Portal.
 
-. . . 
+. . .
 
 To do so, we'll read the file into R, using the function `read_csv2`:
 
@@ -47,14 +46,13 @@ bike <- read_csv2("https://raw.githubusercontent.com/COGS137/datasets/main/nc_bi
                   na = c("NA", "", "."))
 ```
 
-. . . 
+. . .
 
 Note: here we're using a file called `read_csv2`. This is used for datasets that use ; for the separator and , for the decimal place (common in some European countries). `read_csv()` will be used more commonly.
 
 ## Practice
 
 Read the dataset in and determine how many observations and variables there are in the `bike` dataset.
-
 
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
@@ -72,7 +70,7 @@ names(bike)
 
 -   In the Environment, click on the name of the data frame to view it in the data viewer (or use the `View` function)
 
-. . . 
+. . .
 
 -   Use the `glimpse` function to take a peek
 
@@ -80,14 +78,13 @@ names(bike)
 glimpse(bike)
 ```
 
-. . . 
+. . .
 
-- Use the `skim` function to get a sense of the data we have
+-   Use the `skim` function to get a sense of the data we have
 
 ```{r, eval=FALSE}
 skim(bike)
 ```
-
 
 # `dplyr` {background-color="#e4282e"}
 
@@ -128,7 +125,6 @@ df |>
   verb(...) |> 
   next_verb(...)
 ```
-
 
 ## Filter rows with `filter`
 
@@ -189,11 +185,9 @@ bike <- bike |>
 
 How many accidents in our dataset required an ambulance ride (`AmbulanceR`) *and* had the `Crash_Type` "Bicyclist Lost Control - Mechanical Problems"?
 
-
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
 :::
-
 
 ## `group_by` + `summarize`
 
@@ -209,7 +203,7 @@ bike |>
 
 Note: `summarize` is *not* limited to counting how many observations there are. The median, mean, min, max, etc. can all be `summarize`d...and you can summarize more than one thing at a time.
 
-. . . 
+. . .
 
 For example:
 
@@ -221,7 +215,7 @@ bike |>
             median = median(Bike_Age, na.rm=TRUE))
 ```
 
-- `na.rm = TRUE` specifies to remote any NA values so you can still calculate the mean
+-   `na.rm = TRUE` specifies to remote any NA values so you can still calculate the mean
 
 ## Cleaning up the data...
 
@@ -245,7 +239,6 @@ bike <- bike |>
   ))
 ```
 
-
 ## Check before you move on
 
 ```{r}
@@ -256,7 +249,7 @@ bike |>
 
 ## Practice
 
-Did the average biker age (`Bike_Age`) differ between bike crashes that did and did not involve an Ambulance `AmbulanceR`? 
+Did the average biker age (`Bike_Age`) differ between bike crashes that did and did not involve an Ambulance `AmbulanceR`?
 
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
@@ -273,7 +266,6 @@ bike |>
   slice(1:5)
 ```
 
-
 ## `select` to keep only the variables you mention
 
 ```{r}
@@ -283,7 +275,7 @@ bike |>
   select(Crash_Loc, Hit_Run)
 ```
 
-. . . 
+. . .
 
 ### or `select` to exclude variables
 
@@ -294,7 +286,7 @@ bike |>
   select(-OBJECTID)
 ```
 
-. . . 
+. . .
 
 ### or `select` a range of variables
 
@@ -315,7 +307,7 @@ Useful for correcting typos, and renaming to make variable names shorter and/or 
 names(bike)
 ```
 
-. . . 
+. . .
 
 -   Rename `Speed_Limi` to `Speed_Limit`:
 
@@ -326,7 +318,7 @@ bike <- bike |>
   rename(Speed_Limit = Speed_Limi)
 ```
 
-. . . 
+. . .
 
 ```{r}
 names(bike)
@@ -338,7 +330,7 @@ Your boss in Cumberland County gets overwhelmed by data easily, but he wants som
 
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
-::::::
+:::
 
 ## `arrange` to order rows
 
@@ -360,7 +352,6 @@ bike |>
 
 [<i class="fa fa-user" aria-hidden="true"></i>   If you wanted to arrange these in ascending order what would you add to the pipe?]{style="background-color: #ADD8E6"}
 
-
 ## `distinct` to filter for unique rows
 
 ```{r}
@@ -372,7 +363,7 @@ bike |>
   arrange(County, City)
 ```
 
-. . . 
+. . .
 
 ### `distinct` has a .keep_all parameter
 
@@ -388,9 +379,9 @@ bike |>
 
 There is an available dataset `storms`. Using that dataset and common `dplyr` functions, answer the following questions:
 
-1. How many observations are there in this dataset? What is the observational unit?
-2. How many unique hurricanes are included in this dataset?
-3. Among all storms in this dataset, in which month are storms most common?
+1.  How many observations are there in this dataset? What is the observational unit?
+2.  How many unique hurricanes are included in this dataset?
+3.  Among all storms in this dataset, in which month are storms most common?
 
 ::: aside
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
@@ -433,8 +424,8 @@ head(data)
 
 ## Step 1: Filter data
 
-- Only include patients with vales > 50 for `Compound1`
-- Then: only include patients who have at least 3 replicates
+-   Only include patients with vales \> 50 for `Compound1`
+-   Then: only include patients who have at least 3 replicates
 
 ```{r}
 df_filtered <- data |>
@@ -446,12 +437,11 @@ df_filtered <- data |>
 
 ## Step 2: Calculate Ratios (Practice)
 
-- Add new column (`ratio12`) to `df_filtered` to calculate the ratio between Compound1 and Compound2
+-   Add new column (`ratio12`) to `df_filtered` to calculate the ratio between Compound1 and Compound2
 
 ```{r, eval=FALSE}
 # Your code here
 ```
-
 
 ```{r, include=FALSE, echo=FALSE}
 df_filtered <- df_filtered |>
@@ -464,9 +454,9 @@ Unmute to ask or put any questions in the chat. When completed, respond to the z
 
 ## Step 3: Calculate intra-patient CV
 
-- carry out calculations within patient
-- determine pt mean, sd, CV
-- filter to only include CV <= 10%
+-   carry out calculations within patient
+-   determine pt mean, sd, CV
+-   filter to only include CV \<= 10%
 
 ```{r}
 # calculate the intra-patient coefficient of variation (CV)
@@ -479,9 +469,9 @@ df_mean <- df_filtered |>
   filter(CV <= 10)
 ```
 
-## Step 4: Identify extreme values 
+## Step 4: Identify extreme values
 
-- mimicking identification of slow and fast metabolizers
+-   mimicking identification of slow and fast metabolizers
 
 For "slow metabolizers:..
 
@@ -490,20 +480,19 @@ For "slow metabolizers:..
 threshold <- quantile(df_mean$ratio12, probs = 0.025)
 
 # Filter to extract the rows below the threshold
-df_mean %>%
+df_mean |>
   filter(ratio12 <= threshold)
 ```
 
-. . . 
+. . .
 
 How many "fast metabolizers" are in this dataset, if "fast" is defined as above the 95th quartile?
 
 Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
 
-
 # Summary
 
-- `dplyr` is an incredibly powerful package for manipulating data in R
-  - carries out common manipulation tasks
-  - helpful for calculating common metrics/statistics 
-  - able to do this within groups
+-   `dplyr` is an incredibly powerful package for manipulating data in R
+    -   carries out common manipulation tasks
+    -   helpful for calculating common metrics/statistics
+    -   able to do this within groups

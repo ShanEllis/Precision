@@ -1,0 +1,95 @@
+---
+title: "10-tables"
+
+format:
+  html: default
+  revealjs:
+    output-file: 10-tables-reveal.html
+---
+
+# Tables {background-color="#e4282e"}
+
+## Agenda
+
+- `gt`
+- basic table examples
+
+## Setup 
+
+```{r}
+library(tidyverse)
+library(gt)
+library(palmerpenguins)
+```
+
+## Parts of a Table
+
+![](images/gt_parts_of_a_table.svg)
+Image Source: [gt.rstudio](https://gt.rstudio.com/)
+
+## Workflow
+
+![](images/gt_workflow_diagram.svg)
+Image Source: [gt.rstudio](https://gt.rstudio.com/)
+
+## Table Example
+
+```{r}
+# Define the start and end dates for the data range
+start_date <- "2010-06-07"
+end_date <- "2010-06-14"
+
+# Create a gt table based on pre-processed
+# `sp500` table data
+sp500 |>
+  dplyr::filter(date >= start_date & date <= end_date) |>
+  dplyr::select(-adj_close) |>
+  gt() |>
+  tab_header(
+    title = "S&P 500",
+    subtitle = glue::glue("{start_date} to {end_date}")
+  ) |>
+  fmt_currency() |>
+  fmt_date(columns = date, date_style = "wd_m_day_year") |>
+  fmt_number(columns = volume, suffixing = TRUE)
+```
+
+Source: [gt.rstudio](https://gt.rstudio.com/)
+
+## Penguins table
+
+```{r}
+# get data into format for table
+pen_table <- penguins |> 
+  select(species, sex, body_mass_g) |>
+  filter(!is.na(sex)) |>
+  group_by(species, sex) |>
+  summarise(ci = list(mean_cl_normal(body_mass_g) |>
+                        rename(mean=y, lwr=ymin, upr=ymax))) |> 
+  unnest(cols = c(ci)) |>
+  mutate(`Mean (95% CI)` = paste0(round(mean, 0), " (", round(lwr, 0), ", ",  round(upr, 0), ")")) |>
+  select(-mean, -lwr, -upr) |> 
+  ungroup()
+
+pen_table
+```
+
+. . . 
+
+```{r}
+# make table
+pen_table |> 
+  group_by(species) |>
+  gt() |> 
+  tab_header(title = "Average Weight by Sex",
+             subtitle = "2007-2009")
+```
+
+
+## Practice
+
+Create a basic table using `dplyr` and `gt` to summarize something other than average weight using the penguins data.
+
+::: aside
+Unmute to ask or put any questions in the chat. When completed, respond to the zoom poll.
+:::
