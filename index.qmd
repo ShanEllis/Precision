@@ -55,7 +55,7 @@ format:
 ### Next Steps
 
 1. **Data** | Take a dataset you're familiar with in Excel and carry out your analysis (or part of it in R)
-2. **Viz** | Find a visualization out "in the wild" and try to recreate it in R using `ggplot2`
+2. **Viz** | Find a visualization out "in the wild" and try to recreate it in R using `ggplot2` (examples [here](https://cogs137.github.io/website/content/lectures/12-cs01-eda.html#hw02-revisited))
 3. **R Packages** | Find a package [here](https://support.posit.co/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages) (or elsewhere) that sounds interesting and learn to do something with it
 4. **Open Case Studies** | Work through a case study [here](https://www.opencasestudies.org/) using the code alongside the text to understand more complex analyses ...that have already been worked out!
 5. **Statistical Analysis** | Work through interactive tutorials in [IMS](https://openintro-ims.netlify.app/)
